@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "facing=north,end=attach,left=false,right=false": {
-      "model": "catwalk_aperturehalls_attach_north.json"
-    }
-  }
-}

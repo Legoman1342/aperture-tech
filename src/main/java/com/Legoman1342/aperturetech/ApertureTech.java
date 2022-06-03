@@ -1,6 +1,8 @@
 package com.Legoman1342.aperturetech;
 
 import com.Legoman1342.setup.Registration;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -9,6 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -43,16 +46,24 @@ public class ApertureTech {
         bus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
         bus.addListener(this::processIMC);
+        // Register the setup event for modloading
+        bus.addListener(this::setup);
+        // Register the clientSetup event for modloading
+        bus.addListener(this::clientSetup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
+    private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    }
+    
+    private void clientSetup(final FMLClientSetupEvent event) {
+        //Sets how to render different blocks
+        ItemBlockRenderTypes.setRenderLayer(Registration.catwalk.get(), RenderType.cutout());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
