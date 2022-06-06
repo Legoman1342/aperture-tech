@@ -16,6 +16,8 @@ public class DataGenerators {
 		
 		//Generate recipes
 		generator.addProvider(new ModRecipeProvider(generator));
+		//Generate loot tables
+		generator.addProvider(new ModLootTableProvider(generator));
 		
 	}
 }

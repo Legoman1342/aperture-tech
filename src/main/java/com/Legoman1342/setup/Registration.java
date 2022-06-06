@@ -23,8 +23,8 @@ import java.util.function.Supplier;
 import static com.Legoman1342.aperturetech.ApertureTech.MODID;
 
 public class Registration {
-	private static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-	private static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 	
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
