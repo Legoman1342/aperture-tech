@@ -18,6 +18,8 @@ public class DataGenerators {
 		generator.addProvider(new ModRecipeProvider(generator));
 		//Generate loot tables
 		generator.addProvider(new ModLootTableProvider(generator));
+		//Generate tags
+		generator.addProvider(new ModBlockTagsProvider(generator, ApertureTech.MODID, existingFileHelper));
 		
 	}
 }

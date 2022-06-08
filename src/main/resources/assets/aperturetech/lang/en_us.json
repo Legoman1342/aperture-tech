@@ -1,4 +1,6 @@
 {
   "item.aperturetech.catwalk": "Catwalk",
-  "block.aperturetech.catwalk": "Catwalk"
+  "block.aperturetech.catwalk": "Catwalk",
+
+  "itemGroup.atcreativetab": "Aperture Tech"
 }

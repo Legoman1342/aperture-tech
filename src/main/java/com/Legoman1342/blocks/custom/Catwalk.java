@@ -8,14 +8,12 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -24,7 +22,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 import java.util.stream.Stream;
 
-public class catwalk extends Block {
+public class Catwalk extends Block {
 	
 	//Creating block states
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -41,8 +39,7 @@ public class catwalk extends Block {
 		public static CatwalkEnd byIndex(int index) { //Returns an enum value when given an index
 			return values()[index];
 		}
-		
-		
+
 		@Override
 		public String getSerializedName() {
 			return Lang.asId(name());
@@ -50,7 +47,7 @@ public class catwalk extends Block {
 	}
 	
 	//Constructor
-	public catwalk(Properties properties) {
+	public Catwalk(Properties properties) {
 		super(properties);
 	}
 	
@@ -68,22 +65,28 @@ public class catwalk extends Block {
 				shapeOutput = "straight";
 				break;
 			case RAILING:
-				if (left ^ right) { // ^ means XOR
-				shapeOutput = "corner";
-				break;
-			} else if (left && right) {
+				if (left && right) {
 				shapeOutput = "t";
+				break;
+			} else if (left) {
+				shapeOutput = "corner_left";
+				break;
+			} else if (right) {
+				shapeOutput = "corner_right";
 				break;
 			} else {
 				shapeOutput = "end";
 				break;
 			}
 			case ATTACH:
-				if (left ^ right) {
-					shapeOutput = "t";
-					break;
-				} else if (left && right) {
+				if (left && right) {
 					shapeOutput = "cross";
+					break;
+				} else if (left) {
+					shapeOutput = "t_left";
+					break;
+				} else if (right) {
+					shapeOutput = "t_right";
 					break;
 				} else {
 					shapeOutput = "straight";
@@ -95,6 +98,7 @@ public class catwalk extends Block {
 		switch (shapeOutput) {
 			case "cross":
 				output = CROSS;
+				break;
 			case "t":
 				switch (facing) {
 					case NORTH -> output = T_NORTH;
@@ -103,12 +107,36 @@ public class catwalk extends Block {
 					case WEST -> output = T_WEST;
 				}
 				break;
-			case "corner":
+			case "t_left":
+				switch (facing) {
+					case NORTH -> output = T_EAST;
+					case EAST -> output = T_SOUTH;
+					case SOUTH -> output = T_WEST;
+					case WEST -> output = T_NORTH;
+				}
+				break;
+			case "t_right":
+				switch (facing) {
+					case NORTH -> output = T_WEST;
+					case EAST -> output = T_NORTH;
+					case SOUTH -> output = T_EAST;
+					case WEST -> output = T_SOUTH;
+				}
+				break;
+			case "corner_left":
 				switch (facing) {
 					case NORTH -> output = CORNER_NORTH;
 					case EAST -> output = CORNER_EAST;
 					case SOUTH -> output = CORNER_SOUTH;
 					case WEST -> output = CORNER_WEST;
+				}
+				break;
+			case "corner_right":
+				switch (facing) {
+					case NORTH -> output = CORNER_WEST;
+					case EAST -> output = CORNER_NORTH;
+					case SOUTH -> output = CORNER_EAST;
+					case WEST -> output = CORNER_SOUTH;
 				}
 				break;
 			case "straight":

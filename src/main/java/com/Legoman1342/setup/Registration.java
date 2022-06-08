@@ -1,12 +1,11 @@
 package com.Legoman1342.setup;
 
-import com.Legoman1342.blocks.custom.catwalk;
+import com.Legoman1342.blocks.custom.Catwalk;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
@@ -36,10 +35,11 @@ public class Registration {
 	
 	
 	//-----BLOCKS-----
-	public static final RegistryObject<Block> catwalk = registerBlock("catwalk", () -> new Block(BlockBehaviour.Properties
-			.of(Material.METAL)
+	public static final RegistryObject<Block> catwalk = registerBlock("catwalk", () -> new Catwalk(BlockBehaviour
+			.Properties.of(Material.METAL)
 			.sound(SoundType.LANTERN)
 			.strength(2.0f)
+			.requiresCorrectToolForDrops()
 			.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
 	
