@@ -115,6 +115,7 @@
         "AND": [
           {
             "left": "true",
+            "end": "attach|railing",
             "facing": "north"
           }
         ]
@@ -128,6 +129,7 @@
         "AND": [
           {
             "left": "true",
+            "end": "attach|railing",
             "facing": "east"
           }
         ]
@@ -142,6 +144,7 @@
         "AND": [
           {
             "left": "true",
+            "end": "attach|railing",
             "facing": "south"
           }
         ]
@@ -156,6 +159,7 @@
         "AND": [
           {
             "left": "true",
+            "end": "attach|railing",
             "facing": "west"
           }
         ]
@@ -170,6 +174,7 @@
         "AND": [
           {
             "left": "false",
+            "end": "attach|railing",
             "facing": "north"
           }
         ]
@@ -183,6 +188,7 @@
         "AND": [
           {
             "left": "false",
+            "end": "attach|railing",
             "facing": "east"
           }
         ]
@@ -197,6 +203,7 @@
         "AND": [
           {
             "left": "false",
+            "end": "attach|railing",
             "facing": "south"
           }
         ]
@@ -211,6 +218,7 @@
         "AND": [
           {
             "left": "false",
+            "end": "attach|railing",
             "facing": "west"
           }
         ]
@@ -225,6 +233,7 @@
         "AND": [
           {
             "right": "true",
+            "end": "attach|railing",
             "facing": "north"
           }
         ]
@@ -238,6 +247,7 @@
         "AND": [
           {
             "right": "true",
+            "end": "attach|railing",
             "facing": "east"
           }
         ]
@@ -252,6 +262,7 @@
         "AND": [
           {
             "right": "true",
+            "end": "attach|railing",
             "facing": "south"
           }
         ]
@@ -266,6 +277,7 @@
         "AND": [
           {
             "right": "true",
+            "end": "attach|railing",
             "facing": "west"
           }
         ]
@@ -280,6 +292,7 @@
         "AND": [
           {
             "right": "false",
+            "end": "attach|railing",
             "facing": "north"
           }
         ]
@@ -293,6 +306,7 @@
         "AND": [
           {
             "right": "false",
+            "end": "attach|railing",
             "facing": "east"
           }
         ]
@@ -307,6 +321,7 @@
         "AND": [
           {
             "right": "false",
+            "end": "attach|railing",
             "facing": "south"
           }
         ]
@@ -321,6 +336,7 @@
         "AND": [
           {
             "right": "false",
+            "end": "attach|railing",
             "facing": "west"
           }
         ]

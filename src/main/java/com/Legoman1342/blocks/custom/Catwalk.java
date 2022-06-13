@@ -168,10 +168,11 @@ public class Catwalk extends Block {
 	@Override
 	@Nullable
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite())
+		return defaultBlockState().setValue(FACING, context.getHorizontalDirection())
 				.setValue(CATWALK_LEFT, false)
 				.setValue(CATWALK_RIGHT, false)
 				.setValue(CATWALK_END, CatwalkEnd.RAILING);
+
 	}
 	
 	
