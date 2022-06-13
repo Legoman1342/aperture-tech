@@ -1,0 +1,397 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "attach|drop",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_attach"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "attach|drop",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_attach",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "attach|drop",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_attach",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "attach|drop",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_attach",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "railing",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_railing"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "railing",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_railing",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "railing",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_railing",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "railing",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_center_railing",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "true",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "true",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "true",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "true",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "false",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_railing"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "false",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_railing",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "false",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_railing",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "false",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_railing",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "true",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "true",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "true",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "true",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "false",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_railing"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "false",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_railing",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "false",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_railing",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "false",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_railing",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "end": "attach|railing"
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/posts"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "drop",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/railings_drop"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "drop",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/railings_drop",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "drop",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/railings_drop",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "end": "drop",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/railings_drop",
+        "y": 270
+      }
+    }
+  ]
+}

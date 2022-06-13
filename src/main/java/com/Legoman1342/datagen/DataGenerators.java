@@ -19,7 +19,9 @@ public class DataGenerators {
 		//Generate loot tables
 		generator.addProvider(new ModLootTableProvider(generator));
 		//Generate tags
-		generator.addProvider(new ModBlockTagsProvider(generator, ApertureTech.MODID, existingFileHelper));
+		generator.addProvider(new ModBlockTagsProvider(generator, existingFileHelper));
+		//Generate block states
+		generator.addProvider(new ModBlocksStateProvider(generator, existingFileHelper));
 		
 	}
 }

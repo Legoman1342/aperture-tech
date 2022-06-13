@@ -1,5 +1,6 @@
 package com.Legoman1342.datagen;
 
+import com.Legoman1342.aperturetech.ApertureTech;
 import com.Legoman1342.setup.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
@@ -9,8 +10,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class ModBlockTagsProvider extends BlockTagsProvider {
 
-    public ModBlockTagsProvider(DataGenerator generator, String modId, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator, modId, existingFileHelper);
+    public ModBlockTagsProvider(DataGenerator generator, @Nullable ExistingFileHelper existingFileHelper) {
+        super(generator, ApertureTech.MODID, existingFileHelper);
     }
 
     @Override
