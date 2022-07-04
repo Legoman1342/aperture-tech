@@ -1,6 +1,7 @@
 package com.Legoman1342.setup;
 
 import com.Legoman1342.blocks.custom.Catwalk;
+import com.Legoman1342.items.custom.ConfigurationTool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
@@ -33,7 +34,7 @@ public class Registration {
 	
 	//-----ITEMS-----
 	public static final RegistryObject<Item> configuration_tool = ITEMS.register("configuration_tool",
-			() -> new Item(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
+			() -> new ConfigurationTool(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 
 
 	//-----BLOCKS-----
