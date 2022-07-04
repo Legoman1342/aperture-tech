@@ -32,7 +32,7 @@ public class Registration {
 	}
 	
 	//-----ITEMS-----
-	
+
 	
 	//-----BLOCKS-----
 	public static final RegistryObject<Block> catwalk = registerBlock("catwalk", () -> new Catwalk(BlockBehaviour
@@ -82,9 +82,5 @@ public class Registration {
 																			CreativeModeTab tab) {
 		return ITEMS.register(name, () -> new BlockItem(block.get(),
 				new Item.Properties().tab(tab)));
-	}
-	
-	public static void register(IEventBus eventBus) {
-		BLOCKS.register(eventBus);
 	}
 }

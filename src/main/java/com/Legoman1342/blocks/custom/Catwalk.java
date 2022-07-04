@@ -1,12 +1,16 @@
 package com.Legoman1342.blocks.custom;
 
+import com.Legoman1342.setup.Registration;
 import com.Legoman1342.utilities.Lang;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,15 +30,22 @@ public class Catwalk extends Block {
 	
 	//Creating block states
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-	public static final BooleanProperty CATWALK_LEFT = BooleanProperty.create("left");
-	public static final BooleanProperty CATWALK_RIGHT = BooleanProperty.create("right");
+	public static final EnumProperty<CatwalkSides> CATWALK_LEFT = EnumProperty.create("left", CatwalkSides.class);
+	public static final EnumProperty<CatwalkSides> CATWALK_RIGHT = EnumProperty.create("right", CatwalkSides.class);
 	public static final EnumProperty<CatwalkEnd> CATWALK_END = EnumProperty.create("end", CatwalkEnd.class);
 	
 
-	
-	//The CatwalkEnd block property needs to be defined differently since it's an enum
+	//Defining the enums used in the left, right, and end properties
+	public enum CatwalkSides implements StringRepresentable {
+		RAILING, ATTACH, ATTACH_FLIPPED,; //Possible shapes for the left and right of catwalks
+
+		@Override
+		public String getSerializedName() {
+			return Lang.asId(name());
+		}
+	}
 	public enum CatwalkEnd implements StringRepresentable {
-		DROP, RAILING, ATTACH,; //Possible shapes for the end of catwalks (possible values for the enum)
+		DROP, RAILING, ATTACH,; //Possible shapes for the end of catwalks
 		
 		public static CatwalkEnd byIndex(int index) { //Returns an enum value when given an index
 			return values()[index];
@@ -45,18 +56,141 @@ public class Catwalk extends Block {
 			return Lang.asId(name());
 		}
 	}
+
+
 	
 	//Constructor
 	public Catwalk(Properties properties) {
 		super(properties);
 	}
-	
-	//Returns the VoxelShape for the current block state
+
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+		builder.add(FACING, CATWALK_LEFT, CATWALK_RIGHT, CATWALK_END);
+	}
+
+	/**
+	 * Defines the state the block will be in when placed.
+	 * @param context Information about the placement, including player information and facing direction
+	 * @return The BlockState the catwalk will have when placed
+	 */
+	@Override
+	@Nullable
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		Direction direction = context.getHorizontalDirection();
+		BlockPos pos = context.getClickedPos();
+		Level level = context.getLevel();
+		BlockState frontNeighbor = level.getBlockState(pos.relative(direction.getOpposite()));
+		BlockState leftNeighbor = level.getBlockState(pos.relative(direction.getClockWise()));
+		BlockState rightNeighbor = level.getBlockState(pos.relative(direction.getCounterClockWise()));
+		return this.defaultBlockState()
+				.setValue(FACING, direction)
+				.setValue(CATWALK_END, getEndState(direction, frontNeighbor))
+				.setValue(CATWALK_LEFT, getLeftState(direction, leftNeighbor))
+				.setValue(CATWALK_RIGHT, getRightState(direction, rightNeighbor));
+	}
+
+	public CatwalkEnd getEndState(Direction direction, BlockState neighbour) {
+		if (neighbour.getBlock() == Registration.catwalk.get()) {
+			if (neighbour.getValue(FACING) != direction.getOpposite()) {
+				return CatwalkEnd.ATTACH;
+			} else {
+				return CatwalkEnd.RAILING;
+			}
+		} else {
+			return CatwalkEnd.RAILING;
+		}
+	}
+
+	public CatwalkSides getLeftState(Direction direction, BlockState neighbour) {
+		if (neighbour.getBlock() == Registration.catwalk.get()) {
+			if (neighbour.getValue(FACING) == direction.getCounterClockWise()) {
+				return CatwalkSides.ATTACH;
+			} else if (neighbour.getValue(FACING) == direction.getClockWise()) {
+				return CatwalkSides.ATTACH_FLIPPED;
+			} else {
+				return CatwalkSides.RAILING;
+			}
+		} else {
+			return CatwalkSides.RAILING;
+		}
+	}
+
+	public CatwalkSides getRightState(Direction direction, BlockState neighbour) {
+		if (neighbour.getBlock() == Registration.catwalk.get()) {
+			if (neighbour.getValue(FACING) == direction.getClockWise()) {
+				return CatwalkSides.ATTACH;
+			} else if (neighbour.getValue(FACING) == direction.getCounterClockWise()) {
+				return CatwalkSides.ATTACH_FLIPPED;
+			} else {
+				return CatwalkSides.RAILING;
+			}
+		} else {
+			return CatwalkSides.RAILING;
+		}
+	}
+
+	/**
+	 * Updates the state of the catwalk when a block update occurs.
+	 * @return The new BlockState
+	 */
+	@Override
+	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+		BlockState neighborState = pLevel.getBlockState(pNeighborPos); //Blockstate of the newly placed neighbor
+		Direction facing = pState.getValue(FACING);
+		CatwalkEnd end = pState.getValue(CATWALK_END);
+
+		if (neighborState.getBlock() instanceof Catwalk) { //When a catwalk is placed adjacent
+			if (pDirection == facing.getOpposite()) { //Is the neighbor in front of me?
+				return pState.setValue(CATWALK_END, CatwalkEnd.ATTACH); //If so, attach to it
+			} else if (pDirection == facing.getClockWise()) { //Is the neighbor to my left?
+				if (end == CatwalkEnd.DROP) { //Is my end set to "drop"?
+					pState = pState.setValue(CATWALK_END, CatwalkEnd.RAILING); //If so, change it to "railing"
+				}
+				//Attach the appropriate way depending on the neighbor's facing direction
+				if (neighborState.getValue(FACING) == facing.getCounterClockWise()) {
+					return pState.setValue(CATWALK_LEFT, CatwalkSides.ATTACH);
+				} else if (neighborState.getValue(FACING) == facing.getClockWise()) {
+					return pState.setValue(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED);
+				} else {
+					return pState.setValue(CATWALK_LEFT, CatwalkSides.RAILING);
+				}
+			} else if (pDirection == facing.getCounterClockWise()) { //Is the neighbor to my right?
+				if (end == CatwalkEnd.DROP) { //Is my end set to "drop"?
+					pState = pState.setValue(CATWALK_END, CatwalkEnd.RAILING); //If so, change it to "railing"
+				}
+				//Attach the appropriate way depending on the neighbor's facing direction
+				if (neighborState.getValue(FACING) == facing.getClockWise()) {
+					return pState.setValue(CATWALK_RIGHT, CatwalkSides.ATTACH);
+				} else if (neighborState.getValue(FACING) == facing.getCounterClockWise()) {
+					return pState.setValue(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED);
+				} else {
+					return pState.setValue(CATWALK_RIGHT, CatwalkSides.RAILING);
+				}
+			}
+		} else { //When a neighboring catwalk is broken (or another block is placed or broken)
+			if (pDirection == facing.getOpposite()) { //Is the neighbor in front of me?
+				if (end != CatwalkEnd.DROP) {
+					return pState.setValue(CATWALK_END, CatwalkEnd.RAILING);
+				}
+			} else if (pDirection == facing.getClockWise()) { //Is the neighbor to my left?
+				return pState.setValue(CATWALK_LEFT, CatwalkSides.RAILING);
+			} else if (pDirection == facing.getCounterClockWise()) { //Is the neighbor to my left?
+				return pState.setValue(CATWALK_RIGHT, CatwalkSides.RAILING);
+			}
+		}
+		return pState;
+	}
+
+	/**
+	 * Gets the VoxelShape for the current block state.
+	 * @return A VoxelShape used as the hitbox and collision box for the catwalk.
+	 */
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		CatwalkEnd end = state.getValue(CATWALK_END);
-		boolean left = state.getValue(CATWALK_LEFT);
-		boolean right = state.getValue(CATWALK_RIGHT);
+		CatwalkSides left = state.getValue(CATWALK_LEFT);
+		CatwalkSides right = state.getValue(CATWALK_RIGHT);
 		Direction facing = state.getValue(FACING);
 		String shapeOutput; //Stores the shape without the direction, input for the second switch block
 		VoxelShape output = null; //Final output, will never remain null
@@ -65,27 +199,27 @@ public class Catwalk extends Block {
 				shapeOutput = "straight";
 				break;
 			case RAILING:
-				if (left && right) {
-				shapeOutput = "t";
-				break;
-			} else if (left) {
-				shapeOutput = "corner_left";
-				break;
-			} else if (right) {
-				shapeOutput = "corner_right";
-				break;
-			} else {
-				shapeOutput = "end";
-				break;
-			}
+				if (isSideAttached(left) && isSideAttached(right)) {
+					shapeOutput = "t";
+					break;
+				} else if (isSideAttached(left)) {
+					shapeOutput = "corner_left";
+					break;
+				} else if (isSideAttached(right)) {
+					shapeOutput = "corner_right";
+					break;
+				} else {
+					shapeOutput = "end";
+					break;
+				}
 			case ATTACH:
-				if (left && right) {
+				if (isSideAttached(left) && isSideAttached(right)) {
 					shapeOutput = "cross";
 					break;
-				} else if (left) {
+				} else if (isSideAttached(left)) {
 					shapeOutput = "t_left";
 					break;
-				} else if (right) {
+				} else if (isSideAttached(right)) {
 					shapeOutput = "t_right";
 					break;
 				} else {
@@ -158,26 +292,17 @@ public class Catwalk extends Block {
 		}
 		return output;
 	}
-	
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(FACING, CATWALK_LEFT, CATWALK_RIGHT, CATWALK_END);
-	}
-	
-	//Defines the state the block will be in when placed
-	@Override
-	@Nullable
-	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return defaultBlockState().setValue(FACING, context.getHorizontalDirection())
-				.setValue(CATWALK_LEFT, false)
-				.setValue(CATWALK_RIGHT, false)
-				.setValue(CATWALK_END, CatwalkEnd.RAILING);
 
+	/**
+	 * Convenience method used in getShape.
+	 * @param side A CatwalkSides enum variable
+	 * @return <code>true</code> if <code>side</code> equals <code>ATTACH</code> or <code>ATTACH_FLIPPED</code>, <code>false</code> otherwise
+	 */
+	public boolean isSideAttached(CatwalkSides side) {
+		return (side == CatwalkSides.ATTACH || side == CatwalkSides.ATTACH_FLIPPED);
 	}
-	
-	
-	
-	
+
+
 	//Defining the outlines of the block for different block states
 	private static final VoxelShape STRAIGHT_NORTHSOUTH = Stream.of(
 			Block.box(0, 0, 0, 16, 1, 16),

@@ -114,7 +114,7 @@
       "when": {
         "AND": [
           {
-            "left": "true",
+            "left": "attach",
             "end": "attach|railing",
             "facing": "north"
           }
@@ -128,7 +128,7 @@
       "when": {
         "AND": [
           {
-            "left": "true",
+            "left": "attach",
             "end": "attach|railing",
             "facing": "east"
           }
@@ -143,7 +143,7 @@
       "when": {
         "AND": [
           {
-            "left": "true",
+            "left": "attach",
             "end": "attach|railing",
             "facing": "south"
           }
@@ -158,7 +158,7 @@
       "when": {
         "AND": [
           {
-            "left": "true",
+            "left": "attach",
             "end": "attach|railing",
             "facing": "west"
           }
@@ -173,7 +173,66 @@
       "when": {
         "AND": [
           {
-            "left": "false",
+            "left": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach_flipped"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach_flipped",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach_flipped",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_left_attach_flipped",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "left": "railing",
             "end": "attach|railing",
             "facing": "north"
           }
@@ -187,7 +246,7 @@
       "when": {
         "AND": [
           {
-            "left": "false",
+            "left": "railing",
             "end": "attach|railing",
             "facing": "east"
           }
@@ -202,7 +261,7 @@
       "when": {
         "AND": [
           {
-            "left": "false",
+            "left": "railing",
             "end": "attach|railing",
             "facing": "south"
           }
@@ -217,7 +276,7 @@
       "when": {
         "AND": [
           {
-            "left": "false",
+            "left": "railing",
             "end": "attach|railing",
             "facing": "west"
           }
@@ -232,7 +291,7 @@
       "when": {
         "AND": [
           {
-            "right": "true",
+            "right": "attach",
             "end": "attach|railing",
             "facing": "north"
           }
@@ -246,7 +305,7 @@
       "when": {
         "AND": [
           {
-            "right": "true",
+            "right": "attach",
             "end": "attach|railing",
             "facing": "east"
           }
@@ -261,7 +320,7 @@
       "when": {
         "AND": [
           {
-            "right": "true",
+            "right": "attach",
             "end": "attach|railing",
             "facing": "south"
           }
@@ -276,7 +335,7 @@
       "when": {
         "AND": [
           {
-            "right": "true",
+            "right": "attach",
             "end": "attach|railing",
             "facing": "west"
           }
@@ -291,7 +350,66 @@
       "when": {
         "AND": [
           {
-            "right": "false",
+            "right": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "north"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach_flipped"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "east"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach_flipped",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "south"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach_flipped",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "attach_flipped",
+            "end": "attach|railing",
+            "facing": "west"
+          }
+        ]
+      },
+      "apply": {
+        "model": "aperturetech:block/catwalk/floor_right_attach_flipped",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "right": "railing",
             "end": "attach|railing",
             "facing": "north"
           }
@@ -305,7 +423,7 @@
       "when": {
         "AND": [
           {
-            "right": "false",
+            "right": "railing",
             "end": "attach|railing",
             "facing": "east"
           }
@@ -320,7 +438,7 @@
       "when": {
         "AND": [
           {
-            "right": "false",
+            "right": "railing",
             "end": "attach|railing",
             "facing": "south"
           }
@@ -335,7 +453,7 @@
       "when": {
         "AND": [
           {
-            "right": "false",
+            "right": "railing",
             "end": "attach|railing",
             "facing": "west"
           }
