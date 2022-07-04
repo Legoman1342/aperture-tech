@@ -32,8 +32,10 @@ public class Registration {
 	}
 	
 	//-----ITEMS-----
+	public static final RegistryObject<Item> configuration_tool = ITEMS.register("configuration_tool",
+			() -> new Item(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 
-	
+
 	//-----BLOCKS-----
 	public static final RegistryObject<Block> catwalk = registerBlock("catwalk", () -> new Catwalk(BlockBehaviour
 			.Properties.of(Material.METAL)
