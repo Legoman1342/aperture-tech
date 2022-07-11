@@ -62,7 +62,7 @@ public class ApertureTech {
     }
     
     private void clientSetup(final FMLClientSetupEvent event) {
-        //Sets how to render different blocks
+        //Sets how to render different blocks, needed for any block with transparency
         ItemBlockRenderTypes.setRenderLayer(Registration.catwalk.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(Registration.catwalk_stairs.get(), RenderType.cutout());
     }
