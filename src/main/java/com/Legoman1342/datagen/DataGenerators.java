@@ -1,6 +1,7 @@
 package com.Legoman1342.datagen;
 
 import com.Legoman1342.aperturetech.ApertureTech;
+import com.Legoman1342.datagen.blockstates.ModBlocksStateProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

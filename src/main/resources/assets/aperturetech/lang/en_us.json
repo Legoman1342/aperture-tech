@@ -1,8 +1,10 @@
 {
   "item.aperturetech.catwalk": "Catwalk",
   "item.aperturetech.configuration_tool": "Configuration Tool",
+  "item.aperturetech.catwalk_stairs": "Catwalk Stairs",
 
   "block.aperturetech.catwalk": "Catwalk",
+  "block.aperturetech.catwalk_stairs": "Catwalk Stairs",
 
   "itemGroup.atcreativetab": "Aperture Tech"
 }

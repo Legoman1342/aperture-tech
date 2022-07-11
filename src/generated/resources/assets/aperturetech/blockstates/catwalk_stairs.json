@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,half=upper": {
+      "model": "aperturetech:block/catwalk/stairs_upper"
+    },
+    "facing=south,half=upper": {
+      "model": "aperturetech:block/catwalk/stairs_upper",
+      "y": 180
+    },
+    "facing=west,half=upper": {
+      "model": "aperturetech:block/catwalk/stairs_upper",
+      "y": 270
+    },
+    "facing=east,half=upper": {
+      "model": "aperturetech:block/catwalk/stairs_upper",
+      "y": 90
+    },
+    "facing=north,half=lower": {
+      "model": "aperturetech:block/catwalk/stairs_lower"
+    },
+    "facing=south,half=lower": {
+      "model": "aperturetech:block/catwalk/stairs_lower",
+      "y": 180
+    },
+    "facing=west,half=lower": {
+      "model": "aperturetech:block/catwalk/stairs_lower",
+      "y": 270
+    },
+    "facing=east,half=lower": {
+      "model": "aperturetech:block/catwalk/stairs_lower",
+      "y": 90
+    }
+  }
+}

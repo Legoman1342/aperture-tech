@@ -1,6 +1,7 @@
 package com.Legoman1342.setup;
 
 import com.Legoman1342.blocks.custom.Catwalk;
+import com.Legoman1342.blocks.custom.CatwalkStairs;
 import com.Legoman1342.items.custom.ConfigurationTool;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -45,6 +46,10 @@ public class Registration {
 			.requiresCorrectToolForDrops()
 			.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
+	public static final RegistryObject<Block> catwalk_stairs = registerBlock("catwalk_stairs", () -> new CatwalkStairs(BlockBehaviour
+			.Properties.copy(catwalk.get())),
+			ATCreativeTab.AT_CREATIVE_TAB);
+
 	
 	
 	//-----METHODS-----

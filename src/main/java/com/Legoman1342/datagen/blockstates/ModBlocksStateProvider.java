@@ -1,17 +1,24 @@
-package com.Legoman1342.datagen;
+//Useful Forge docs page:
+//https://docs.minecraftforge.net/en/1.18.x/datagen/client/modelproviders/
+
+package com.Legoman1342.datagen.blockstates;
 
 import com.Legoman1342.aperturetech.ApertureTech;
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.Catwalk.CatwalkEnd;
+import com.Legoman1342.blocks.custom.CatwalkStairs;
 import com.Legoman1342.setup.Registration;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile.ExistingModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static com.Legoman1342.blocks.custom.Catwalk.*;
+import static com.Legoman1342.blocks.custom.CatwalkStairs.*;
 
 public class ModBlocksStateProvider extends BlockStateProvider {
 	public ModBlocksStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
@@ -20,7 +27,12 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		//Catwalk multipart models
+		registerCatwalk();
+		registerCatwalkStairs();
+	}
+
+	protected void registerCatwalk() {
+	//Catwalk multipart models
 		ExistingModelFile catwalkFloorCenterAttach = models().getExistingFile(
 				new ResourceLocation(ApertureTech.MODID, "block/catwalk/floor_center_attach"));
 		ExistingModelFile catwalkFloorCenterRailing = models().getExistingFile(
@@ -42,7 +54,6 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 		ExistingModelFile catwalkRailingsDrop = models().getExistingFile(
 				new ResourceLocation(ApertureTech.MODID, "block/catwalk/railings_drop"));
 
-
 		//Build catwalk
 		this.getMultipartBuilder(Registration.catwalk.get())
 
@@ -50,25 +61,25 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 				.part().modelFile(catwalkFloorCenterAttach)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.DROP)
-						.condition(FACING, Direction.NORTH)
+						.condition(Catwalk.FACING, Direction.NORTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorCenterAttach).rotationY(90)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.DROP)
-						.condition(FACING, Direction.EAST)
+						.condition(Catwalk.FACING, Direction.EAST)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorCenterAttach).rotationY(180)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.DROP)
-						.condition(FACING, Direction.SOUTH)
+						.condition(Catwalk.FACING, Direction.SOUTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorCenterAttach).rotationY(270)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.DROP)
-						.condition(FACING, Direction.WEST)
+						.condition(Catwalk.FACING, Direction.WEST)
 					.end()
 				.end()
 
@@ -76,25 +87,25 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 				.part().modelFile(catwalkFloorCenterRailing)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.NORTH)
+						.condition(Catwalk.FACING, Direction.NORTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorCenterRailing).rotationY(90)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.EAST)
+						.condition(Catwalk.FACING, Direction.EAST)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorCenterRailing).rotationY(180)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.SOUTH)
+						.condition(Catwalk.FACING, Direction.SOUTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorCenterRailing).rotationY(270)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.WEST)
+						.condition(Catwalk.FACING, Direction.WEST)
 					.end()
 				.end()
 
@@ -103,59 +114,59 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.NORTH)
+						.condition(Catwalk.FACING, Direction.NORTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftAttach).rotationY(90)
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.EAST)
+						.condition(Catwalk.FACING, Direction.EAST)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftAttach).rotationY(180)
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.SOUTH)
+						.condition(Catwalk.FACING, Direction.SOUTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftAttach).rotationY(270)
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.WEST)
+						.condition(Catwalk.FACING, Direction.WEST)
 					.end()
 				.end()
 
 				//catwalkFloorLeftAttachFlipped
 				.part().modelFile(catwalkFloorLeftAttachFlipped)
-				.addModel().nestedGroup()
-				.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.NORTH)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.NORTH)
+					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftAttachFlipped).rotationY(90)
-				.addModel().nestedGroup()
-				.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.EAST)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.EAST)
+					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftAttachFlipped).rotationY(180)
-				.addModel().nestedGroup()
-				.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.SOUTH)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.SOUTH)
+					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftAttachFlipped).rotationY(270)
-				.addModel().nestedGroup()
-				.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.WEST)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.WEST)
+					.end()
 				.end()
 
 				//catwalkFloorLeftRailing
@@ -163,28 +174,28 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.NORTH)
+						.condition(Catwalk.FACING, Direction.NORTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftRailing).rotationY(90)
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.EAST)
+						.condition(Catwalk.FACING, Direction.EAST)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftRailing).rotationY(180)
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.SOUTH)
+						.condition(Catwalk.FACING, Direction.SOUTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorLeftRailing).rotationY(270)
 					.addModel().nestedGroup()
 						.condition(CATWALK_LEFT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.WEST)
+						.condition(Catwalk.FACING, Direction.WEST)
 					.end()
 				.end()
 
@@ -193,59 +204,59 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.NORTH)
+						.condition(Catwalk.FACING, Direction.NORTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightAttach).rotationY(90)
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.EAST)
+						.condition(Catwalk.FACING, Direction.EAST)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightAttach).rotationY(180)
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.SOUTH)
+						.condition(Catwalk.FACING, Direction.SOUTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightAttach).rotationY(270)
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.WEST)
+						.condition(Catwalk.FACING, Direction.WEST)
 					.end()
 				.end()
 
 				//catwalkFloorRightAttachFlipped
 				.part().modelFile(catwalkFloorRightAttachFlipped)
-				.addModel().nestedGroup()
-				.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.NORTH)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.NORTH)
+					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightAttachFlipped).rotationY(90)
-				.addModel().nestedGroup()
-				.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.EAST)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.EAST)
+					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightAttachFlipped).rotationY(180)
-				.addModel().nestedGroup()
-				.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.SOUTH)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.SOUTH)
+					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightAttachFlipped).rotationY(270)
-				.addModel().nestedGroup()
-				.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
-				.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-				.condition(FACING, Direction.WEST)
-				.end()
+					.addModel().nestedGroup()
+						.condition(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED)
+						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
+						.condition(Catwalk.FACING, Direction.WEST)
+					.end()
 				.end()
 
 				//catwalkFloorRightRailing
@@ -253,28 +264,28 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.NORTH)
+						.condition(Catwalk.FACING, Direction.NORTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightRailing).rotationY(90)
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.EAST)
+						.condition(Catwalk.FACING, Direction.EAST)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightRailing).rotationY(180)
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.SOUTH)
+						.condition(Catwalk.FACING, Direction.SOUTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkFloorRightRailing).rotationY(270)
 					.addModel().nestedGroup()
 						.condition(CATWALK_RIGHT, CatwalkSides.RAILING)
 						.condition(CATWALK_END, CatwalkEnd.ATTACH, CatwalkEnd.RAILING)
-						.condition(FACING, Direction.WEST)
+						.condition(Catwalk.FACING, Direction.WEST)
 					.end()
 				.end()
 
@@ -288,27 +299,47 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 				.part().modelFile(catwalkRailingsDrop)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.DROP)
-						.condition(FACING, Direction.NORTH)
+						.condition(Catwalk.FACING, Direction.NORTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkRailingsDrop).rotationY(90)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.DROP)
-						.condition(FACING, Direction.EAST)
+						.condition(Catwalk.FACING, Direction.EAST)
 					.end()
 				.end()
 				.part().modelFile(catwalkRailingsDrop).rotationY(180)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.DROP)
-						.condition(FACING, Direction.SOUTH)
+						.condition(Catwalk.FACING, Direction.SOUTH)
 					.end()
 				.end()
 				.part().modelFile(catwalkRailingsDrop).rotationY(270)
 					.addModel().nestedGroup()
 						.condition(CATWALK_END, CatwalkEnd.DROP)
-						.condition(FACING, Direction.WEST)
+						.condition(Catwalk.FACING, Direction.WEST)
 					.end()
 				.end();
+	}
+
+	protected void registerCatwalkStairs() {
+		//Catwalk stairs models
+		ExistingModelFile catwalkStairsLower = models().getExistingFile(
+				new ResourceLocation(ApertureTech.MODID, "block/catwalk/stairs_lower"));
+		ExistingModelFile catwalkStairsUpper = models().getExistingFile(
+				new ResourceLocation(ApertureTech.MODID, "block/catwalk/stairs_upper"));
+
+
+		this.getVariantBuilder(Registration.catwalk_stairs.get())
+				.forAllStates(state ->
+					ConfiguredModel.builder()
+							.modelFile(switch (state.getValue(HALF)) {
+								case LOWER -> catwalkStairsLower;
+								case UPPER -> catwalkStairsUpper;
+							})
+							.rotationY((int) state.getValue(CatwalkStairs.FACING).getOpposite().toYRot())
+							.build()
+				);
 
 	}
 }

@@ -33,7 +33,7 @@ import java.util.stream.Stream;
 
 public class Catwalk extends Block {
 	
-	//Creating block states
+	//Creating block state properties
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final EnumProperty<CatwalkSides> CATWALK_LEFT = EnumProperty.create("left", CatwalkSides.class);
 	public static final EnumProperty<CatwalkSides> CATWALK_RIGHT = EnumProperty.create("right", CatwalkSides.class);
@@ -70,8 +70,8 @@ public class Catwalk extends Block {
 	}
 
 	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(FACING, CATWALK_LEFT, CATWALK_RIGHT, CATWALK_END);
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+		pBuilder.add(FACING, CATWALK_LEFT, CATWALK_RIGHT, CATWALK_END);
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class Catwalk extends Block {
 
 	/**
 	 * Gets the VoxelShape for the current block state.
-	 * @return A VoxelShape used as the hitbox and collision box for the catwalk.
+	 * @return A VoxelShape used as the hitbox and collision box for the catwalk
 	 */
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
@@ -308,7 +308,7 @@ public class Catwalk extends Block {
 	}
 
 
-	//Defining the outlines of the block for different block states
+	//Defining VoxelShapes used for different block states
 	private static final VoxelShape STRAIGHT_NORTHSOUTH = Stream.of(
 			Block.box(0, 0, 0, 16, 1, 16),
 			Block.box(15, 1, 0, 16, 14, 16),
