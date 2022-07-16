@@ -18,5 +18,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
     protected void addTags() {
         //Adds mod blocks to existing tags
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(Registration.catwalk.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(Registration.catwalk_stairs.get());
     }
 }

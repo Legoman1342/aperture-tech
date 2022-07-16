@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "aperturetech:catwalk"
+    "aperturetech:catwalk",
+    "aperturetech:catwalk_stairs"
   ]
 }

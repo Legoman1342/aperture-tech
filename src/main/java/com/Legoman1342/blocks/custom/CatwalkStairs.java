@@ -1,19 +1,27 @@
 package com.Legoman1342.blocks.custom;
 
+import com.Legoman1342.setup.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
@@ -32,6 +40,102 @@ public class CatwalkStairs extends Block {
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
 		pBuilder.add(FACING, HALF);
+	}
+
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+		Direction direction = pContext.getHorizontalDirection();
+		BlockPos blockPos = pContext.getClickedPos();
+		Level level = pContext.getLevel();
+		Direction face = pContext.getClickedFace();
+		Half half = !(pContext.getClickLocation().y - (double)blockPos.getY() > 0.5D) ? Half.BOTTOM : Half.TOP;
+		switch (face) {
+			case UP:
+				if (blockPos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockPos.above()).canBeReplaced(pContext)) {
+				return this.defaultBlockState()
+						.setValue(FACING, direction.getOpposite())
+						.setValue(HALF, DoubleBlockHalf.LOWER);
+			} else {
+				return null;
+			}
+			case DOWN:
+				if (blockPos.getY() > level.getMinBuildHeight() + 1 && level.getBlockState(blockPos.below()).canBeReplaced(pContext)) {
+					return this.defaultBlockState()
+							.setValue(FACING, direction.getOpposite())
+							.setValue(HALF, DoubleBlockHalf.UPPER);
+				} else {
+					return null;
+				}
+			default:
+				switch (half) {
+					case TOP:
+						if (blockPos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockPos.above()).canBeReplaced(pContext)) {
+							return this.defaultBlockState()
+									.setValue(FACING, direction)
+									.setValue(HALF, DoubleBlockHalf.LOWER);
+						} else if (blockPos.getY() > level.getMinBuildHeight() + 1 && level.getBlockState(blockPos.below()).canBeReplaced(pContext)) {
+							return this.defaultBlockState()
+									.setValue(FACING, direction.getOpposite())
+									.setValue(HALF, DoubleBlockHalf.UPPER);
+						} else {
+							return null;
+						}
+					case BOTTOM:
+						if (blockPos.getY() > level.getMinBuildHeight() + 1 && level.getBlockState(blockPos.below()).canBeReplaced(pContext)) {
+							return this.defaultBlockState()
+									.setValue(FACING, direction.getOpposite())
+									.setValue(HALF, DoubleBlockHalf.UPPER);
+						} else if (blockPos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockPos.above()).canBeReplaced(pContext)) {
+							return this.defaultBlockState()
+									.setValue(FACING, direction)
+									.setValue(HALF, DoubleBlockHalf.LOWER);
+						} else {
+							return null;
+						}
+				}
+		}
+		return null; //Should never be reached
+	}
+
+	/**
+	 * Called by BlockItem after this block has been placed.
+	 */
+	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, LivingEntity pPlacer, ItemStack pStack) {
+		switch (pState.getValue(HALF)) {
+			case LOWER -> pLevel.setBlock(pPos.above(), pState.setValue(HALF, DoubleBlockHalf.UPPER), 3);
+			case UPPER -> pLevel.setBlock(pPos.below(), pState.setValue(HALF, DoubleBlockHalf.LOWER), 3);
+		}
+	}
+
+	@Override
+	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+		BlockState connectedBlock;
+		switch (pState.getValue(HALF)) {
+			case LOWER -> {
+				connectedBlock = pLevel.getBlockState(pCurrentPos.above());
+				if (connectedBlock.getBlock() == Registration.catwalk_stairs.get()
+						&& connectedBlock.getValue(FACING) == pState.getValue(FACING)
+						&& connectedBlock.getValue(HALF) == DoubleBlockHalf.UPPER) {
+					return pState;
+				} else {
+					pLevel.setBlock(pCurrentPos, Blocks.AIR.defaultBlockState(), 35);
+					return Blocks.AIR.defaultBlockState();
+				}
+			}
+			case UPPER -> {
+				connectedBlock = pLevel.getBlockState(pCurrentPos.below());
+				if (connectedBlock.getBlock() == Registration.catwalk_stairs.get()
+						&& connectedBlock.getValue(FACING) == pState.getValue(FACING)
+						&& connectedBlock.getValue(HALF) == DoubleBlockHalf.LOWER) {
+					return pState;
+				} else {
+					pLevel.setBlock(pCurrentPos, Blocks.AIR.defaultBlockState(), 35);
+					return Blocks.AIR.defaultBlockState();
+				}
+			}
+		}
+		return pState;
 	}
 
 	/**
@@ -59,6 +163,27 @@ public class CatwalkStairs extends Block {
 				default -> null;
 			};
 		};
+	}
+
+	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+		if (!pLevel.isClientSide && pPlayer.isCreative()) {
+			preventCreativeDropFromBottomPart(pLevel, pPos, pState, pPlayer);
+		}
+		super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
+	}
+
+	protected static void preventCreativeDropFromBottomPart(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+		DoubleBlockHalf doubleblockhalf = pState.getValue(HALF);
+		if (doubleblockhalf == DoubleBlockHalf.UPPER) {
+			BlockPos blockpos = pPos.below();
+			BlockState blockstate = pLevel.getBlockState(blockpos);
+			if (blockstate.is(pState.getBlock()) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER) {
+				BlockState blockstate1 = blockstate.hasProperty(BlockStateProperties.WATERLOGGED) && blockstate.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+				pLevel.setBlock(blockpos, blockstate1, 35);
+				pLevel.levelEvent(pPlayer, 2001, blockpos, Block.getId(blockstate));
+			}
+		}
+
 	}
 
 	//Defining VoxelShapes used for different block states
