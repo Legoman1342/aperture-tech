@@ -17,10 +17,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -95,9 +92,52 @@ public class Catwalk extends Block {
 				.setValue(CATWALK_RIGHT, getRightState(direction, rightNeighbor));
 	}
 
-	public CatwalkEnd getEndState(Direction direction, BlockState neighbour) {
-		if (neighbour.getBlock() == Registration.catwalk.get()) {
-			if (neighbour.getValue(FACING) != direction.getOpposite()) {
+	/**
+	 * Updates the state of the catwalk when a block update occurs.
+	 * @return The new BlockState
+	 */
+	@Override
+	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+		Direction facing = pState.getValue(FACING);
+		CatwalkEnd end = pState.getValue(CATWALK_END);
+
+		if (pDirection == facing.getOpposite()) {
+			if (end != CatwalkEnd.DROP) {
+				return pState.setValue(CATWALK_END, getEndState(facing, pNeighborState));
+			} else if (pNeighborState.getBlock() instanceof Catwalk
+					|| pNeighborState.getBlock() instanceof CatwalkStairs) {
+				return pState.setValue(CATWALK_END, getEndState(facing, pNeighborState));
+			}
+		} else if (pDirection == facing.getClockWise()) {
+			if (end != CatwalkEnd.DROP) {
+				return pState.setValue(CATWALK_LEFT, getLeftState(facing, pNeighborState));
+			}
+		} else if (pDirection == facing.getCounterClockWise()) {
+			if (end != CatwalkEnd.DROP) {
+				return pState.setValue(CATWALK_RIGHT, getRightState(facing, pNeighborState));
+			}
+		}
+		return pState;
+	}
+
+	/**
+	 * Convenience method used in {@link #getStateForPlacement(BlockPlaceContext) getStateForPlacement} and {@link #updateShape(BlockState, Direction, BlockState, LevelAccessor, BlockPos, BlockPos)  updateShape}.
+	 * @param direction The direction that this catwalk is facing
+	 * @param neighbor The blockstate of the front neighbor
+	 * @return The appropriate state for the end of the catwalk
+	 */
+	public CatwalkEnd getEndState(Direction direction, BlockState neighbor) {
+		if (neighbor.getBlock() instanceof Catwalk) {
+			if (neighbor.getValue(FACING) != direction.getOpposite()) {
+				return CatwalkEnd.ATTACH;
+			} else {
+				return CatwalkEnd.RAILING;
+			}
+		} else if (neighbor.getBlock() instanceof CatwalkStairs) {
+			if ((neighbor.getValue(CatwalkStairs.FACING) == direction
+					&& neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.LOWER)
+					|| (neighbor.getValue(CatwalkStairs.FACING) == direction.getOpposite()
+					&& neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.UPPER)) {
 				return CatwalkEnd.ATTACH;
 			} else {
 				return CatwalkEnd.RAILING;
@@ -107,25 +147,27 @@ public class Catwalk extends Block {
 		}
 	}
 
-	public CatwalkSides getLeftState(Direction direction, BlockState neighbour) {
-		if (neighbour.getBlock() == Registration.catwalk.get()) {
-			if (neighbour.getValue(FACING) == direction.getCounterClockWise()) {
+	/**
+	 * Convenience method used in {@link #getStateForPlacement(BlockPlaceContext) getStateForPlacement} and {@link #updateShape(BlockState, Direction, BlockState, LevelAccessor, BlockPos, BlockPos)  updateShape}.
+	 * @param direction The direction that this catwalk is facing
+	 * @param neighbor The blockstate of the left neighbor
+	 * @return The appropriate state for the left of the catwalk
+	 */
+	public CatwalkSides getLeftState(Direction direction, BlockState neighbor) {
+		if (neighbor.getBlock() instanceof Catwalk) {
+			if (neighbor.getValue(FACING) == direction.getCounterClockWise()) {
 				return CatwalkSides.ATTACH;
-			} else if (neighbour.getValue(FACING) == direction.getClockWise()) {
+			} else if (neighbor.getValue(FACING) == direction.getClockWise()) {
 				return CatwalkSides.ATTACH_FLIPPED;
 			} else {
 				return CatwalkSides.RAILING;
 			}
-		} else {
-			return CatwalkSides.RAILING;
-		}
-	}
-
-	public CatwalkSides getRightState(Direction direction, BlockState neighbour) {
-		if (neighbour.getBlock() == Registration.catwalk.get()) {
-			if (neighbour.getValue(FACING) == direction.getClockWise()) {
+		} else if (neighbor.getBlock() instanceof CatwalkStairs) {
+			if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.LOWER
+					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getCounterClockWise()) {
 				return CatwalkSides.ATTACH;
-			} else if (neighbour.getValue(FACING) == direction.getCounterClockWise()) {
+			} else if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.UPPER
+					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getClockWise()) {
 				return CatwalkSides.ATTACH_FLIPPED;
 			} else {
 				return CatwalkSides.RAILING;
@@ -136,56 +178,36 @@ public class Catwalk extends Block {
 	}
 
 	/**
-	 * Updates the state of the catwalk when a block update occurs.
-	 * @return The new BlockState
+	 * Convenience method used in {@link #getStateForPlacement(BlockPlaceContext) getStateForPlacement} and {@link #updateShape(BlockState, Direction, BlockState, LevelAccessor, BlockPos, BlockPos)  updateShape}.
+	 * @param direction The direction that this catwalk is facing
+	 * @param neighbor The blockstate of the right neighbor
+	 * @return The appropriate state for the right of the catwalk
 	 */
-	@Override
-	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-		BlockState neighborState = pLevel.getBlockState(pNeighborPos); //Blockstate of the newly placed neighbor
-		Direction facing = pState.getValue(FACING);
-		CatwalkEnd end = pState.getValue(CATWALK_END);
-
-		if (neighborState.getBlock() instanceof Catwalk) { //When a catwalk is placed adjacent
-			if (pDirection == facing.getOpposite()) { //Is the neighbor in front of me?
-				return pState.setValue(CATWALK_END, CatwalkEnd.ATTACH); //If so, attach to it
-			} else if (pDirection == facing.getClockWise()) { //Is the neighbor to my left?
-				if (end == CatwalkEnd.DROP) { //Is my end set to "drop"?
-					pState = pState.setValue(CATWALK_END, CatwalkEnd.RAILING); //If so, change it to "railing"
-				}
-				//Attach the appropriate way depending on the neighbor's facing direction
-				if (neighborState.getValue(FACING) == facing.getCounterClockWise()) {
-					return pState.setValue(CATWALK_LEFT, CatwalkSides.ATTACH);
-				} else if (neighborState.getValue(FACING) == facing.getClockWise()) {
-					return pState.setValue(CATWALK_LEFT, CatwalkSides.ATTACH_FLIPPED);
-				} else {
-					return pState.setValue(CATWALK_LEFT, CatwalkSides.RAILING);
-				}
-			} else if (pDirection == facing.getCounterClockWise()) { //Is the neighbor to my right?
-				if (end == CatwalkEnd.DROP) { //Is my end set to "drop"?
-					pState = pState.setValue(CATWALK_END, CatwalkEnd.RAILING); //If so, change it to "railing"
-				}
-				//Attach the appropriate way depending on the neighbor's facing direction
-				if (neighborState.getValue(FACING) == facing.getClockWise()) {
-					return pState.setValue(CATWALK_RIGHT, CatwalkSides.ATTACH);
-				} else if (neighborState.getValue(FACING) == facing.getCounterClockWise()) {
-					return pState.setValue(CATWALK_RIGHT, CatwalkSides.ATTACH_FLIPPED);
-				} else {
-					return pState.setValue(CATWALK_RIGHT, CatwalkSides.RAILING);
-				}
+	public CatwalkSides getRightState(Direction direction, BlockState neighbor) {
+		if (neighbor.getBlock() instanceof Catwalk) {
+			if (neighbor.getValue(FACING) == direction.getClockWise()) {
+				return CatwalkSides.ATTACH;
+			} else if (neighbor.getValue(FACING) == direction.getCounterClockWise()) {
+				return CatwalkSides.ATTACH_FLIPPED;
+			} else {
+				return CatwalkSides.RAILING;
 			}
-		} else { //When a neighboring catwalk is broken (or another block is placed or broken)
-			if (pDirection == facing.getOpposite()) { //Is the neighbor in front of me?
-				if (end != CatwalkEnd.DROP) {
-					return pState.setValue(CATWALK_END, CatwalkEnd.RAILING);
-				}
-			} else if (pDirection == facing.getClockWise()) { //Is the neighbor to my left?
-				return pState.setValue(CATWALK_LEFT, CatwalkSides.RAILING);
-			} else if (pDirection == facing.getCounterClockWise()) { //Is the neighbor to my left?
-				return pState.setValue(CATWALK_RIGHT, CatwalkSides.RAILING);
+		} else if (neighbor.getBlock() instanceof CatwalkStairs) {
+			if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.LOWER
+					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getClockWise()) {
+				return CatwalkSides.ATTACH;
+			} else if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.UPPER
+					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getCounterClockWise()) {
+				return CatwalkSides.ATTACH_FLIPPED;
+			} else {
+				return CatwalkSides.RAILING;
 			}
+		} else {
+			return CatwalkSides.RAILING;
 		}
-		return pState;
 	}
+
+
 
 	/**
 	 * Gets the VoxelShape for the current block state.
@@ -299,7 +321,7 @@ public class Catwalk extends Block {
 	}
 
 	/**
-	 * Convenience method used in getShape.
+	 * Convenience method used in {@link #getShape(BlockState, BlockGetter, BlockPos, CollisionContext) getShape}.
 	 * @param side A CatwalkSides enum variable
 	 * @return <code>true</code> if <code>side</code> equals <code>ATTACH</code> or <code>ATTACH_FLIPPED</code>, <code>false</code> otherwise
 	 */
