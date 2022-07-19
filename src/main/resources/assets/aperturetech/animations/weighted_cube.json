@@ -1,0 +1,32 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"activate": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"Orange": {
+					"position": {
+						"vector": [0, -0.25, 0]
+					},
+					"scale": {
+						"vector": [1.1, 1.05, 1.1]
+					}
+				}
+			}
+		},
+		"deactivate": {
+			"loop": "hold_on_last_frame",
+			"bones": {
+				"Orange": {
+					"position": {
+						"vector": [0, 0, 0]
+					},
+					"scale": {
+						"vector": [1, 1, 1]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
