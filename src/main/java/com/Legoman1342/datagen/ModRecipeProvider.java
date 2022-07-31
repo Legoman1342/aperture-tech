@@ -1,6 +1,6 @@
 package com.Legoman1342.datagen;
 
-import com.Legoman1342.setup.Registration;
+import com.Legoman1342.blocks.BlockRegistration;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -20,7 +20,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 		//Catwalk
-		ShapedRecipeBuilder.shaped(Registration.catwalk.get())
+		ShapedRecipeBuilder.shaped(BlockRegistration.catwalk.get())
 				.define('b', Items.IRON_BARS)
 				.define('i', Tags.Items.INGOTS_IRON)
 				.pattern("b b")

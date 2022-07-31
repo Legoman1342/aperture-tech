@@ -1,9 +1,8 @@
 package com.Legoman1342.blocks.custom;
 
-import com.Legoman1342.setup.Registration;
+import com.Legoman1342.blocks.BlockRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -13,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
@@ -114,7 +112,7 @@ public class CatwalkStairs extends Block {
 		switch (pState.getValue(HALF)) {
 			case LOWER -> {
 				connectedBlock = pLevel.getBlockState(pCurrentPos.above());
-				if (connectedBlock.getBlock() == Registration.catwalk_stairs.get()
+				if (connectedBlock.getBlock() == BlockRegistration.catwalk_stairs.get()
 						&& connectedBlock.getValue(FACING) == pState.getValue(FACING)
 						&& connectedBlock.getValue(HALF) == DoubleBlockHalf.UPPER) {
 					return pState;
@@ -125,7 +123,7 @@ public class CatwalkStairs extends Block {
 			}
 			case UPPER -> {
 				connectedBlock = pLevel.getBlockState(pCurrentPos.below());
-				if (connectedBlock.getBlock() == Registration.catwalk_stairs.get()
+				if (connectedBlock.getBlock() == BlockRegistration.catwalk_stairs.get()
 						&& connectedBlock.getValue(FACING) == pState.getValue(FACING)
 						&& connectedBlock.getValue(HALF) == DoubleBlockHalf.LOWER) {
 					return pState;

@@ -1,8 +1,8 @@
-package com.Legoman1342.setup;
+package com.Legoman1342.blocks;
 
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.CatwalkStairs;
-import com.Legoman1342.items.custom.ConfigurationTool;
+import com.Legoman1342.setup.ATCreativeTab;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
@@ -23,52 +23,69 @@ import java.util.function.Supplier;
 
 import static com.Legoman1342.aperturetech.ApertureTech.MODID;
 
-public class Registration {
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+public class BlockRegistration {
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-	
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		ITEMS.register(bus);
 		BLOCKS.register(bus);
+		ITEMS.register(bus);
 	}
-	
-	//-----ITEMS-----
-	public static final RegistryObject<Item> configuration_tool = ITEMS.register("configuration_tool",
-			() -> new ConfigurationTool(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 
-
-	//-----BLOCKS-----
 	public static final RegistryObject<Block> catwalk = registerBlock("catwalk", () -> new Catwalk(BlockBehaviour
-			.Properties.of(Material.METAL)
-			.sound(SoundType.LANTERN)
-			.strength(2.0f)
-			.requiresCorrectToolForDrops()
-			.noOcclusion()),
+					.Properties.of(Material.METAL)
+					.sound(SoundType.LANTERN)
+					.strength(2.0f)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
 	public static final RegistryObject<Block> catwalk_stairs = registerBlock("catwalk_stairs", () -> new CatwalkStairs(BlockBehaviour
-			.Properties.copy(catwalk.get())),
+					.Properties.copy(catwalk.get())),
 			ATCreativeTab.AT_CREATIVE_TAB);
 
-	
-	
-	//-----METHODS-----
-	//Registers a block without registering a block item
-	private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
-		return BLOCKS.register(name, block);
+
+
+	/**
+	 * Registers a block and a corresponding block item.
+	 */
+	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
+		RegistryObject<T> toReturn = BLOCKS.register(name, block);
+		registerBlockItem(name, toReturn, tab);
+		return toReturn;
 	}
-	
-	//Registers a block and a corresponding block item with a tooltip
+
+	/**
+	 * Registers a block and a corresponding block item with a tooltip.
+	 */
 	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block,
-																	 CreativeModeTab tab, String tooltipKey) {
+	                                                                 CreativeModeTab tab, String tooltipKey) {
 		RegistryObject<T> toReturn = BLOCKS.register(name, block);
 		registerBlockItem(name, toReturn, tab, tooltipKey);
 		return toReturn;
 	}
-	
-	//Registers a block item with a tooltip
+
+	/**
+	 * Registers a block without registering a block item.
+	 */
+	private static <T extends Block> RegistryObject<T> registerBlockWithoutBlockItem(String name, Supplier<T> block) {
+		return BLOCKS.register(name, block);
+	}
+
+	/**
+	 * Registers a block item.
+	 */
 	private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
-																			CreativeModeTab tab, String tooltipKey) {
+	                                                                        CreativeModeTab tab) {
+		return ITEMS.register(name, () -> new BlockItem(block.get(),
+				new Item.Properties().tab(tab)));
+	}
+
+	/**
+	 *Registers a block item with a tooltip.
+	 */
+	private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
+	                                                                        CreativeModeTab tab, String tooltipKey) {
 		return ITEMS.register(name, () -> new BlockItem(block.get(),
 				new Item.Properties().tab(tab)) {
 			@Override
@@ -77,18 +94,6 @@ public class Registration {
 			}
 		});
 	}
-	
-	//Registers a block and a corresponding block item
-	private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
-		RegistryObject<T> toReturn = BLOCKS.register(name, block);
-		registerBlockItem(name, toReturn, tab);
-		return toReturn;
-	}
-	
-	//Registers a block item
-	private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
-																			CreativeModeTab tab) {
-		return ITEMS.register(name, () -> new BlockItem(block.get(),
-				new Item.Properties().tab(tab)));
-	}
+
+
 }

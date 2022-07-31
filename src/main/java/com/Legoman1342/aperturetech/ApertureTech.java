@@ -1,8 +1,12 @@
 package com.Legoman1342.aperturetech;
 
-import com.Legoman1342.setup.Registration;
+import com.Legoman1342.blocks.BlockRegistration;
+import com.Legoman1342.entities.EntityRegistration;
+import com.Legoman1342.entities.client.StorageCubeRenderer;
+import com.Legoman1342.items.ItemRegistration;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,8 +36,10 @@ public class ApertureTech {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public ApertureTech() {
-        //Runs the init code in Registration.java
-        Registration.init();
+        //Runs the init code in registration classes
+        BlockRegistration.init();
+        ItemRegistration.init();
+        EntityRegistration.init();
     
         //Initializes GeckoLib
         GeckoLib.initialize();
@@ -63,8 +69,10 @@ public class ApertureTech {
     
     private void clientSetup(final FMLClientSetupEvent event) {
         //Sets how to render different blocks, needed for any block with transparency
-        ItemBlockRenderTypes.setRenderLayer(Registration.catwalk.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(Registration.catwalk_stairs.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistration.catwalk.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistration.catwalk_stairs.get(), RenderType.cutout());
+
+        EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

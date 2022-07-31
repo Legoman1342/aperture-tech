@@ -4,14 +4,13 @@
 package com.Legoman1342.datagen.blockstates;
 
 import com.Legoman1342.aperturetech.ApertureTech;
+import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.Catwalk.CatwalkEnd;
 import com.Legoman1342.blocks.custom.CatwalkStairs;
-import com.Legoman1342.setup.Registration;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile.ExistingModelFile;
@@ -55,7 +54,7 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 				new ResourceLocation(ApertureTech.MODID, "block/catwalk/railings_drop"));
 
 		//Build catwalk
-		this.getMultipartBuilder(Registration.catwalk.get())
+		this.getMultipartBuilder(BlockRegistration.catwalk.get())
 
 				//catwalkFloorCenterAttach
 				.part().modelFile(catwalkFloorCenterAttach)
@@ -330,7 +329,7 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 				new ResourceLocation(ApertureTech.MODID, "block/catwalk/stairs_upper"));
 
 
-		this.getVariantBuilder(Registration.catwalk_stairs.get())
+		this.getVariantBuilder(BlockRegistration.catwalk_stairs.get())
 				.forAllStates(state ->
 					ConfiguredModel.builder()
 							.modelFile(switch (state.getValue(HALF)) {
