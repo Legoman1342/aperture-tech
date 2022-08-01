@@ -2,6 +2,7 @@ package com.Legoman1342.entities.custom;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -48,6 +49,17 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	@Override
 	public HumanoidArm getMainArm() {
 		return HumanoidArm.RIGHT;
+	}
+
+	/**
+	 * Called when the entity is attacked.
+	 */
+	@Override
+	public boolean hurt(DamageSource pSource, float pAmount) {
+		if (pSource != DamageSource.OUT_OF_WORLD) {
+			return false;
+		}
+		return super.hurt(pSource, pAmount);
 	}
 
 	private <E extends IAnimatable>PlayState predicate(AnimationEvent<E> event) {
