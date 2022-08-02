@@ -13,6 +13,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BasePressurePlateBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.WeightedPressurePlateBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -61,12 +65,27 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	@Override
 	public void tick() {
 		super.tick();
-		if (this.getFeetBlockState().getBlock() instanceof BasePressurePlateBlock) {
+
+		BlockState feetBlockState = this.getFeetBlockState();
+		if (isPoweredPressurePlate(feetBlockState)) {
 			this.entityData.set(ACTIVATING, true);
 		} else {
 			this.entityData.set(ACTIVATING, false);
 		}
-		LOGGER.info("ACTIVATING is currently " + this.entityData.get(ACTIVATING)); //TODO Used for debugging, remove
+	}
+
+	/**
+	 * Convenience method used to determine if a block is a powered pressure plate or weighted pressure plate.
+	 */
+	public boolean isPoweredPressurePlate(BlockState blockState) {
+		Block block = blockState.getBlock();
+		if (block instanceof PressurePlateBlock) {
+			return blockState.getValue(PressurePlateBlock.POWERED);
+		} else if (block instanceof WeightedPressurePlateBlock) {
+			return blockState.getValue(WeightedPressurePlateBlock.POWER) > 0;
+		} else {
+			return false;
+		}
 	}
 
 	/**
