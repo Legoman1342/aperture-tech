@@ -6,5 +6,7 @@
   "block.aperturetech.catwalk": "Catwalk",
   "block.aperturetech.catwalk_stairs": "Catwalk Stairs",
 
+  "entity.aperturetech.storage_cube": "Storage Cube",
+
   "itemGroup.atcreativetab": "Aperture Tech"
 }
