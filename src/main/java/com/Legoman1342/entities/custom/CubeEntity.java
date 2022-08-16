@@ -34,7 +34,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CubeEntity extends LivingEntity implements IAnimatable {
-	//Synced data is kept in sync between client and server
+	/**
+	 * Synced data is kept in sync between the client and the server.
+	 */
 	private static final EntityDataAccessor<Boolean> ACTIVATING = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> FIZZLING = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> FIZZLE_TIMER = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.INT);
@@ -42,7 +44,9 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	//Used for debugging
 	private static final Logger LOGGER = LogManager.getLogger();
 
-	//List of damage sources that can kill CubeEntities
+	/**
+	 * List of damage sources that can kill CubeEntities.
+	 */
 	public static final ArrayList<DamageSource> CAN_KILL_CUBES = new ArrayList<>(List.of(
 			DamageSource.OUT_OF_WORLD,
 			DamageSource.LAVA,
@@ -78,7 +82,7 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	}
 
 	/**
-	 * Called to update the entity's position/logic
+	 * Called to update the entity's position/logic.
 	 */
 	@Override
 	public void tick() {
@@ -100,8 +104,7 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 		//If the fizzle timer just finished, kill the cube
 		if (entityData.get(FIZZLING) && entityData.get(FIZZLE_TIMER) == 0) {
 			entityData.set(FIZZLING, false);
-			//TODO Figure out how to add effects
-			this.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 5, 0, false, false), this);
+			this.setPos(position().x, -500, position().z);
 			kill();
 		}
 	}
@@ -142,10 +145,10 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 		return CAN_KILL_CUBES.contains(source);
 	}
 
+	/**
+	 * Starts the cube fizzling, the rest is handled by the <code>tick</code> and <code>predicate</code> functions.
+	 */
 	public void fizzle() {
-		//Starts the cube fizzling, the rest is handled by the tick() function
-		//TODO Figure out how to add effects
-		this.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 3, 0, false, false), this);
 		entityData.set(FIZZLE_TIMER, 60);
 		entityData.set(FIZZLING, true);
 	}
