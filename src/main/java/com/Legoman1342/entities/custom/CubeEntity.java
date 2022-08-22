@@ -1,21 +1,27 @@
 package com.Legoman1342.entities.custom;
 
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeightedPressurePlateBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -40,6 +46,7 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	private static final EntityDataAccessor<Boolean> ACTIVATING = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Boolean> FIZZLING = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> FIZZLE_TIMER = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Integer> FIZZLE_PARTICLE_COUNTER = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.INT);
 
 	//Used for debugging
 	private static final Logger LOGGER = LogManager.getLogger();
@@ -79,6 +86,7 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 		entityData.define(ACTIVATING, false);
 		entityData.define(FIZZLING, false);
 		entityData.define(FIZZLE_TIMER, 0);
+		entityData.define(FIZZLE_PARTICLE_COUNTER, 0);
 	}
 
 	/**
@@ -99,6 +107,35 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 		//If the cube is fizzling, count down the timer until it reaches 0
 		if (entityData.get(FIZZLE_TIMER) > 0) {
 			entityData.set(FIZZLE_TIMER, entityData.get(FIZZLE_TIMER) - 1);
+		}
+
+		//Summons particles if the cube is fizzling
+		if (level.isClientSide() && entityData.get(FIZZLING)){
+			ClientLevel clientLevel = (ClientLevel) level;
+			double speedMultiplier = 0.25;
+
+			clientLevel.addParticle(ParticleTypes.SMOKE, true,
+					position().x, position().y, position().z,
+					(random.nextDouble() - 0.5) * speedMultiplier,
+					random.nextDouble() * speedMultiplier,
+					(random.nextDouble() - 0.5) * speedMultiplier);
+
+			if (entityData.get(FIZZLE_PARTICLE_COUNTER) == 5) {
+				entityData.set(FIZZLE_PARTICLE_COUNTER, 0);
+				clientLevel.addParticle(ParticleTypes.END_ROD, true,
+						position().x, position().y, position().z,
+						(random.nextDouble() - 0.5) * speedMultiplier,
+						random.nextDouble() * speedMultiplier,
+						(random.nextDouble() - 0.5) * speedMultiplier);
+			} else {
+				entityData.set(FIZZLE_PARTICLE_COUNTER, entityData.get(FIZZLE_PARTICLE_COUNTER) + 1);
+			}
+
+			if (entityData.get(FIZZLE_TIMER) == 0) {
+				clientLevel.addParticle(ParticleTypes.EXPLOSION, true,
+						position().x, position().y, position().z,
+						0, 0, 0);
+			}
 		}
 
 		//If the fizzle timer just finished, kill the cube
@@ -151,6 +188,7 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	public void fizzle() {
 		entityData.set(FIZZLE_TIMER, 60);
 		entityData.set(FIZZLING, true);
+		level.playSound(null, position().x, position().y, position().z, SoundEvents.WITHER_DEATH, SoundSource.NEUTRAL, 1F, 1.5F);
 	}
 
 	/**
@@ -161,6 +199,9 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 		return false;
 	}
 
+	/**
+	 * Controls when animations should be played.
+	 */
 	private <E extends IAnimatable>PlayState predicate(AnimationEvent<E> event) {
 		if (entityData.get(FIZZLING)) {
 			event.getController().setAnimation(new AnimationBuilder().addAnimation("fizzle", false));
@@ -179,31 +220,8 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	@Override
 	public void registerControllers(AnimationData data) {
 		AnimationController<CubeEntity> controller = new AnimationController(this, "controller", 0, this::predicate);
-		controller.registerParticleListener(this::particleListener);
-		//TODO soundListener
 		data.addAnimationController(controller);
 	}
-
-	/**
-	 * Activates whenever a particle keyframe occurs in an animation.
-	 */
-	private <ENTITY extends IAnimatable> void particleListener(ParticleKeyFrameEvent<ENTITY> event) {
-		Vec3 pos = this.position();
-		double posX = pos.x;
-		double posY = pos.y;
-		double posZ = pos.z;
-		double speedX;
-		double speedY;
-		double speedZ;
-		for (int i = 0; i < 100; i++) {
-			speedX = random.nextDouble() - 0.5;
-			speedY = random.nextDouble();
-			speedZ = random.nextDouble() - 0.5;
-			this.level.addParticle(ParticleTypes.END_ROD, posX, posY, posZ, speedX, speedY, speedZ);
-		}
-	}
-
-	//TODO Add soundListener function
 
 	@Override
 	public AnimationFactory getFactory() {
