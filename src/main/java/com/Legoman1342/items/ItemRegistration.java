@@ -1,6 +1,7 @@
 package com.Legoman1342.items;
 
 import com.Legoman1342.items.custom.ConfigurationTool;
+import com.Legoman1342.items.custom.StorageCubeItem;
 import com.Legoman1342.setup.ATCreativeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,4 +22,7 @@ public class ItemRegistration {
 
 	public static final RegistryObject<Item> configuration_tool = ITEMS.register("configuration_tool",
 			() -> new ConfigurationTool(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
+
+	public static final RegistryObject<Item> storage_cube = ITEMS.register("storage_cube",
+			() -> new StorageCubeItem(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 }

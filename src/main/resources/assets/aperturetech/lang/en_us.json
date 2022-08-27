@@ -2,11 +2,12 @@
   "item.aperturetech.catwalk": "Catwalk",
   "item.aperturetech.configuration_tool": "Configuration Tool",
   "item.aperturetech.catwalk_stairs": "Catwalk Stairs",
+  "item.aperturetech.storage_cube": "Weighted Storage Cube",
 
   "block.aperturetech.catwalk": "Catwalk",
   "block.aperturetech.catwalk_stairs": "Catwalk Stairs",
 
-  "entity.aperturetech.storage_cube": "Storage Cube",
+  "entity.aperturetech.storage_cube": "Weighted Storage Cube",
 
   "itemGroup.atcreativetab": "Aperture Tech"
 }

@@ -1,37 +1,32 @@
 package com.Legoman1342.entities.custom;
 
+import com.Legoman1342.items.ItemRegistration;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeightedPressurePlateBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.HitResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.ParticleKeyFrameEvent;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
@@ -188,7 +183,7 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	public void fizzle() {
 		entityData.set(FIZZLE_TIMER, 60);
 		entityData.set(FIZZLING, true);
-		level.playSound(null, position().x, position().y, position().z, SoundEvents.WITHER_DEATH, SoundSource.NEUTRAL, 1F, 1.5F);
+		level.playSound(null, position().x, position().y, position().z, SoundEvents.WITHER_DEATH, SoundSource.NEUTRAL, 0.35F, 1.5F);
 	}
 
 	/**
@@ -200,9 +195,20 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	}
 
 	/**
+	 * Called when a user uses the creative pick block button on this entity.
+	 *
+	 * @param target The full target the player is looking at
+	 * @return A ItemStack to add to the player's inventory, empty ItemStack if nothing should be added.
+	 */
+	@Override
+	public ItemStack getPickedResult(HitResult target) {
+		return new ItemStack(ItemRegistration.storage_cube.get());
+	}
+
+	/**
 	 * Controls when animations should be played.
 	 */
-	private <E extends IAnimatable>PlayState predicate(AnimationEvent<E> event) {
+	private <T extends IAnimatable>PlayState predicate(AnimationEvent<T> event) {
 		if (entityData.get(FIZZLING)) {
 			event.getController().setAnimation(new AnimationBuilder().addAnimation("fizzle", false));
 			return PlayState.CONTINUE;

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "gcg",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:ingots/iron"
+    },
+    "g": {
+      "item": "minecraft:glowstone"
+    },
+    "c": {
+      "tag": "forge:chests/wooden"
+    }
+  },
+  "result": {
+    "item": "aperturetech:storage_cube"
+  }
+}

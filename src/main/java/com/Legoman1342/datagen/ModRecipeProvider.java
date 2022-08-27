@@ -1,6 +1,7 @@
 package com.Legoman1342.datagen;
 
 import com.Legoman1342.blocks.BlockRegistration;
+import com.Legoman1342.items.ItemRegistration;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -26,8 +27,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.pattern("b b")
 				.pattern("b b")
 				.pattern("iii")
-				.unlockedBy("has_iron_ingot",inventoryTrigger(ItemPredicate.Builder.item()
+				.unlockedBy("has_iron_ingot", inventoryTrigger(ItemPredicate.Builder.item()
 						.of(Tags.Items.INGOTS_IRON).build())) //Recipe unlocks when the player has an iron ingot (or any item matching the tag)
+				.save(finishedRecipeConsumer);
+
+		//Storage cube
+		ShapedRecipeBuilder.shaped(ItemRegistration.storage_cube.get())
+				.define('i', Tags.Items.INGOTS_IRON)
+				.define('g', Items.GLOWSTONE)
+				.define('c', Tags.Items.CHESTS_WOODEN)
+				.pattern("iii")
+				.pattern("gcg")
+				.pattern("iii")
+				.unlockedBy("has_chest", inventoryTrigger(ItemPredicate.Builder.item()
+						.of(Tags.Items.CHESTS_WOODEN).build()))
 				.save(finishedRecipeConsumer);
 	}
 }
