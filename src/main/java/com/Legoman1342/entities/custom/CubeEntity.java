@@ -7,14 +7,20 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerPlayerGameMode;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.PressurePlateBlock;
@@ -34,7 +40,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CubeEntity extends LivingEntity implements IAnimatable {
+public class CubeEntity extends Mob implements IAnimatable {
 	/**
 	 * Synced data is kept in sync between the client and the server.
 	 */
@@ -57,7 +63,7 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 
 	private AnimationFactory factory = new AnimationFactory(this);
 
-	public CubeEntity(EntityType<? extends LivingEntity> pEntityType, Level pLevel) {
+	public CubeEntity(EntityType<? extends Mob> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
 	}
 
@@ -67,8 +73,9 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	public static AttributeSupplier setAttributes() {
 		return LivingEntity.createLivingAttributes()
 				.add(Attributes.MAX_HEALTH, Double.POSITIVE_INFINITY)
-				.add(Attributes.KNOCKBACK_RESISTANCE, 1.0D)
-				.add(Attributes.MOVEMENT_SPEED, 0.0D)
+				.add(Attributes.KNOCKBACK_RESISTANCE, 1)
+				.add(Attributes.MOVEMENT_SPEED, 0)
+				.add(Attributes.FOLLOW_RANGE, 0)
 				.build();
 	}
 
@@ -203,6 +210,25 @@ public class CubeEntity extends LivingEntity implements IAnimatable {
 	@Override
 	public ItemStack getPickedResult(HitResult target) {
 		return new ItemStack(ItemRegistration.storage_cube.get());
+	}
+
+
+
+	@Override
+	protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
+		if (pPlayer.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == ItemRegistration.configuration_tool.get()
+				&& pPlayer.isCrouching()) {
+			this.remove(RemovalReason.DISCARDED);
+			level.playSound(null, position().x, position().y, position().z, SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, 1);
+			if (!this.level.isClientSide) {
+				ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
+				GameType gameMode = serverPlayer.gameMode.getGameModeForPlayer();
+				if (gameMode == GameType.SURVIVAL || gameMode == GameType.ADVENTURE) {
+					pPlayer.addItem(new ItemStack(ItemRegistration.storage_cube.get()));
+				}
+			}
+		}
+		return super.mobInteract(pPlayer, pHand);
 	}
 
 	/**
