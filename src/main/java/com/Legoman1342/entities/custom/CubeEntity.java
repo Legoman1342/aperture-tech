@@ -133,7 +133,7 @@ public class CubeEntity extends Mob implements IAnimatable {
 				entityData.set(FIZZLE_PARTICLE_COUNTER, entityData.get(FIZZLE_PARTICLE_COUNTER) + 1);
 			}
 
-			if (entityData.get(FIZZLE_TIMER) == 0) {
+			if (entityData.get(FIZZLE_TIMER) == 1) {
 				clientLevel.addParticle(ParticleTypes.EXPLOSION, true,
 						position().x, position().y, position().z,
 						0, 0, 0);
@@ -143,8 +143,7 @@ public class CubeEntity extends Mob implements IAnimatable {
 		//If the fizzle timer just finished, kill the cube
 		if (entityData.get(FIZZLING) && entityData.get(FIZZLE_TIMER) == 0) {
 			entityData.set(FIZZLING, false);
-			this.setPos(position().x, -500, position().z);
-			kill();
+			remove(RemovalReason.KILLED);
 		}
 	}
 
@@ -218,7 +217,7 @@ public class CubeEntity extends Mob implements IAnimatable {
 	protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
 		if (pPlayer.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == ItemRegistration.configuration_tool.get()
 				&& pPlayer.isCrouching()) {
-			this.remove(RemovalReason.DISCARDED);
+			remove(RemovalReason.DISCARDED);
 			level.playSound(null, position().x, position().y, position().z, SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, 1);
 			if (!this.level.isClientSide) {
 				ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
