@@ -230,6 +230,11 @@ public class CubeEntity extends Mob implements IAnimatable {
 		return super.mobInteract(pPlayer, pHand);
 	}
 
+	@Override
+	public boolean canBeCollidedWith() {
+		return true;
+	}
+
 	/**
 	 * Controls when animations should be played.
 	 */
