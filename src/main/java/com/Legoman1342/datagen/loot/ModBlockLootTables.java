@@ -9,8 +9,8 @@ public class ModBlockLootTables extends BlockLoot {
 	@Override
 	protected void addTables() {
 		//Add loot tables for every block here
-		this.dropSelf(BlockRegistration.catwalk.get());
-		this.dropSelf(BlockRegistration.catwalk_stairs.get());
+		this.dropSelf(BlockRegistration.CATWALK.get());
+		this.dropSelf(BlockRegistration.CATWALK_STAIRS.get());
 	}
 	
 	@Override

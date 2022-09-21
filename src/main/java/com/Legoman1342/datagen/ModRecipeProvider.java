@@ -21,7 +21,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 	@Override
 	protected void buildCraftingRecipes(Consumer<FinishedRecipe> finishedRecipeConsumer) {
 		//Catwalk
-		ShapedRecipeBuilder.shaped(BlockRegistration.catwalk.get())
+		ShapedRecipeBuilder.shaped(BlockRegistration.CATWALK.get())
 				.define('b', Items.IRON_BARS)
 				.define('i', Tags.Items.INGOTS_IRON)
 				.pattern("b b")

@@ -3,9 +3,11 @@
   "item.aperturetech.configuration_tool": "Configuration Tool",
   "item.aperturetech.catwalk_stairs": "Catwalk Stairs",
   "item.aperturetech.storage_cube": "Weighted Storage Cube",
+  "item.aperturetech.chamberlock_door": "Chamberlock Door",
 
   "block.aperturetech.catwalk": "Catwalk",
   "block.aperturetech.catwalk_stairs": "Catwalk Stairs",
+  "block.aperturetech.chamberlock_door": "Chamberlock Door",
 
   "entity.aperturetech.storage_cube": "Weighted Storage Cube",
 

@@ -1,5 +1,6 @@
 package com.Legoman1342.aperturetech;
 
+import com.Legoman1342.blockentities.BlockEntityRegistration;
 import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
@@ -40,6 +41,7 @@ public class ApertureTech {
         BlockRegistration.init();
         ItemRegistration.init();
         EntityRegistration.init();
+        BlockEntityRegistration.init();
     
         //Initializes GeckoLib
         GeckoLib.initialize();
@@ -69,8 +71,8 @@ public class ApertureTech {
     
     private void clientSetup(final FMLClientSetupEvent event) {
         //Sets how to render different blocks, needed for any block with transparency
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistration.catwalk.get(), RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(BlockRegistration.catwalk_stairs.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK_STAIRS.get(), RenderType.cutout());
 
         EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
     }

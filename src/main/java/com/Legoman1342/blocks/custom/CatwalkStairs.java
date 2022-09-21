@@ -112,7 +112,7 @@ public class CatwalkStairs extends Block {
 		switch (pState.getValue(HALF)) {
 			case LOWER -> {
 				connectedBlock = pLevel.getBlockState(pCurrentPos.above());
-				if (connectedBlock.getBlock() == BlockRegistration.catwalk_stairs.get()
+				if (connectedBlock.getBlock() == BlockRegistration.CATWALK_STAIRS.get()
 						&& connectedBlock.getValue(FACING) == pState.getValue(FACING)
 						&& connectedBlock.getValue(HALF) == DoubleBlockHalf.UPPER) {
 					return pState;
@@ -123,7 +123,7 @@ public class CatwalkStairs extends Block {
 			}
 			case UPPER -> {
 				connectedBlock = pLevel.getBlockState(pCurrentPos.below());
-				if (connectedBlock.getBlock() == BlockRegistration.catwalk_stairs.get()
+				if (connectedBlock.getBlock() == BlockRegistration.CATWALK_STAIRS.get()
 						&& connectedBlock.getValue(FACING) == pState.getValue(FACING)
 						&& connectedBlock.getValue(HALF) == DoubleBlockHalf.LOWER) {
 					return pState;
@@ -170,7 +170,10 @@ public class CatwalkStairs extends Block {
 		super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
 	}
 
-	//Used to make sure that only one item is dropped when catwalk stairs are broken
+	/**
+	 Used to make sure that only one item is dropped when catwalk stairs are broken. <br>
+	 Code from {@link net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart(Level, BlockPos, BlockState, Player) net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart}
+	*/
 	protected static void preventCreativeDropFromBottomPart(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
 		DoubleBlockHalf doubleblockhalf = pState.getValue(HALF);
 		if (doubleblockhalf == DoubleBlockHalf.UPPER) {

@@ -25,13 +25,13 @@ public class Catwalk extends Block {
 	
 	//Creating block state properties
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-	public static final EnumProperty<CatwalkSides> CATWALK_LEFT = EnumProperty.create("left", CatwalkSides.class);
-	public static final EnumProperty<CatwalkSides> CATWALK_RIGHT = EnumProperty.create("right", CatwalkSides.class);
-	public static final EnumProperty<CatwalkEnd> CATWALK_END = EnumProperty.create("end", CatwalkEnd.class);
+	public static final EnumProperty<ATCatwalkSides> CATWALK_LEFT = EnumProperty.create("left", ATCatwalkSides.class);
+	public static final EnumProperty<ATCatwalkSides> CATWALK_RIGHT = EnumProperty.create("right", ATCatwalkSides.class);
+	public static final EnumProperty<ATCatwalkEnd> CATWALK_END = EnumProperty.create("end", ATCatwalkEnd.class);
 	
 
 	//Defining the enums used in the left, right, and end properties
-	public enum CatwalkSides implements StringRepresentable {
+	public enum ATCatwalkSides implements StringRepresentable {
 		RAILING, ATTACH, ATTACH_FLIPPED,; //Possible shapes for the left and right of catwalks
 
 		@Override
@@ -39,12 +39,8 @@ public class Catwalk extends Block {
 			return Lang.asId(name());
 		}
 	}
-	public enum CatwalkEnd implements StringRepresentable {
+	public enum ATCatwalkEnd implements StringRepresentable {
 		DROP, RAILING, ATTACH,; //Possible shapes for the end of catwalks
-		
-		public static CatwalkEnd byIndex(int index) { //Returns an enum value when given an index
-			return values()[index];
-		}
 
 		@Override
 		public String getSerializedName() {
@@ -92,21 +88,21 @@ public class Catwalk extends Block {
 	@Override
 	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
 		Direction facing = pState.getValue(FACING);
-		CatwalkEnd end = pState.getValue(CATWALK_END);
+		ATCatwalkEnd end = pState.getValue(CATWALK_END);
 
 		if (pDirection == facing.getOpposite()) {
-			if (end != CatwalkEnd.DROP) {
+			if (end != ATCatwalkEnd.DROP) {
 				return pState.setValue(CATWALK_END, getEndState(facing, pNeighborState));
 			} else if (pNeighborState.getBlock() instanceof Catwalk
 					|| pNeighborState.getBlock() instanceof CatwalkStairs) {
 				return pState.setValue(CATWALK_END, getEndState(facing, pNeighborState));
 			}
 		} else if (pDirection == facing.getClockWise()) {
-			if (end != CatwalkEnd.DROP) {
+			if (end != ATCatwalkEnd.DROP) {
 				return pState.setValue(CATWALK_LEFT, getLeftState(facing, pNeighborState));
 			}
 		} else if (pDirection == facing.getCounterClockWise()) {
-			if (end != CatwalkEnd.DROP) {
+			if (end != ATCatwalkEnd.DROP) {
 				return pState.setValue(CATWALK_RIGHT, getRightState(facing, pNeighborState));
 			}
 		}
@@ -119,24 +115,24 @@ public class Catwalk extends Block {
 	 * @param neighbor The blockstate of the front neighbor
 	 * @return The appropriate state for the end of the catwalk
 	 */
-	public CatwalkEnd getEndState(Direction direction, BlockState neighbor) {
+	public ATCatwalkEnd getEndState(Direction direction, BlockState neighbor) {
 		if (neighbor.getBlock() instanceof Catwalk) {
 			if (neighbor.getValue(FACING) != direction.getOpposite()) {
-				return CatwalkEnd.ATTACH;
+				return ATCatwalkEnd.ATTACH;
 			} else {
-				return CatwalkEnd.RAILING;
+				return ATCatwalkEnd.RAILING;
 			}
 		} else if (neighbor.getBlock() instanceof CatwalkStairs) {
 			if ((neighbor.getValue(CatwalkStairs.FACING) == direction
 					&& neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.LOWER)
 					|| (neighbor.getValue(CatwalkStairs.FACING) == direction.getOpposite()
 					&& neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.UPPER)) {
-				return CatwalkEnd.ATTACH;
+				return ATCatwalkEnd.ATTACH;
 			} else {
-				return CatwalkEnd.RAILING;
+				return ATCatwalkEnd.RAILING;
 			}
 		} else {
-			return CatwalkEnd.RAILING;
+			return ATCatwalkEnd.RAILING;
 		}
 	}
 
@@ -146,27 +142,27 @@ public class Catwalk extends Block {
 	 * @param neighbor The blockstate of the left neighbor
 	 * @return The appropriate state for the left of the catwalk
 	 */
-	public CatwalkSides getLeftState(Direction direction, BlockState neighbor) {
+	public ATCatwalkSides getLeftState(Direction direction, BlockState neighbor) {
 		if (neighbor.getBlock() instanceof Catwalk) {
 			if (neighbor.getValue(FACING) == direction.getCounterClockWise()) {
-				return CatwalkSides.ATTACH;
+				return ATCatwalkSides.ATTACH;
 			} else if (neighbor.getValue(FACING) == direction.getClockWise()) {
-				return CatwalkSides.ATTACH_FLIPPED;
+				return ATCatwalkSides.ATTACH_FLIPPED;
 			} else {
-				return CatwalkSides.RAILING;
+				return ATCatwalkSides.RAILING;
 			}
 		} else if (neighbor.getBlock() instanceof CatwalkStairs) {
 			if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.LOWER
 					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getCounterClockWise()) {
-				return CatwalkSides.ATTACH;
+				return ATCatwalkSides.ATTACH;
 			} else if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.UPPER
 					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getClockWise()) {
-				return CatwalkSides.ATTACH_FLIPPED;
+				return ATCatwalkSides.ATTACH_FLIPPED;
 			} else {
-				return CatwalkSides.RAILING;
+				return ATCatwalkSides.RAILING;
 			}
 		} else {
-			return CatwalkSides.RAILING;
+			return ATCatwalkSides.RAILING;
 		}
 	}
 
@@ -176,27 +172,27 @@ public class Catwalk extends Block {
 	 * @param neighbor The blockstate of the right neighbor
 	 * @return The appropriate state for the right of the catwalk
 	 */
-	public CatwalkSides getRightState(Direction direction, BlockState neighbor) {
+	public ATCatwalkSides getRightState(Direction direction, BlockState neighbor) {
 		if (neighbor.getBlock() instanceof Catwalk) {
 			if (neighbor.getValue(FACING) == direction.getClockWise()) {
-				return CatwalkSides.ATTACH;
+				return ATCatwalkSides.ATTACH;
 			} else if (neighbor.getValue(FACING) == direction.getCounterClockWise()) {
-				return CatwalkSides.ATTACH_FLIPPED;
+				return ATCatwalkSides.ATTACH_FLIPPED;
 			} else {
-				return CatwalkSides.RAILING;
+				return ATCatwalkSides.RAILING;
 			}
 		} else if (neighbor.getBlock() instanceof CatwalkStairs) {
 			if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.LOWER
 					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getClockWise()) {
-				return CatwalkSides.ATTACH;
+				return ATCatwalkSides.ATTACH;
 			} else if (neighbor.getValue(CatwalkStairs.HALF) == DoubleBlockHalf.UPPER
 					&& neighbor.getValue(CatwalkStairs.FACING) == direction.getCounterClockWise()) {
-				return CatwalkSides.ATTACH_FLIPPED;
+				return ATCatwalkSides.ATTACH_FLIPPED;
 			} else {
-				return CatwalkSides.RAILING;
+				return ATCatwalkSides.RAILING;
 			}
 		} else {
-			return CatwalkSides.RAILING;
+			return ATCatwalkSides.RAILING;
 		}
 	}
 
@@ -208,9 +204,9 @@ public class Catwalk extends Block {
 	 */
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		CatwalkEnd end = state.getValue(CATWALK_END);
-		CatwalkSides left = state.getValue(CATWALK_LEFT);
-		CatwalkSides right = state.getValue(CATWALK_RIGHT);
+		ATCatwalkEnd end = state.getValue(CATWALK_END);
+		ATCatwalkSides left = state.getValue(CATWALK_LEFT);
+		ATCatwalkSides right = state.getValue(CATWALK_RIGHT);
 		Direction facing = state.getValue(FACING);
 		String shapeOutput; //Stores the shape without the direction, input for the second switch block
 		VoxelShape output = null; //Final output, will never remain null
@@ -318,8 +314,8 @@ public class Catwalk extends Block {
 	 * @param side A CatwalkSides enum variable
 	 * @return <code>true</code> if <code>side</code> equals <code>ATTACH</code> or <code>ATTACH_FLIPPED</code>, <code>false</code> otherwise
 	 */
-	public boolean isSideAttached(CatwalkSides side) {
-		return (side == CatwalkSides.ATTACH || side == CatwalkSides.ATTACH_FLIPPED);
+	public boolean isSideAttached(ATCatwalkSides side) {
+		return (side == ATCatwalkSides.ATTACH || side == ATCatwalkSides.ATTACH_FLIPPED);
 	}
 
 

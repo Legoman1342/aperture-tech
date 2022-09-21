@@ -2,6 +2,7 @@ package com.Legoman1342.blocks;
 
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.CatwalkStairs;
+import com.Legoman1342.blocks.custom.ChamberlockDoor;
 import com.Legoman1342.setup.ATCreativeTab;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -33,15 +34,24 @@ public class BlockRegistration {
 		ITEMS.register(bus);
 	}
 
-	public static final RegistryObject<Block> catwalk = registerBlock("catwalk", () -> new Catwalk(BlockBehaviour
+	public static final RegistryObject<Block> CATWALK = registerBlock("catwalk", () -> new Catwalk(
+			BlockBehaviour
 					.Properties.of(Material.METAL)
 					.sound(SoundType.LANTERN)
 					.strength(2.0f)
 					.requiresCorrectToolForDrops()
 					.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
-	public static final RegistryObject<Block> catwalk_stairs = registerBlock("catwalk_stairs", () -> new CatwalkStairs(BlockBehaviour
-					.Properties.copy(catwalk.get())),
+	public static final RegistryObject<Block> CATWALK_STAIRS = registerBlock("catwalk_stairs", () -> new CatwalkStairs(
+			BlockBehaviour
+					.Properties.copy(CATWALK.get())),
+			ATCreativeTab.AT_CREATIVE_TAB);
+	public static final RegistryObject<Block> CHAMBERLOCK_DOOR = registerBlock("chamberlock_door", () -> new ChamberlockDoor(
+			BlockBehaviour
+					.Properties.of(Material.METAL)
+					.sound(SoundType.METAL)
+					.strength(2.0f)
+					.requiresCorrectToolForDrops()),
 			ATCreativeTab.AT_CREATIVE_TAB);
 
 
