@@ -1,12 +1,14 @@
 package com.Legoman1342.aperturetech;
 
 import com.Legoman1342.blockentities.BlockEntityRegistration;
+import com.Legoman1342.blockentities.client.ChamberlockDoorRenderer;
 import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
 import com.Legoman1342.items.ItemRegistration;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -74,7 +76,10 @@ public class ApertureTech {
         ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK_STAIRS.get(), RenderType.cutout());
 
+        //Registers the renderers for entities and block entities
         EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
+
+        BlockEntityRenderers.register(BlockEntityRegistration.CHAMBERLOCK_DOOR_BE.get(), ChamberlockDoorRenderer::new);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

@@ -20,15 +20,9 @@ public class BlockEntityRegistration {
 	}
 
 	public static final RegistryObject<BlockEntityType<ChamberlockDoorBE>> CHAMBERLOCK_DOOR_BE = BLOCK_ENTITIES.register(
-			"animated_block_entity",
+			"chamberlock_door",
 			() -> BlockEntityType.Builder.of(ChamberlockDoorBE::new,
 					BlockRegistration.CHAMBERLOCK_DOOR.get())
 					.build(null)
 	);
-
-	/*TODO Links:
-		https://www.youtube.com/watch?v=EpGenTQthvY
-		https://docs.minecraftforge.net/en/1.18.x/blockentities/
-		https://github.com/bernie-g/geckolib/wiki/Block-Animations
-	 */
 }

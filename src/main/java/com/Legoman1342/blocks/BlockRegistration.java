@@ -51,7 +51,8 @@ public class BlockRegistration {
 					.Properties.of(Material.METAL)
 					.sound(SoundType.METAL)
 					.strength(2.0f)
-					.requiresCorrectToolForDrops()),
+					.requiresCorrectToolForDrops()
+					.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
 
 
