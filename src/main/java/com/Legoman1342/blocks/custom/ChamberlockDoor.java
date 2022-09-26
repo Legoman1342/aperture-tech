@@ -9,6 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -18,7 +19,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.phys.shapes.BooleanOp;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.stream.Stream;
 
 public class ChamberlockDoor extends BaseEntityBlock {
 
@@ -66,24 +73,28 @@ public class ChamberlockDoor extends BaseEntityBlock {
 					&& (level.getBlockState(pos.relative(rightDirection).above())).canBeReplaced(pContext)) {
 				return this.defaultBlockState()
 						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.BOTTOM_LEFT);
+						.setValue(PART, ATDoorPart.BOTTOM_LEFT)
+						.setValue(OPEN, false);
 			} else if (level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext)
 					&& (level.getBlockState(pos.relative(leftDirection).above())).canBeReplaced(pContext)) {
 				return this.defaultBlockState()
 						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.BOTTOM_RIGHT);
+						.setValue(PART, ATDoorPart.BOTTOM_RIGHT)
+						.setValue(OPEN, false);
 			}
 		} else if (canPlaceBelow) {
 			if (level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext)
 					&& (level.getBlockState(pos.relative(rightDirection).below())).canBeReplaced(pContext)) {
 				return this.defaultBlockState()
 						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.TOP_LEFT);
+						.setValue(PART, ATDoorPart.TOP_LEFT)
+						.setValue(OPEN, false);
 			} else if (level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext)
 					&& (level.getBlockState(pos.relative(leftDirection).below())).canBeReplaced(pContext)) {
 				return this.defaultBlockState()
 						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.TOP_RIGHT);
+						.setValue(PART, ATDoorPart.TOP_RIGHT)
+						.setValue(OPEN, false);
 			}
 		}
 		return null;
@@ -239,6 +250,52 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	}
 
 	@Override
+	public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+		Direction facing = pState.getValue(FACING);
+		Boolean open = pState.getValue(OPEN);
+		ATDoorPart part = pState.getValue(PART);
+		switch (part) {
+			case TOP_LEFT -> {
+				return switch (facing) {
+					case NORTH -> open ? TOP_LEFT_OPEN_NORTH : TOP_LEFT_CLOSED_NORTH;
+					case SOUTH -> open ? TOP_LEFT_OPEN_SOUTH : TOP_LEFT_CLOSED_SOUTH;
+					case WEST -> open ? TOP_LEFT_OPEN_WEST : TOP_LEFT_CLOSED_WEST;
+					case EAST -> open ? TOP_LEFT_OPEN_EAST : TOP_LEFT_CLOSED_EAST;
+					default -> throw new IllegalStateException("Unexpected value: " + facing);
+				};
+			}
+			case TOP_RIGHT -> {
+				return switch (facing) {
+					case NORTH -> open ? TOP_RIGHT_OPEN_NORTH : TOP_RIGHT_CLOSED_NORTH;
+					case SOUTH -> open ? TOP_RIGHT_OPEN_SOUTH : TOP_RIGHT_CLOSED_SOUTH;
+					case WEST -> open ? TOP_RIGHT_OPEN_WEST : TOP_RIGHT_CLOSED_WEST;
+					case EAST -> open ? TOP_RIGHT_OPEN_EAST : TOP_RIGHT_CLOSED_EAST;
+					default -> throw new IllegalStateException("Unexpected value: " + facing);
+				};
+			}
+			case BOTTOM_LEFT -> {
+				return switch (facing) {
+					case NORTH -> open ? BOTTOM_LEFT_OPEN_NORTH : BOTTOM_LEFT_CLOSED_NORTH;
+					case SOUTH -> open ? BOTTOM_LEFT_OPEN_SOUTH : BOTTOM_LEFT_CLOSED_SOUTH;
+					case WEST -> open ? BOTTOM_LEFT_OPEN_WEST : BOTTOM_LEFT_CLOSED_WEST;
+					case EAST -> open ? BOTTOM_LEFT_OPEN_EAST : BOTTOM_LEFT_CLOSED_EAST;
+					default -> throw new IllegalStateException("Unexpected value: " + facing);
+				};
+			}
+			case BOTTOM_RIGHT -> {
+				return switch (facing) {
+					case NORTH -> open ? BOTTOM_RIGHT_OPEN_NORTH : BOTTOM_RIGHT_CLOSED_NORTH;
+					case SOUTH -> open ? BOTTOM_RIGHT_OPEN_SOUTH : BOTTOM_RIGHT_CLOSED_SOUTH;
+					case WEST -> open ? BOTTOM_RIGHT_OPEN_WEST : BOTTOM_RIGHT_CLOSED_WEST;
+					case EAST -> open ? BOTTOM_RIGHT_OPEN_EAST : BOTTOM_RIGHT_CLOSED_EAST;
+					default -> throw new IllegalStateException("Unexpected value: " + facing);
+				};
+			}
+		}
+		return null;
+	}
+
+	@Override
 	public boolean useShapeForLightOcclusion(BlockState pState) {
 		return true;
 	}
@@ -253,4 +310,159 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	public RenderShape getRenderShape(BlockState pState) {
 		return RenderShape.ENTITYBLOCK_ANIMATED;
 	}
+
+	//Defining VoxelShapes used for different block states
+	private static final VoxelShape BOTTOM_LEFT_CLOSED_NORTH = Stream.of(
+			Block.box(12, 0, 0, 16, 16, 3),
+			Block.box(0, 0, 1, 12, 16, 2)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_LEFT_CLOSED_EAST = Stream.of(
+			Block.box(13, 0, 12, 16, 16, 16),
+			Block.box(14, 0, 0, 15, 16, 12)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_LEFT_CLOSED_SOUTH = Stream.of(
+			Block.box(0, 0, 13, 4, 16, 16),
+			Block.box(4, 0, 14, 16, 16, 15)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_LEFT_CLOSED_WEST = Stream.of(
+			Block.box(0, 0, 0, 3, 16, 4),
+			Block.box(1, 0, 4, 2, 16, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_LEFT_OPEN_NORTH =
+			Block.box(12, 0, 0, 16, 16, 3);
+
+	private static final VoxelShape BOTTOM_LEFT_OPEN_EAST =
+			Block.box(13, 0, 12, 16, 16, 16);
+
+	private static final VoxelShape BOTTOM_LEFT_OPEN_SOUTH =
+			Block.box(0, 0, 13, 4, 16, 16);
+
+	private static final VoxelShape BOTTOM_LEFT_OPEN_WEST =
+			Block.box(0, 0, 0, 3, 16, 4);
+
+	private static final VoxelShape BOTTOM_RIGHT_CLOSED_NORTH = Stream.of(
+			Block.box(0, 0, 0, 4, 16, 3),
+			Block.box(4, 0, 1, 16, 16, 2)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_RIGHT_CLOSED_EAST = Stream.of(
+			Block.box(13, 0, 0, 16, 16, 4),
+			Block.box(14, 0, 4, 15, 16, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_RIGHT_CLOSED_SOUTH = Stream.of(
+			Block.box(12, 0, 13, 16, 16, 16),
+			Block.box(0, 0, 14, 12, 16, 15)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_RIGHT_CLOSED_WEST = Stream.of(
+			Block.box(0, 0, 12, 3, 16, 16),
+			Block.box(1, 0, 0, 2, 16, 12)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape BOTTOM_RIGHT_OPEN_NORTH =
+			Block.box(0, 0, 0, 4, 16, 3);
+
+	private static final VoxelShape BOTTOM_RIGHT_OPEN_EAST =
+			Block.box(13, 0, 0, 16, 16, 4);
+
+	private static final VoxelShape BOTTOM_RIGHT_OPEN_SOUTH =
+			Block.box(12, 0, 13, 16, 16, 16);
+
+	private static final VoxelShape BOTTOM_RIGHT_OPEN_WEST =
+			Block.box(0, 0, 12, 3, 16, 16);
+
+	private static final VoxelShape TOP_LEFT_CLOSED_NORTH = Stream.of(
+			Block.box(12, 0, 0, 16, 16, 3),
+			Block.box(0, 13, 0, 12, 16, 3),
+			Block.box(0, 0, 1, 12, 13, 2)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_LEFT_CLOSED_EAST = Stream.of(
+			Block.box(13, 0, 12, 16, 16, 16),
+			Block.box(13, 13, 0, 16, 16, 12),
+			Block.box(14, 0, 0, 15, 13, 12)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_LEFT_CLOSED_SOUTH = Stream.of(
+			Block.box(0, 0, 13, 4, 16, 16),
+			Block.box(4, 13, 13, 16, 16, 16),
+			Block.box(4, 0, 14, 16, 13, 15)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_LEFT_CLOSED_WEST = Stream.of(
+			Block.box(0, 0, 0, 3, 16, 4),
+			Block.box(0, 13, 4, 3, 16, 16),
+			Block.box(1, 0, 4, 2, 13, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_LEFT_OPEN_NORTH = Stream.of(
+			Block.box(12, 0, 0, 16, 16, 3),
+			Block.box(0, 13, 0, 12, 16, 3)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_LEFT_OPEN_EAST = Stream.of(
+			Block.box(13, 0, 12, 16, 16, 16),
+			Block.box(13, 13, 0, 16, 16, 12)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_LEFT_OPEN_SOUTH = Stream.of(
+			Block.box(0, 0, 13, 4, 16, 16),
+			Block.box(4, 13, 13, 16, 16, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_LEFT_OPEN_WEST = Stream.of(
+			Block.box(0, 0, 0, 3, 16, 4),
+			Block.box(0, 13, 4, 3, 16, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_CLOSED_NORTH = Stream.of(
+			Block.box(0, 0, 0, 4, 16, 3),
+			Block.box(4, 13, 0, 16, 16, 3),
+			Block.box(4, 0, 1, 16, 13, 2)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_CLOSED_EAST = Stream.of(
+			Block.box(13, 0, 0, 16, 16, 4),
+			Block.box(13, 13, 4, 16, 16, 16),
+			Block.box(14, 0, 4, 15, 13, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_CLOSED_SOUTH = Stream.of(
+			Block.box(12, 0, 13, 16, 16, 16),
+			Block.box(0, 13, 13, 12, 16, 16),
+			Block.box(0, 0, 14, 12, 13, 15)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_CLOSED_WEST = Stream.of(
+			Block.box(0, 0, 12, 3, 16, 16),
+			Block.box(0, 13, 0, 3, 16, 12),
+			Block.box(1, 0, 0, 2, 13, 12)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_OPEN_NORTH = Stream.of(
+			Block.box(0, 0, 0, 4, 16, 3),
+			Block.box(4, 13, 0, 16, 16, 3)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_OPEN_EAST = Stream.of(
+			Block.box(13, 0, 0, 16, 16, 4),
+			Block.box(13, 13, 4, 16, 16, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_OPEN_SOUTH = Stream.of(
+			Block.box(12, 0, 13, 16, 16, 16),
+			Block.box(0, 13, 13, 12, 16, 16)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+	private static final VoxelShape TOP_RIGHT_OPEN_WEST = Stream.of(
+			Block.box(0, 0, 12, 3, 16, 16),
+			Block.box(0, 13, 0, 3, 16, 12)
+	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
+
+
 }
