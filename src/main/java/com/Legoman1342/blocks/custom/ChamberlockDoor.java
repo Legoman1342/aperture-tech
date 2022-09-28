@@ -4,6 +4,7 @@ import com.Legoman1342.blockentities.BlockEntityRegistration;
 import com.Legoman1342.utilities.Lang;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -25,6 +26,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Random;
 import java.util.stream.Stream;
 
 public class ChamberlockDoor extends BaseEntityBlock {
@@ -33,11 +35,13 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 	public static final EnumProperty<ATDoorPart> PART = EnumProperty.create("part", ATDoorPart.class);
 	public static final BooleanProperty OPEN = BlockStateProperties.OPEN;
+	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 	public static final BooleanProperty FRONT_CONDUCTIVE = BooleanProperty.create("front_conductive");
 	public static final BooleanProperty BACK_CONDUCTIVE = BooleanProperty.create("back_conductive");
 
+
 	/**
-	 * Used to determine which portion of the door this block is
+	 * Used to determine which portion of the door this block is.
 	 */
 	public enum ATDoorPart implements StringRepresentable {
 		TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT;
@@ -50,7 +54,7 @@ public class ChamberlockDoor extends BaseEntityBlock {
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-		pBuilder.add(FACING, PART, OPEN, FRONT_CONDUCTIVE, BACK_CONDUCTIVE);
+		pBuilder.add(FACING, PART, OPEN, POWERED, FRONT_CONDUCTIVE, BACK_CONDUCTIVE);
 	}
 
 	public ChamberlockDoor(Properties properties) {
@@ -68,33 +72,25 @@ public class ChamberlockDoor extends BaseEntityBlock {
 		//leftDirection and rightDirection are relative to player
 		Direction leftDirection = facing.getClockWise();
 		Direction rightDirection = facing.getCounterClockWise();
+		BlockState toReturn = this.defaultBlockState()
+				.setValue(FACING, facing)
+				.setValue(OPEN, false)
+				.setValue(POWERED, false);
 		if (canPlaceAbove) {
 			if (level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext)
 					&& (level.getBlockState(pos.relative(rightDirection).above())).canBeReplaced(pContext)) {
-				return this.defaultBlockState()
-						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.BOTTOM_LEFT)
-						.setValue(OPEN, false);
+				return toReturn.setValue(PART, ATDoorPart.BOTTOM_LEFT);
 			} else if (level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext)
 					&& (level.getBlockState(pos.relative(leftDirection).above())).canBeReplaced(pContext)) {
-				return this.defaultBlockState()
-						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.BOTTOM_RIGHT)
-						.setValue(OPEN, false);
+				return toReturn.setValue(PART, ATDoorPart.BOTTOM_RIGHT);
 			}
 		} else if (canPlaceBelow) {
 			if (level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext)
 					&& (level.getBlockState(pos.relative(rightDirection).below())).canBeReplaced(pContext)) {
-				return this.defaultBlockState()
-						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.TOP_LEFT)
-						.setValue(OPEN, false);
+				return toReturn.setValue(PART, ATDoorPart.TOP_LEFT);
 			} else if (level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext)
 					&& (level.getBlockState(pos.relative(leftDirection).below())).canBeReplaced(pContext)) {
-				return this.defaultBlockState()
-						.setValue(FACING, facing)
-						.setValue(PART, ATDoorPart.TOP_RIGHT)
-						.setValue(OPEN, false);
+				return toReturn.setValue(PART, ATDoorPart.TOP_RIGHT);
 			}
 		}
 		return null;
@@ -105,33 +101,121 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	 */
 	@Override
 	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
-		Direction facing = pState.getValue(FACING);
-		//leftDirection and rightDirection are relative to player
+		BlockPos[] positions = getOtherPartPositions(pPos, pState);
+		ATDoorPart[] parts = getCorrectOtherParts(pState);
+		pLevel.setBlock(positions[0], pState.setValue(PART, parts[0]), 3);
+		pLevel.setBlock(positions[1], pState.setValue(PART, parts[1]), 3);
+		pLevel.setBlock(positions[2], pState.setValue(PART, parts[2]), 3);
+	}
+
+	/**
+	 * Gets the positions of the other three parts of the door.
+	 * @param pos This part's position
+	 * @param state This part's state
+	 * @return An array containing the BlockPos-es in this order: Above/below, above/below-left/right, left/right
+	 */
+	public static BlockPos[] getOtherPartPositions(BlockPos pos, BlockState state) {
+		BlockPos[] toReturn = new BlockPos[3];
+		Direction facing = state.getValue(FACING);
+		//leftDirection and rightDirection are relative to a player looking at the front
 		Direction leftDirection = facing.getClockWise();
 		Direction rightDirection = facing.getCounterClockWise();
-
-		switch (pState.getValue(PART)) {
+		switch (state.getValue(PART)) {
 			case BOTTOM_LEFT -> {
-				pLevel.setBlock(pPos.above(), pState.setValue(PART, ATDoorPart.TOP_LEFT), 3);
-				pLevel.setBlock(pPos.relative(rightDirection), pState.setValue(PART, ATDoorPart.BOTTOM_RIGHT), 3);
-				pLevel.setBlock(pPos.relative(rightDirection).above(), pState.setValue(PART, ATDoorPart.TOP_RIGHT), 3);
+				toReturn[0] = pos.above();
+				toReturn[1] = pos.relative(rightDirection).above();
+				toReturn[2] = pos.relative(rightDirection);
 			}
 			case BOTTOM_RIGHT -> {
-				pLevel.setBlock(pPos.above(), pState.setValue(PART, ATDoorPart.TOP_RIGHT), 3);
-				pLevel.setBlock(pPos.relative(leftDirection), pState.setValue(PART, ATDoorPart.BOTTOM_LEFT), 3);
-				pLevel.setBlock(pPos.relative(leftDirection).above(), pState.setValue(PART, ATDoorPart.TOP_LEFT), 3);
+				toReturn[0] = pos.above();
+				toReturn[1] = pos.relative(leftDirection).above();
+				toReturn[2] = pos.relative(leftDirection);
 			}
 			case TOP_LEFT -> {
-				pLevel.setBlock(pPos.below(), pState.setValue(PART, ATDoorPart.BOTTOM_LEFT), 3);
-				pLevel.setBlock(pPos.relative(rightDirection), pState.setValue(PART, ATDoorPart.TOP_RIGHT), 3);
-				pLevel.setBlock(pPos.relative(rightDirection).below(), pState.setValue(PART, ATDoorPart.BOTTOM_RIGHT), 3);
+				toReturn[0] = pos.below();
+				toReturn[1] = pos.relative(rightDirection).below();
+				toReturn[2] = pos.relative(rightDirection);
 			}
 			case TOP_RIGHT -> {
-				pLevel.setBlock(pPos.below(), pState.setValue(PART, ATDoorPart.BOTTOM_RIGHT), 3);
-				pLevel.setBlock(pPos.relative(leftDirection), pState.setValue(PART, ATDoorPart.TOP_LEFT), 3);
-				pLevel.setBlock(pPos.relative(leftDirection).below(), pState.setValue(PART, ATDoorPart.BOTTOM_LEFT), 3);
+				toReturn[0] = pos.below();
+				toReturn[1] = pos.relative(leftDirection).below();
+				toReturn[2] = pos.relative(leftDirection);
 			}
 		}
+		return toReturn;
+	}
+
+	/**
+	 * Gets the block states of the other three parts of the door.
+	 * @param pos This part's position
+	 * @param state This part's state
+	 * @return An array containing the BlockStates in this order: Above/below, above/below-left/right, left/right
+	 */
+	public static BlockState[] getOtherPartStates(BlockPos pos, BlockState state, Level level) {
+		BlockState[] toReturn = new BlockState[3];
+		BlockPos[] positions = getOtherPartPositions(pos, state);
+		for (int i = 0; i <= 2; i++) {
+			toReturn[i] = level.getBlockState(positions[i]);
+		}
+		return toReturn;
+	}
+
+	/**
+	 * When given an ATDoorPart, returns what the other three ATDoorParts should be.
+	 * @param state This part's state
+	 * @return An array containing the correct ATDoorParts in this order: Above/below, above/below-left/right, left/right
+	 */
+	public static ATDoorPart[] getCorrectOtherParts(BlockState state) {
+		ATDoorPart[] toReturn = new ATDoorPart[3];
+		switch (state.getValue(PART)) {
+			case BOTTOM_LEFT -> {
+				toReturn[0] = ATDoorPart.TOP_LEFT;
+				toReturn[1] = ATDoorPart.TOP_RIGHT;
+				toReturn[2] = ATDoorPart.BOTTOM_RIGHT;
+			}
+			case BOTTOM_RIGHT -> {
+				toReturn[0] = ATDoorPart.TOP_RIGHT;
+				toReturn[1] = ATDoorPart.TOP_LEFT;
+				toReturn[2] = ATDoorPart.BOTTOM_LEFT;
+			}
+			case TOP_LEFT -> {
+				toReturn[0] = ATDoorPart.BOTTOM_LEFT;
+				toReturn[1] = ATDoorPart.BOTTOM_RIGHT;
+				toReturn[2] = ATDoorPart.TOP_RIGHT;
+			}
+			case TOP_RIGHT -> {
+				toReturn[0] = ATDoorPart.BOTTOM_RIGHT;
+				toReturn[1] = ATDoorPart.BOTTOM_LEFT;
+				toReturn[2] = ATDoorPart.TOP_LEFT;
+			}
+		}
+		return toReturn;
+	}
+
+	/**
+	 * Checks if the other three parts' positions actually contain the correct parts.
+	 * @param pos This part's position
+	 * @param state This part's state
+	 * @return An array containing a boolean value for each part in this order: Above/below, above/below-left/right, left/right
+	 */
+	public static boolean[] checkOtherParts(BlockPos pos, BlockState state, Level level) {
+		boolean[] toReturn = new boolean[3];
+		BlockState[] states = getOtherPartStates(pos, state, level);
+		ATDoorPart[] correctParts = getCorrectOtherParts(state);
+		toReturn[0] = states[0].is(state.getBlock()) && states[0].getValue(PART) == correctParts[0];
+		toReturn[1] = states[1].is(state.getBlock()) && states[1].getValue(PART) == correctParts[1];
+		toReturn[2] = states[2].is(state.getBlock()) && states[2].getValue(PART) == correctParts[2];
+		return toReturn;
+	}
+
+	@Override
+	public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
+		if (pLevel.hasNeighborSignal(pPos)) {
+			pLevel.setBlock(pPos, pState.setValue(POWERED, true).setValue(OPEN, true), 3);
+		} else {
+			pLevel.setBlock(pPos, pState.setValue(POWERED, false).setValue(OPEN, false), 3);
+		}
+		//TODO
 	}
 
 	@Override
@@ -144,107 +228,16 @@ public class ChamberlockDoor extends BaseEntityBlock {
 
 	/**
 	 Used to make sure that only one item is dropped when catwalk stairs are broken. <br>
-	 Code modified from {@link net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart(Level, BlockPos, BlockState, Player) net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart}
+	 Some code taken from {@link net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart(Level, BlockPos, BlockState, Player) net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart}
 	 */
 	protected static void preventCreativeDropFromOtherParts(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-		Direction facing = pState.getValue(FACING);
-		//leftDirection and rightDirection are relative to player who placed the block
-		Direction leftDirection = facing.getClockWise();
-		Direction rightDirection = facing.getCounterClockWise();
-		BlockPos[] positions = new BlockPos[3];
-		BlockState[] states = new BlockState[3];
-		switch (pState.getValue(PART)) {
-			case BOTTOM_LEFT -> {
-				positions[0] = pPos.above();
-				positions[1] = pPos.relative(rightDirection).above();
-				positions[2] = pPos.relative(rightDirection);
-				for (int i = 0; i < 3; i++) {
-					states[i] = pLevel.getBlockState(positions[i]);
-				}
-				if (states[0].is(pState.getBlock()) && states[0].getValue(PART) == ATDoorPart.TOP_LEFT) {
-					BlockState replacementState = states[0].hasProperty(BlockStateProperties.WATERLOGGED) && states[0].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[0], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[0], Block.getId(states[0]));
-				}
-				if (states[1].is(pState.getBlock()) && states[1].getValue(PART) == ATDoorPart.TOP_RIGHT) {
-					BlockState replacementState = states[1].hasProperty(BlockStateProperties.WATERLOGGED) && states[1].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[1], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[1], Block.getId(states[1]));
-				}
-				if (states[2].is(pState.getBlock()) && states[2].getValue(PART) == ATDoorPart.BOTTOM_RIGHT) {
-					BlockState replacementState = states[2].hasProperty(BlockStateProperties.WATERLOGGED) && states[2].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[2], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[2], Block.getId(states[2]));
-				}
-			}
-			case BOTTOM_RIGHT -> {
-				positions[0] = pPos.above();
-				positions[1] = pPos.relative(leftDirection).above();
-				positions[2] = pPos.relative(leftDirection);
-				for (int i = 0; i < 3; i++) {
-					states[i] = pLevel.getBlockState(positions[i]);
-				}
-				if (states[0].is(pState.getBlock()) && states[0].getValue(PART) == ATDoorPart.TOP_RIGHT) {
-					BlockState replacementState = states[0].hasProperty(BlockStateProperties.WATERLOGGED) && states[0].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[0], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[0], Block.getId(states[0]));
-				}
-				if (states[1].is(pState.getBlock()) && states[1].getValue(PART) == ATDoorPart.TOP_LEFT) {
-					BlockState replacementState = states[1].hasProperty(BlockStateProperties.WATERLOGGED) && states[1].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[1], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[1], Block.getId(states[1]));
-				}
-				if (states[2].is(pState.getBlock()) && states[2].getValue(PART) == ATDoorPart.BOTTOM_LEFT) {
-					BlockState replacementState = states[2].hasProperty(BlockStateProperties.WATERLOGGED) && states[2].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[2], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[2], Block.getId(states[2]));
-				}
-			}
-			case TOP_LEFT -> {
-				positions[0] = pPos.below();
-				positions[1] = pPos.relative(rightDirection).below();
-				positions[2] = pPos.relative(rightDirection);
-				for (int i = 0; i < 3; i++) {
-					states[i] = pLevel.getBlockState(positions[i]);
-				}
-				if (states[0].is(pState.getBlock()) && states[0].getValue(PART) == ATDoorPart.BOTTOM_LEFT) {
-					BlockState replacementState = states[0].hasProperty(BlockStateProperties.WATERLOGGED) && states[0].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[0], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[0], Block.getId(states[0]));
-				}
-				if (states[1].is(pState.getBlock()) && states[1].getValue(PART) == ATDoorPart.BOTTOM_RIGHT) {
-					BlockState replacementState = states[1].hasProperty(BlockStateProperties.WATERLOGGED) && states[1].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[1], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[1], Block.getId(states[1]));
-				}
-				if (states[2].is(pState.getBlock()) && states[2].getValue(PART) == ATDoorPart.TOP_RIGHT) {
-					BlockState replacementState = states[2].hasProperty(BlockStateProperties.WATERLOGGED) && states[2].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[2], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[2], Block.getId(states[2]));
-				}
-			}
-			case TOP_RIGHT -> {
-				positions[0] = pPos.below();
-				positions[1] = pPos.relative(leftDirection).below();
-				positions[2] = pPos.relative(leftDirection);
-				for (int i = 0; i < 3; i++) {
-					states[i] = pLevel.getBlockState(positions[i]);
-				}
-				if (states[0].is(pState.getBlock()) && states[0].getValue(PART) == ATDoorPart.BOTTOM_RIGHT) {
-					BlockState replacementState = states[0].hasProperty(BlockStateProperties.WATERLOGGED) && states[0].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[0], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[0], Block.getId(states[0]));
-				}
-				if (states[1].is(pState.getBlock()) && states[1].getValue(PART) == ATDoorPart.BOTTOM_LEFT) {
-					BlockState replacementState = states[1].hasProperty(BlockStateProperties.WATERLOGGED) && states[1].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[1], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[1], Block.getId(states[1]));
-				}
-				if (states[2].is(pState.getBlock()) && states[2].getValue(PART) == ATDoorPart.TOP_LEFT) {
-					BlockState replacementState = states[2].hasProperty(BlockStateProperties.WATERLOGGED) && states[2].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[2], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[2], Block.getId(states[2]));
-				}
+		BlockPos[] positions = getOtherPartPositions(pPos, pState);
+		BlockState[] states = getOtherPartStates(pPos, pState, pLevel);
+		for (int i = 0; i <= 2; i++) {
+			if (checkOtherParts(pPos, pState, pLevel)[i]) {
+				BlockState replacementState = states[i].hasProperty(BlockStateProperties.WATERLOGGED) && states[i].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+				pLevel.setBlock(positions[i], replacementState, 35);
+				pLevel.levelEvent(pPlayer, 2001, positions[i], Block.getId(states[i]));
 			}
 		}
 	}
@@ -310,6 +303,7 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	public RenderShape getRenderShape(BlockState pState) {
 		return RenderShape.ENTITYBLOCK_ANIMATED;
 	}
+
 
 	//Defining VoxelShapes used for different block states
 	private static final VoxelShape BOTTOM_LEFT_CLOSED_NORTH = Stream.of(
