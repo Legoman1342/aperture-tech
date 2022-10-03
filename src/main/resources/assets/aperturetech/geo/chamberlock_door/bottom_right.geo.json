@@ -6,7 +6,7 @@
 				"identifier": "geometry.chamberlock_door",
 				"texture_width": 64,
 				"texture_height": 64,
-				"visible_bounds_width": 3,
+				"visible_bounds_width": 2,
 				"visible_bounds_height": 2.5,
 				"visible_bounds_offset": [0, 0.75, 0]
 			},
@@ -132,11 +132,11 @@
 				{
 					"name": "lockLeft",
 					"parent": "doorRight",
-					"pivot": [8, 13, -7],
+					"pivot": [-8, 13, -7],
 					"rotation": [0, 0, 180],
 					"cubes": [
 						{
-							"origin": [24, 10, -7.5],
+							"origin": [-8, 10, -7.5],
 							"size": [2, 6, 2],
 							"uv": {
 								"north": {"uv": [51, 50], "uv_size": [2, 6]},
@@ -148,7 +148,7 @@
 							}
 						},
 						{
-							"origin": [26, 11, -7.5],
+							"origin": [-6, 11, -7.5],
 							"size": [1, 4, 2],
 							"uv": {
 								"north": {"uv": [55, 54], "uv_size": [1, 4]},

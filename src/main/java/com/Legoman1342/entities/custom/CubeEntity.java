@@ -8,7 +8,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerPlayerGameMode;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -27,8 +26,6 @@ import net.minecraft.world.level.block.PressurePlateBlock;
 import net.minecraft.world.level.block.WeightedPressurePlateBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -48,9 +45,6 @@ public class CubeEntity extends Mob implements IAnimatable {
 	private static final EntityDataAccessor<Boolean> FIZZLING = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Integer> FIZZLE_TIMER = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> FIZZLE_PARTICLE_COUNTER = SynchedEntityData.defineId(CubeEntity.class, EntityDataSerializers.INT);
-
-	//Used for debugging
-	private static final Logger LOGGER = LogManager.getLogger();
 
 	/**
 	 * List of damage sources that can kill CubeEntities.

@@ -1,10 +1,16 @@
 package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blockentities.BlockEntityRegistration;
+import com.Legoman1342.blockentities.custom.ChamberlockDoorBE;
 import com.Legoman1342.utilities.Lang;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -12,10 +18,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,7 +29,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class ChamberlockDoor extends BaseEntityBlock {
@@ -210,12 +212,14 @@ public class ChamberlockDoor extends BaseEntityBlock {
 
 	@Override
 	public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
-		if (pLevel.hasNeighborSignal(pPos)) {
+		BlockPos[] positions = getOtherPartPositions(pPos, pState);
+		if (pLevel.hasNeighborSignal(pPos) || pLevel.hasNeighborSignal(positions[0])
+				|| pLevel.hasNeighborSignal(positions[1]) || pLevel.hasNeighborSignal(positions[2])) {
 			pLevel.setBlock(pPos, pState.setValue(POWERED, true).setValue(OPEN, true), 3);
+			//TODO Opening/closing sounds
 		} else {
 			pLevel.setBlock(pPos, pState.setValue(POWERED, false).setValue(OPEN, false), 3);
 		}
-		//TODO
 	}
 
 	@Override
