@@ -1,23 +1,19 @@
 package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blockentities.BlockEntityRegistration;
-import com.Legoman1342.blockentities.custom.ChamberlockDoorBE;
+import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.utilities.Lang;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -220,6 +216,17 @@ public class ChamberlockDoor extends BaseEntityBlock {
 		} else {
 			pLevel.setBlock(pPos, pState.setValue(POWERED, false).setValue(OPEN, false), 3);
 		}
+	}
+
+	@Override
+	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+		for (BlockState state : getOtherPartStates(pCurrentPos, pState, (Level) pLevel)) {
+			if (state.getBlock() != BlockRegistration.CHAMBERLOCK_DOOR.get()) {
+				pLevel.setBlock(pCurrentPos, Blocks.AIR.defaultBlockState(), 35);
+				return Blocks.AIR.defaultBlockState();
+			}
+		}
+		return pState;
 	}
 
 	@Override

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ipi",
+    "d d",
+    "ipi"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:ingots/iron"
+    },
+    "p": {
+      "item": "minecraft:piston"
+    },
+    "d": {
+      "item": "minecraft:iron_door"
+    }
+  },
+  "result": {
+    "item": "aperturetech:chamberlock_door"
+  }
+}

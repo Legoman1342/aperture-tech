@@ -42,5 +42,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.unlockedBy("has_chest", inventoryTrigger(ItemPredicate.Builder.item()
 						.of(Tags.Items.CHESTS_WOODEN).build()))
 				.save(finishedRecipeConsumer);
+
+		//Chamberlock door
+		ShapedRecipeBuilder.shaped(BlockRegistration.CHAMBERLOCK_DOOR.get())
+				.define('i', Tags.Items.INGOTS_IRON)
+				.define('p', Items.PISTON)
+				.define('d', Items.IRON_DOOR)
+				.pattern("ipi")
+				.pattern("d d")
+				.pattern("ipi")
+				.unlockedBy("has_iron_ingot", inventoryTrigger(ItemPredicate.Builder.item()
+						.of(Tags.Items.INGOTS_IRON).build()))
+				.save(finishedRecipeConsumer);
 	}
 }

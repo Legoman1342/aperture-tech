@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "aperturetech:catwalk",
-    "aperturetech:catwalk_stairs"
+    "aperturetech:catwalk_stairs",
+    "aperturetech:chamberlock_door"
   ]
 }
