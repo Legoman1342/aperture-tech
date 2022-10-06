@@ -28,6 +28,7 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 	protected void registerStatesAndModels() {
 		registerCatwalk();
 		registerCatwalkStairs();
+		registerChamberlockDoor();
 	}
 
 	protected void registerCatwalk() {
@@ -340,5 +341,15 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 							.build()
 				);
 
+	}
+
+	protected void registerChamberlockDoor() {
+		this.getVariantBuilder(BlockRegistration.CHAMBERLOCK_DOOR.get())
+				.forAllStates(state ->
+					ConfiguredModel.builder()
+							.modelFile(models().getExistingFile(
+									new ResourceLocation(ApertureTech.MODID, "block/chamberlock_door")))
+							.build()
+				);
 	}
 }
