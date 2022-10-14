@@ -11,5 +11,8 @@
 
   "entity.aperturetech.storage_cube": "Weighted Storage Cube",
 
-  "itemGroup.atcreativetab": "Aperture Tech"
+  "itemGroup.atcreativetab": "Aperture Tech",
+
+  "sounds.aperturetech.chamberlock_door_open": "Chamberlock Door opens",
+  "sounds.aperturetech.chamberlock_door_close": "Chamberlock Door closes"
 }

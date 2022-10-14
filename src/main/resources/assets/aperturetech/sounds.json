@@ -1,0 +1,15 @@
+{
+  "chamberlock_door_open": {
+    "subtitle": "sounds.aperturetech.chamberlock_door_open",
+    "sounds": [
+      "aperturetech:chamberlock_door_open"
+    ]
+  },
+
+  "chamberlock_door_close": {
+    "subtitle": "sounds.aperturetech.chamberlock_door_close",
+    "sounds": [
+      "aperturetech:chamberlock_door_close"
+    ]
+  }
+}

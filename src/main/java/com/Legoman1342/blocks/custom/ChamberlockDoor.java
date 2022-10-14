@@ -2,9 +2,11 @@ package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blockentities.BlockEntityRegistration;
 import com.Legoman1342.blocks.BlockRegistration;
+import com.Legoman1342.sounds.SoundRegistration;
 import com.Legoman1342.utilities.Lang;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -206,14 +208,25 @@ public class ChamberlockDoor extends BaseEntityBlock {
 		return toReturn;
 	}
 
+	/**
+	 * Handles block updates, including opening/closing the door when it's powered/unpowered.
+	 */
 	@Override
 	public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
 		BlockPos[] positions = getOtherPartPositions(pPos, pState);
-		if (pLevel.hasNeighborSignal(pPos) || pLevel.hasNeighborSignal(positions[0])
-				|| pLevel.hasNeighborSignal(positions[1]) || pLevel.hasNeighborSignal(positions[2])) {
-			pLevel.setBlock(pPos, pState.setValue(POWERED, true).setValue(OPEN, true), 3);
-			//TODO Opening/closing sounds
-		} else {
+		if (pLevel.hasNeighborSignal(pPos)) { //If I'm powered...
+			if (!pLevel.getBlockState(pPos).getValue(OPEN)) { //If I'm not already open, play a sound
+				pLevel.playSound(null, pPos, SoundRegistration.CHAMBERLOCK_DOOR_OPEN.get(), SoundSource.BLOCKS, 1, 1);
+			}
+			pLevel.setBlock(pPos, pState.setValue(POWERED, true).setValue(OPEN, true), 3); //...open me and mark me as powered
+		} else if (pLevel.getBlockState(positions[0]).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && pLevel.getBlockState(positions[0]).getValue(POWERED)
+				|| pLevel.getBlockState(positions[1]).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && pLevel.getBlockState(positions[1]).getValue(POWERED)
+				|| pLevel.getBlockState(positions[2]).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && pLevel.getBlockState(positions[2]).getValue(POWERED)) { //If I'm not powered, but one of the other door parts is...
+			pLevel.setBlock(pPos, pState.setValue(POWERED, false).setValue(OPEN, true), 3); //...just open me
+		} else { //Otherwise, close the door
+			if (pLevel.getBlockState(pPos).getValue(POWERED)) { //If I was the powered part of the door, play a sound as I close
+				pLevel.playSound(null, pPos, SoundRegistration.CHAMBERLOCK_DOOR_CLOSE.get(), SoundSource.BLOCKS, 1, 1);
+			}
 			pLevel.setBlock(pPos, pState.setValue(POWERED, false).setValue(OPEN, false), 3);
 		}
 	}

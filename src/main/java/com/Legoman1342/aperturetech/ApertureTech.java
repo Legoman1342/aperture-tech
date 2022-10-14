@@ -6,6 +6,7 @@ import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
 import com.Legoman1342.items.ItemRegistration;
+import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -44,6 +45,7 @@ public class ApertureTech {
         ItemRegistration.init();
         EntityRegistration.init();
         BlockEntityRegistration.init();
+        SoundRegistration.init();
     
         //Initializes GeckoLib
         GeckoLib.initialize();

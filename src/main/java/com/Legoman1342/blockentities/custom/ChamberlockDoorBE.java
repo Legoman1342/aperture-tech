@@ -16,15 +16,12 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
-
 public class ChamberlockDoorBE extends BlockEntity implements IAnimatable {
 	private AnimationFactory factory = new AnimationFactory(this);
 	/**
 	 * Used to determine when to play open/close animations.
 	 */
-	private boolean poweredCheck = false;
+	private boolean openCheck = false;
 
 	public ChamberlockDoorBE(BlockPos pWorldPosition, BlockState pBlockState) {
 		super(BlockEntityRegistration.CHAMBERLOCK_DOOR_BE.get(), pWorldPosition, pBlockState);
@@ -34,14 +31,14 @@ public class ChamberlockDoorBE extends BlockEntity implements IAnimatable {
 		Level level = getLevel();
 		BlockPos pos = getBlockPos();
 		if (level != null && level.getBlockState(pos).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get()) {
-			boolean powered = level.getBlockState(pos).getValue(ChamberlockDoor.POWERED);
+			boolean open = level.getBlockState(pos).getValue(ChamberlockDoor.OPEN);
 			//If the powered state this tick is different from what it was last tick, play an animation
-			if (powered != poweredCheck) {
+			if (open != openCheck) {
 				event.getController().setAnimation(new AnimationBuilder().addAnimation(
-						powered ? "animation.chamberlock_door.open" : "animation.chamberlock_door.close",false));
+						open ? "animation.chamberlock_door.open" : "animation.chamberlock_door.close",false));
 			}
-			poweredCheck = powered;
-			if (powered && event.getController().getAnimationState() == AnimationState.Stopped) {
+			openCheck = open;
+			if (open && event.getController().getAnimationState() == AnimationState.Stopped) {
 				event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chamberlock_door.opened"));
 			}
 		}
