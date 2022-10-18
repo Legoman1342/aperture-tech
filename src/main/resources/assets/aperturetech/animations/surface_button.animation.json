@@ -1,0 +1,48 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.surface_button.activate": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.25,
+			"bones": {
+				"ButtonMain": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.25": {
+							"vector": [0, -1, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.surface_button.activated": {
+			"loop": true,
+			"bones": {
+				"ButtonMain": {
+					"position": {
+						"vector": [0, -1, 0]
+					}
+				}
+			}
+		},
+		"animation.surface_button.deactivate": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.25,
+			"bones": {
+				"ButtonMain": {
+					"position": {
+						"0.0": {
+							"vector": [0, -1, 0]
+						},
+						"0.25": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}
