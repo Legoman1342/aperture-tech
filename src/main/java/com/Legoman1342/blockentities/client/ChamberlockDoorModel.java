@@ -24,15 +24,15 @@ public class ChamberlockDoorModel extends AnimatedGeoModel<ChamberlockDoorBE> {
 		BlockState blockState = object.getBlockState();
 		if (blockState.getValue(ChamberlockDoor.FRONT_CONDUCTIVE)) {
 			if (blockState.getValue(ChamberlockDoor.BACK_CONDUCTIVE)) {
-				return new ResourceLocation(MODID, "textures/block/chamberlock_door_whitewhite.png");
+				return new ResourceLocation(MODID, "textures/block/chamberlock_door/whitewhite.png");
 			} else {
-				return new ResourceLocation(MODID, "textures/block/chamberlock_door_whiteblack.png");
+				return new ResourceLocation(MODID, "textures/block/chamberlock_door/whiteblack.png");
 			}
 		} else {
 			if (blockState.getValue(ChamberlockDoor.BACK_CONDUCTIVE)) {
-				return new ResourceLocation(MODID, "textures/block/chamberlock_door_blackwhite.png");
+				return new ResourceLocation(MODID, "textures/block/chamberlock_door/blackwhite.png");
 			} else {
-				return new ResourceLocation(MODID, "textures/block/chamberlock_door_blackblack.png");
+				return new ResourceLocation(MODID, "textures/block/chamberlock_door/blackblack.png");
 			}
 		}
 	}
