@@ -29,6 +29,7 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 		registerCatwalk();
 		registerCatwalkStairs();
 		registerChamberlockDoor();
+		registerSurfaceButton();
 	}
 
 	protected void registerCatwalk() {
@@ -350,6 +351,16 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 							.modelFile(models().getExistingFile(
 									new ResourceLocation(ApertureTech.MODID, "block/chamberlock_door")))
 							.build()
+				);
+	}
+
+	protected void registerSurfaceButton() {
+		this.getVariantBuilder(BlockRegistration.SURFACE_BUTTON.get())
+				.forAllStates(state ->
+						ConfiguredModel.builder()
+								.modelFile(models().getExistingFile(
+										new ResourceLocation(ApertureTech.MODID, "item/surface_button")))
+								.build()
 				);
 	}
 }

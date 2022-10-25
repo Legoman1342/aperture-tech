@@ -1,0 +1,772 @@
+{
+  "variants": {
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=top_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=top_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=bottom_left,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=bottom_right,powered=false": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=top_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=top_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=bottom_left,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=false,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=false,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=north,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=north,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=south,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=south,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=west,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=west,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=false,facing=east,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    },
+    "back_conductive=true,facing=east,front_conductive=true,open=true,part=bottom_right,powered=true": {
+      "model": "aperturetech:item/surface_button"
+    }
+  }
+}

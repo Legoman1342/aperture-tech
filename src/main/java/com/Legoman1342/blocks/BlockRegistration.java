@@ -3,6 +3,7 @@ package com.Legoman1342.blocks;
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.CatwalkStairs;
 import com.Legoman1342.blocks.custom.ChamberlockDoor;
+import com.Legoman1342.blocks.custom.SurfaceButton;
 import com.Legoman1342.setup.ATCreativeTab;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -47,6 +48,14 @@ public class BlockRegistration {
 					.Properties.copy(CATWALK.get())),
 			ATCreativeTab.AT_CREATIVE_TAB);
 	public static final RegistryObject<Block> CHAMBERLOCK_DOOR = registerBlock("chamberlock_door", () -> new ChamberlockDoor(
+			BlockBehaviour
+					.Properties.of(Material.METAL)
+					.sound(SoundType.METAL)
+					.strength(2.0f)
+					.requiresCorrectToolForDrops()
+					.noOcclusion()),
+			ATCreativeTab.AT_CREATIVE_TAB);
+	public static final RegistryObject<Block> SURFACE_BUTTON = registerBlock("surface_button", () -> new SurfaceButton(
 			BlockBehaviour
 					.Properties.of(Material.METAL)
 					.sound(SoundType.METAL)

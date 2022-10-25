@@ -12,6 +12,7 @@ public class ModBlockLootTables extends BlockLoot {
 		this.dropSelf(BlockRegistration.CATWALK.get());
 		this.dropSelf(BlockRegistration.CATWALK_STAIRS.get());
 		this.dropSelf(BlockRegistration.CHAMBERLOCK_DOOR.get());
+		this.dropSelf(BlockRegistration.SURFACE_BUTTON.get());
 	}
 	
 	@Override
