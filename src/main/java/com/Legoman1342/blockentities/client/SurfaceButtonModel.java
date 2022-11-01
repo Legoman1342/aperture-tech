@@ -10,21 +10,13 @@ import static com.Legoman1342.aperturetech.ApertureTech.MODID;
 public class SurfaceButtonModel extends AnimatedGeoModel<SurfaceButtonBE> {
 	@Override
 	public ResourceLocation getModelLocation(SurfaceButtonBE object) {
-		String facingToReturn = switch (object.getBlockState().getValue(SurfaceButton.FACING)) {
-			case UP -> "up";
-			case DOWN -> "down";
-			case NORTH -> "north";
-			case EAST -> "east";
-			case SOUTH -> "south";
-			case WEST -> "west";
-		};
 		String partToReturn = switch (object.getBlockState().getValue(SurfaceButton.PART)) {
 			case TOP_LEFT -> "top_left";
 			case TOP_RIGHT -> "top_right";
 			case BOTTOM_LEFT -> "bottom_left";
 			case BOTTOM_RIGHT -> "bottom_right";
 		};
-		return new ResourceLocation(MODID, "geo/surface_button/" + facingToReturn + "_" + partToReturn + ".geo.json");
+		return new ResourceLocation(MODID, "geo/surface_button/" + partToReturn + ".geo.json");
 	}
 
 	@Override

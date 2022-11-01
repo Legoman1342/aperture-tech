@@ -65,7 +65,6 @@ public class SurfaceButton extends BaseEntityBlock {
 	@Nullable
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-		LOGGER.info("getStateForPlacement");
 		Level level = pContext.getLevel();
 		BlockPos pos = pContext.getClickedPos();
 		Direction facing = pContext.getClickedFace().getOpposite();
@@ -107,7 +106,6 @@ public class SurfaceButton extends BaseEntityBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-		LOGGER.info("getShape");
 		Direction facing = pState.getValue(FACING);
 		ATButtonPart part = pState.getValue(PART);
 		boolean activated = pState.getValue(POWERED);
@@ -299,10 +297,10 @@ public class SurfaceButton extends BaseEntityBlock {
 			Block.box(6, 9, 13, 9, 16, 14)
 	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 	private static final VoxelShape NORTH_TOP_LEFT_ACTIVATED = Stream.of(
-			Block.box(8, 4, 14, 16, 16, 16),
-			Block.box(4, 8, 14, 8, 16, 16),
-			Block.box(14, 0, 15, 16, 4, 16),
-			Block.box(0, 14, 15, 4, 16, 16)
+			Block.box(0, 12, 15, 2, 16, 16),
+			Block.box(12, 0, 15, 16, 2, 16),
+			Block.box(0, 0, 14, 8, 12, 16),
+			Block.box(8, 0, 14, 12, 8, 16)
 	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 	private static final VoxelShape NORTH_TOP_LEFT_DEACTIVATED = Stream.of(
 			Block.box(0, 0, 14, 8, 12, 16),
