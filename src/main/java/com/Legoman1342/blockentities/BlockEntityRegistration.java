@@ -1,7 +1,6 @@
 package com.Legoman1342.blockentities;
 
 import com.Legoman1342.blockentities.custom.ChamberlockDoorBE;
-import com.Legoman1342.blockentities.custom.SurfaceButtonBE;
 import com.Legoman1342.blocks.BlockRegistration;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -24,12 +23,6 @@ public class BlockEntityRegistration {
 			"chamberlock_door",
 			() -> BlockEntityType.Builder.of(ChamberlockDoorBE::new,
 					BlockRegistration.CHAMBERLOCK_DOOR.get())
-					.build(null)
-	);
-	public static final RegistryObject<BlockEntityType<SurfaceButtonBE>> SURFACE_BUTTON_BE = BLOCK_ENTITIES.register(
-			"surface_button",
-			() -> BlockEntityType.Builder.of(SurfaceButtonBE::new,
-					BlockRegistration.SURFACE_BUTTON.get())
 					.build(null)
 	);
 }

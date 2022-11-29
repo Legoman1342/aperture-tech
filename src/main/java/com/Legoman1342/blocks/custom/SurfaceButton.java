@@ -1,6 +1,5 @@
 package com.Legoman1342.blocks.custom;
 
-import com.Legoman1342.blockentities.BlockEntityRegistration;
 import com.Legoman1342.utilities.Lang;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -8,9 +7,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -27,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
-public class SurfaceButton extends BaseEntityBlock {
+public class SurfaceButton extends Block {
 
 	Logger LOGGER = LogManager.getLogger();
 
@@ -147,12 +144,6 @@ public class SurfaceButton extends BaseEntityBlock {
 				case BOTTOM_RIGHT -> activated ? WEST_BOTTOM_RIGHT_ACTIVATED : WEST_BOTTOM_RIGHT_DEACTIVATED;
 			};
 		};
-	}
-
-	@Nullable
-	@Override
-	public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-		return BlockEntityRegistration.SURFACE_BUTTON_BE.get().create(pPos, pState);
 	}
 
 	//Defining VoxelShapes used for different block states

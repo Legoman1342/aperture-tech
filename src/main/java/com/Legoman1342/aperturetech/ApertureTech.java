@@ -2,7 +2,6 @@ package com.Legoman1342.aperturetech;
 
 import com.Legoman1342.blockentities.BlockEntityRegistration;
 import com.Legoman1342.blockentities.client.ChamberlockDoorRenderer;
-import com.Legoman1342.blockentities.client.SurfaceButtonRenderer;
 import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
@@ -83,7 +82,6 @@ public class ApertureTech {
 		EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
 
 		BlockEntityRenderers.register(BlockEntityRegistration.CHAMBERLOCK_DOOR_BE.get(), ChamberlockDoorRenderer::new);
-		BlockEntityRenderers.register(BlockEntityRegistration.SURFACE_BUTTON_BE.get(), SurfaceButtonRenderer::new);
 	}
 
 	private void enqueueIMC(final InterModEnqueueEvent event)

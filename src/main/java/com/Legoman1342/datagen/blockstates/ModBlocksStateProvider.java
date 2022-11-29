@@ -8,6 +8,7 @@ import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.Catwalk.ATCatwalkEnd;
 import com.Legoman1342.blocks.custom.CatwalkStairs;
+import com.Legoman1342.blocks.custom.SurfaceButton;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -355,12 +356,414 @@ public class ModBlocksStateProvider extends BlockStateProvider {
 	}
 
 	protected void registerSurfaceButton() {
-		this.getVariantBuilder(BlockRegistration.SURFACE_BUTTON.get())
-				.forAllStates(state ->
-						ConfiguredModel.builder()
-								.modelFile(models().getExistingFile(
-										new ResourceLocation(ApertureTech.MODID, "item/surface_button")))
-								.build()
-				);
+		ExistingModelFile bottomLeftTopRightActivated = models().getExistingFile(
+				new ResourceLocation(ApertureTech.MODID, "block/surface_button/bl_tr_activated")
+		);
+		ExistingModelFile bottomLeftTopRightDeactivated = models().getExistingFile(
+				new ResourceLocation(ApertureTech.MODID, "block/surface_button/bl_tr_deactivated")
+		);
+		ExistingModelFile bottomRightTopLeftActivated = models().getExistingFile(
+				new ResourceLocation(ApertureTech.MODID, "block/surface_button/br_tl_activated")
+		);
+		ExistingModelFile bottomRightTopLeftDeactivated = models().getExistingFile(
+				new ResourceLocation(ApertureTech.MODID, "block/surface_button/br_tl_deactivated")
+		);
+
+
+		this.getMultipartBuilder(BlockRegistration.SURFACE_BUTTON.get())
+
+				//bottomLeftTopRightActivated
+				.part().modelFile(bottomLeftTopRightActivated)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(180).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(270).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(90).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(90).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(270).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(90).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightActivated).rotationX(270).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+
+
+				//bottomLeftTopRightDeactivated
+				.part().modelFile(bottomLeftTopRightDeactivated)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(180).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(270).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(90).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(90).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(270).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(90).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomLeftTopRightDeactivated).rotationX(270).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+
+
+				//bottomRightTopLeftActivated
+				.part().modelFile(bottomRightTopLeftActivated)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(180).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(270).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(90).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(90).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(270).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(90).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftActivated).rotationX(270).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, true)
+					.end()
+				.end()
+
+
+
+				//bottomRightTopLeftDeactivated
+				.part().modelFile(bottomRightTopLeftDeactivated)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.UP)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(180).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.DOWN)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(270).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.NORTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(90).rotationY(180)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.SOUTH)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(90).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(270).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.EAST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(90).rotationY(270)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.BOTTOM_RIGHT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end()
+
+				.part().modelFile(bottomRightTopLeftDeactivated).rotationX(270).rotationY(90)
+					.addModel().nestedGroup()
+						.condition(SurfaceButton.FACING, Direction.WEST)
+						.condition(SurfaceButton.PART, SurfaceButton.ATButtonPart.TOP_LEFT)
+						.condition(SurfaceButton.POWERED, false)
+					.end()
+				.end();
 	}
 }
