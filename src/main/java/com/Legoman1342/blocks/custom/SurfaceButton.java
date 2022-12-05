@@ -1,19 +1,15 @@
 package com.Legoman1342.blocks.custom;
 
-import com.Legoman1342.utilities.Lang;
+import com.Legoman1342.blocks.ATMultiblock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -22,89 +18,42 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.stream.Stream;
 
-public class SurfaceButton extends Block {
+public class SurfaceButton extends ATMultiblock {
 
 	Logger LOGGER = LogManager.getLogger();
 
-	public static final DirectionProperty FACING = BlockStateProperties.FACING;
-	public static final EnumProperty<ATButtonPart> PART = EnumProperty.create("part", ATButtonPart.class);
 	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-
-	/**
-	 * Used to determine which portion of the button this block is.<br><br>
-	 *
-	 * When the button is on the floor or ceiling, directions are from the perspective of a player looking straight up/down at
-	 * the button while facing south (towards +Z).  This means that on the floor, "top" means south (+Z) and "right" means west (-X).
-	 * On the ceiling, "top" is reversed to north (-Z), but "right" still means west (-X).<br><br>
-	 *
-	 * On walls, the directions are exactly as expected from the perspective of a player looking straight at the button.
-	 */
-	public enum ATButtonPart implements StringRepresentable {
-		TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT;
-
-		@Override
-		public String getSerializedName() {
-			return Lang.asId(name());
-		}
-	}
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-		pBuilder.add(FACING, PART, POWERED);
+		pBuilder.add(POWERED);
+		super.createBlockStateDefinition(pBuilder);
 	}
 
 	public SurfaceButton(Properties properties) {
-		super(properties);
+		super(properties, true);
 	}
 
-	@Nullable
+	/**
+	 * Sets additional blockstates (<code>POWERED</code>) that {@link com.Legoman1342.blocks.ATMultiblock#getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext) ATMultiblock#getStateForPlacement} doesn't cover.
+	 */
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-		Level level = pContext.getLevel();
-		BlockPos pos = pContext.getClickedPos();
-		Direction facing = pContext.getClickedFace().getOpposite();
-		Direction topDirection = switch (facing) {
-			case DOWN -> Direction.SOUTH;
-			case UP -> Direction.NORTH;
-			case NORTH, EAST, SOUTH, WEST -> Direction.UP;
-		};
-		Direction bottomDirection = topDirection.getOpposite();
-		Direction rightDirection = switch (facing) {
-			case UP, DOWN -> Direction.WEST;
-			case NORTH, EAST, SOUTH, WEST -> facing.getClockWise();
-		};
-		Direction leftDirection = rightDirection.getOpposite();
-
-		BlockState toReturn = this.defaultBlockState()
-				.setValue(FACING, facing)
-				.setValue(POWERED, false);
-
-		if (level.getBlockState(pos.relative(topDirection)).canBeReplaced(pContext)) {
-			if (level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) &&
-					level.getBlockState(pos.relative(topDirection).relative(rightDirection)).canBeReplaced(pContext)) {
-				return toReturn.setValue(PART, ATButtonPart.BOTTOM_LEFT);
-			} else if (level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext) &&
-					level.getBlockState(pos.relative(topDirection).relative(leftDirection)).canBeReplaced(pContext)) {
-				return toReturn.setValue(PART, ATButtonPart.BOTTOM_RIGHT);
-			}
-		} else if (level.getBlockState(pos.relative(bottomDirection)).canBeReplaced(pContext)) {
-			if (level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) &&
-					level.getBlockState(pos.relative(bottomDirection).relative(rightDirection)).canBeReplaced(pContext)) {
-				return toReturn.setValue(PART, ATButtonPart.TOP_LEFT);
-			} else if (level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext) &&
-					level.getBlockState(pos.relative(bottomDirection).relative(leftDirection)).canBeReplaced(pContext)) {
-				return toReturn.setValue(PART, ATButtonPart.TOP_RIGHT);
-			}
+		BlockState toReturn = super.getStateForPlacement(pContext);
+		if (toReturn != null) {
+			return toReturn.setValue(POWERED, false);
+		} else {
+			return null;
 		}
-		return null;
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
 		Direction facing = pState.getValue(FACING);
-		ATButtonPart part = pState.getValue(PART);
+		ATMultiblockPart part = pState.getValue(PART);
 		boolean activated = pState.getValue(POWERED);
 		return switch (facing) {
 			case UP -> switch (part) {

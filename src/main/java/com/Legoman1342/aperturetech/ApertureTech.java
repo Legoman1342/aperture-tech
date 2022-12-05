@@ -77,6 +77,7 @@ public class ApertureTech {
 		//Sets how to render different blocks, needed for any non-entity block with transparency
 		ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK.get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK_STAIRS.get(), RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(BlockRegistration.SURFACE_BUTTON.get(), RenderType.cutout());
 
 		//Registers the renderers for entities and block entities
 		EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
