@@ -9,8 +9,8 @@ public class ATCreativeTab {
 	public static final CreativeModeTab AT_CREATIVE_TAB = new CreativeModeTab("atcreativetab") {
 		@Override
 		public ItemStack makeIcon() {
-			//TODO Change this to a better item eventually
-			return new ItemStack(ItemRegistration.configuration_tool.get());
+			//TODO Change this to a better item eventually (?)
+			return new ItemStack(ItemRegistration.storage_cube.get());
 		}
 	};
 }

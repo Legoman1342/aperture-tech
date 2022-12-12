@@ -12,21 +12,45 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.jetbrains.annotations.Nullable;
 
-public class ATMultiblock extends Block {
+/**
+ * A class containing common code used in 2x2x1 multiblocks. <br>
+ * Available methods:
+ * {@link ATMultiblock#getStateForPlacement(BlockPlaceContext, Block) getStateForPlacement},
+ * {@link ATMultiblock#setPlacedBy(Level, BlockPos, BlockState, LivingEntity, ItemStack)  setPlacedBy},
+ * {@link ATMultiblock#playerWillDestroy(Level, BlockPos, BlockState, Player)  playerWillDestroy},
+ * {@link ATMultiblock#getOtherPartPositions(BlockPos, BlockState)  getOtherPartPositions},
+ * {@link ATMultiblock#getOtherPartStates(BlockPos, BlockState, Level)  getOtherPartStates},
+ * {@link ATMultiblock#getCorrectOtherParts(BlockState)  getCorrectOtherParts}, and
+ * {@link ATMultiblock#checkOtherParts(BlockPos, BlockState, Level)  checkOtherParts}
+ */
+public class ATMultiblock {
 
-	public boolean canBeHorizontal;
-	public static final DirectionProperty FACING = BlockStateProperties.FACING;
-	public static final EnumProperty<ATMultiblockPart> PART = EnumProperty.create("part", ATMultiblockPart.class);
+	boolean canFaceHorizontally;
+	boolean canFaceUp;
+	boolean canFaceDown;
+	DirectionProperty facingProperty;
+	EnumProperty<ATMultiblockPart> partProperty;
 
-	public ATMultiblock(Properties properties, boolean canBeHorizontal) {
-		super(properties);
-		this.canBeHorizontal = canBeHorizontal;
+	/**
+	 * Constructor for a new ATMultiblock. Params determine possible orientations of the multiblock structure. <br><br>
+	 *
+	 * In this context, "facing" refers to the direction that front/top 2x2 face of the multiblock is facing.
+	 * @param canFaceHorizontally Whether the multiblock can face north, east, south, and west
+	 * @param canFaceUp Whether the multiblock can face up
+	 * @param canFaceDown Whether the multiblock can face down
+	 */
+	public ATMultiblock (boolean canFaceHorizontally, boolean canFaceUp, boolean canFaceDown, DirectionProperty facingProperty, EnumProperty<ATMultiblockPart> partProperty) {
+		if (!canFaceHorizontally && !canFaceUp && !canFaceDown) throw new IllegalStateException("Multiblocks must be able to face at least one direction.");
+		this.canFaceHorizontally = canFaceHorizontally;
+		this.canFaceUp = canFaceUp;
+		this.canFaceDown = canFaceDown;
+		this.facingProperty = facingProperty;
+		this.partProperty = partProperty;
 	}
 
 	/**
@@ -47,17 +71,45 @@ public class ATMultiblock extends Block {
 		}
 	}
 
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-		pBuilder.add(FACING, PART);
-	}
-
-	@Nullable
-	@Override
-	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+	public  <T extends Block> BlockState getStateForPlacement(BlockPlaceContext pContext, T object) {
 		Level level = pContext.getLevel();
 		BlockPos pos = pContext.getClickedPos();
-		Direction facing = canBeHorizontal ? pContext.getClickedFace() : pContext.getHorizontalDirection().getOpposite();
+		Direction facing;
+		if (canFaceHorizontally) {
+			if (canFaceUp) {
+				if (canFaceDown) {
+					facing = pContext.getClickedFace();
+				} else {
+					facing = switch (pContext.getClickedFace()) {
+						case DOWN -> pContext.getHorizontalDirection().getOpposite();
+						case UP, NORTH, EAST, SOUTH, WEST -> pContext.getClickedFace();
+					};
+				}
+			} else {
+				if (canFaceDown) {
+					facing = switch (pContext.getClickedFace()) {
+						case UP -> pContext.getHorizontalDirection().getOpposite();
+						case DOWN, NORTH, EAST, SOUTH, WEST -> pContext.getClickedFace();
+					};
+				} else {
+					facing = pContext.getHorizontalDirection().getOpposite();
+				}
+			}
+		} else {
+			if (canFaceUp) {
+				if (canFaceDown) {
+					facing = pContext.getNearestLookingVerticalDirection();
+				} else {
+					facing = Direction.UP;
+				}
+			} else {
+				if (canFaceDown) {
+					facing = Direction.DOWN;
+				} else {
+					throw new IllegalStateException("Multiblocks must be able to face at least one direction.");
+				}
+			}
+		}
 
 		//Directions are from the perspective of the player placing the block
 		Direction upDirection = switch (facing) {
@@ -81,20 +133,20 @@ public class ATMultiblock extends Block {
 		boolean canPlaceBelowLeft = level.getBlockState(pos.relative(downDirection).relative(leftDirection)).canBeReplaced(pContext);
 		boolean canPlaceBelowRight = level.getBlockState(pos.relative(downDirection).relative(rightDirection)).canBeReplaced(pContext);
 
-		BlockState toReturn = this.defaultBlockState()
-				.setValue(FACING, facing);
+		BlockState toReturn = object.defaultBlockState()
+				.setValue(facingProperty, facing);
 
 		if (canPlaceAbove) {
 			if (canPlaceRight && canPlaceAboveRight) {
-				return toReturn.setValue(PART, ATMultiblockPart.BOTTOM_LEFT);
+				return toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_LEFT);
 			} else if (canPlaceLeft && canPlaceAboveLeft) {
-				return toReturn.setValue(PART, ATMultiblockPart.BOTTOM_RIGHT);
+				return toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_RIGHT);
 			}
 		} else if (canPlaceBelow) {
 			if (canPlaceRight && canPlaceBelowRight) {
-				return toReturn.setValue(PART, ATMultiblockPart.TOP_LEFT);
+				return toReturn.setValue(partProperty, ATMultiblockPart.TOP_LEFT);
 			} else if (canPlaceLeft && canPlaceBelowLeft) {
-				return toReturn.setValue(PART, ATMultiblockPart.TOP_RIGHT);
+				return toReturn.setValue(partProperty, ATMultiblockPart.TOP_RIGHT);
 			}
 		}
 		return null;
@@ -104,13 +156,30 @@ public class ATMultiblock extends Block {
 	 * Places the other three parts of the multiblock.
 	 * Called by BlockItem after this block has been placed.
 	 */
-	@Override
 	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
 		BlockPos[] positions = getOtherPartPositions(pPos, pState);
 		ATMultiblockPart[] parts = getCorrectOtherParts(pState);
-		pLevel.setBlock(positions[0], pState.setValue(PART, parts[0]), 3);
-		pLevel.setBlock(positions[1], pState.setValue(PART, parts[1]), 3);
-		pLevel.setBlock(positions[2], pState.setValue(PART, parts[2]), 3);
+		pLevel.setBlock(positions[0], pState.setValue(partProperty, parts[0]), 3);
+		pLevel.setBlock(positions[1], pState.setValue(partProperty, parts[1]), 3);
+		pLevel.setBlock(positions[2], pState.setValue(partProperty, parts[2]), 3);
+	}
+
+	/**
+	 Used to make sure that only one item is dropped when the multiblock is broken. <br>
+	 Some code taken from {@link net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart(Level, BlockPos, BlockState, Player) net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart}
+	 */
+	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+		if (!pLevel.isClientSide && pPlayer.isCreative()) {
+			BlockPos[] positions = getOtherPartPositions(pPos, pState);
+			BlockState[] states = getOtherPartStates(pPos, pState, pLevel);
+			for (int i = 0; i <= 2; i++) {
+				if (checkOtherParts(pPos, pState, pLevel)[i]) {
+					BlockState replacementState = states[i].hasProperty(BlockStateProperties.WATERLOGGED) && states[i].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+					pLevel.setBlock(positions[i], replacementState, 35);
+					pLevel.levelEvent(pPlayer, 2001, positions[i], Block.getId(states[i]));
+				}
+			}
+		}
 	}
 
 	/**
@@ -119,9 +188,9 @@ public class ATMultiblock extends Block {
 	 * @param state This part's state
 	 * @return An array containing the BlockPos-es in this order: Above/below, above/below-left/right, left/right
 	 */
-	public static BlockPos[] getOtherPartPositions(BlockPos pos, BlockState state) {
+	public BlockPos[] getOtherPartPositions(BlockPos pos, BlockState state) {
 		BlockPos[] toReturn = new BlockPos[3];
-		Direction facing = state.getValue(FACING);
+		Direction facing = state.getValue(facingProperty);
 		//Directions are relative to a player looking straight at the front
 		Direction upDirection = switch (facing) {
 			case DOWN -> Direction.NORTH;
@@ -135,7 +204,7 @@ public class ATMultiblock extends Block {
 		};
 		Direction leftDirection = rightDirection.getOpposite();
 		
-		switch (state.getValue(PART)) {
+		switch (state.getValue(partProperty)) {
 			case BOTTOM_LEFT -> {
 				toReturn[0] = pos.relative(upDirection);
 				toReturn[1] = pos.relative(rightDirection).relative(upDirection);
@@ -166,7 +235,7 @@ public class ATMultiblock extends Block {
 	 * @param state This part's state
 	 * @return An array containing the BlockStates in this order: Above/below, above/below-left/right, left/right
 	 */
-	public static BlockState[] getOtherPartStates(BlockPos pos, BlockState state, Level level) {
+	public BlockState[] getOtherPartStates(BlockPos pos, BlockState state, Level level) {
 		BlockState[] toReturn = new BlockState[3];
 		BlockPos[] positions = getOtherPartPositions(pos, state);
 		for (int i = 0; i <= 2; i++) {
@@ -180,9 +249,9 @@ public class ATMultiblock extends Block {
 	 * @param state This part's state
 	 * @return An array containing the correct ATMultiblockParts in this order: Above/below, above/below-left/right, left/right
 	 */
-	public static ATMultiblockPart[] getCorrectOtherParts(BlockState state) {
+	public ATMultiblockPart[] getCorrectOtherParts(BlockState state) {
 		ATMultiblockPart[] toReturn = new ATMultiblockPart[3];
-		switch (state.getValue(PART)) {
+		switch (state.getValue(partProperty)) {
 			case BOTTOM_LEFT -> {
 				toReturn[0] = ATMultiblockPart.TOP_LEFT;
 				toReturn[1] = ATMultiblockPart.TOP_RIGHT;
@@ -213,40 +282,13 @@ public class ATMultiblock extends Block {
 	 * @param state This part's state
 	 * @return An array containing a boolean value for each part in this order: Above/below, above/below-left/right, left/right
 	 */
-	public static boolean[] checkOtherParts(BlockPos pos, BlockState state, Level level) {
+	public boolean[] checkOtherParts(BlockPos pos, BlockState state, Level level) {
 		boolean[] toReturn = new boolean[3];
 		BlockState[] states = getOtherPartStates(pos, state, level);
 		ATMultiblockPart[] correctParts = getCorrectOtherParts(state);
-		toReturn[0] = states[0].is(state.getBlock()) && states[0].getValue(PART) == correctParts[0];
-		toReturn[1] = states[1].is(state.getBlock()) && states[1].getValue(PART) == correctParts[1];
-		toReturn[2] = states[2].is(state.getBlock()) && states[2].getValue(PART) == correctParts[2];
+		toReturn[0] = states[0].is(state.getBlock()) && states[0].getValue(partProperty) == correctParts[0];
+		toReturn[1] = states[1].is(state.getBlock()) && states[1].getValue(partProperty) == correctParts[1];
+		toReturn[2] = states[2].is(state.getBlock()) && states[2].getValue(partProperty) == correctParts[2];
 		return toReturn;
-	}
-
-	/**
-	 * Called when the block is destroyed.  Makes sure the other parts are destroyed correctly as well.
-	 */
-	@Override
-	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-		if (!pLevel.isClientSide && pPlayer.isCreative()) {
-			preventCreativeDropFromOtherParts(pLevel, pPos, pState, pPlayer);
-		}
-		super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
-	}
-
-	/**
-	 Used to make sure that only one item is dropped when the multiblock is broken. <br>
-	 Some code taken from {@link net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart(Level, BlockPos, BlockState, Player) net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart}
-	 */
-	protected static void preventCreativeDropFromOtherParts(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-		BlockPos[] positions = getOtherPartPositions(pPos, pState);
-		BlockState[] states = getOtherPartStates(pPos, pState, pLevel);
-		for (int i = 0; i <= 2; i++) {
-			if (checkOtherParts(pPos, pState, pLevel)[i]) {
-				BlockState replacementState = states[i].hasProperty(BlockStateProperties.WATERLOGGED) && states[i].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-				pLevel.setBlock(positions[i], replacementState, 35);
-				pLevel.levelEvent(pPlayer, 2001, positions[i], Block.getId(states[i]));
-			}
-		}
 	}
 }

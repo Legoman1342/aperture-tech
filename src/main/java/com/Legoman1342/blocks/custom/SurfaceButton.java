@@ -1,15 +1,22 @@
 package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blocks.ATMultiblock;
+import com.Legoman1342.blocks.ATMultiblock.ATMultiblockPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -18,36 +25,49 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
 import java.util.stream.Stream;
 
-public class SurfaceButton extends ATMultiblock {
+public class SurfaceButton extends Block {
 
 	Logger LOGGER = LogManager.getLogger();
 
+	ATMultiblock multiblock = new ATMultiblock(true, true, true, FACING, PART);
+
+	public static final DirectionProperty FACING = BlockStateProperties.FACING;
+	public static final EnumProperty<ATMultiblockPart> PART = EnumProperty.create("part", ATMultiblockPart.class);
 	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-		pBuilder.add(POWERED);
-		super.createBlockStateDefinition(pBuilder);
+		pBuilder.add(FACING, PART, POWERED);
 	}
 
 	public SurfaceButton(Properties properties) {
-		super(properties, true);
+		super(properties);
 	}
 
 	/**
-	 * Sets additional blockstates (<code>POWERED</code>) that {@link com.Legoman1342.blocks.ATMultiblock#getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext) ATMultiblock#getStateForPlacement} doesn't cover.
+	 * Sets additional blockstates (<code>POWERED</code>) that {@link ATMultiblock#getStateForPlacement(BlockPlaceContext, Block) ATMultiblock#getStateForPlacement} doesn't cover.
 	 */
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-		BlockState toReturn = super.getStateForPlacement(pContext);
+		BlockState toReturn = multiblock.getStateForPlacement(pContext, this);
 		if (toReturn != null) {
 			return toReturn.setValue(POWERED, false);
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
+		multiblock.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
+	}
+
+	@Override
+	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
+		multiblock.playerWillDestroy(pLevel, pPos, pState, pPlayer);
+		super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
 	}
 
 	@Override
