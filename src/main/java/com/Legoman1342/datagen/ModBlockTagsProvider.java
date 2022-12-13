@@ -20,5 +20,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BlockRegistration.CATWALK.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BlockRegistration.CATWALK_STAIRS.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BlockRegistration.CHAMBERLOCK_DOOR.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(BlockRegistration.SURFACE_BUTTON.get());
     }
 }

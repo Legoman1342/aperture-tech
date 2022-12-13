@@ -3,6 +3,7 @@
   "values": [
     "aperturetech:catwalk",
     "aperturetech:catwalk_stairs",
-    "aperturetech:chamberlock_door"
+    "aperturetech:chamberlock_door",
+    "aperturetech:surface_button"
   ]
 }

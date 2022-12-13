@@ -74,12 +74,6 @@ public class ChamberlockDoor extends BaseEntityBlock {
 		multiblock.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
 	}
 
-	@Override
-	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-		multiblock.playerWillDestroy(pLevel, pPos, pState, pPlayer);
-		super.playerWillDestroy(pLevel, pPos, pState, pPlayer);
-	}
-
 	/**
 	 * Handles block updates, including opening/closing the door when it's powered/unpowered.
 	 */
@@ -105,13 +99,7 @@ public class ChamberlockDoor extends BaseEntityBlock {
 
 	@Override
 	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-		for (BlockState state : multiblock.getOtherPartStates(pCurrentPos, pState, (Level) pLevel)) {
-			if (state.getBlock() != BlockRegistration.CHAMBERLOCK_DOOR.get()) {
-				pLevel.setBlock(pCurrentPos, Blocks.AIR.defaultBlockState(), 35);
-				return Blocks.AIR.defaultBlockState();
-			}
-		}
-		return pState;
+		return multiblock.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos, this);
 	}
 
 	@Override

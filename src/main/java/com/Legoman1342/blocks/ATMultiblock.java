@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,16 +18,19 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * A class containing common code used in 2x2x1 multiblocks. <br>
  * Available methods:
  * {@link ATMultiblock#getStateForPlacement(BlockPlaceContext, Block) getStateForPlacement},
  * {@link ATMultiblock#setPlacedBy(Level, BlockPos, BlockState, LivingEntity, ItemStack)  setPlacedBy},
- * {@link ATMultiblock#playerWillDestroy(Level, BlockPos, BlockState, Player)  playerWillDestroy},
+ * {@link ATMultiblock#updateShape(BlockState, Direction, BlockState, LevelAccessor, BlockPos, BlockPos, Block) updateShape},
  * {@link ATMultiblock#getOtherPartPositions(BlockPos, BlockState)  getOtherPartPositions},
- * {@link ATMultiblock#getOtherPartStates(BlockPos, BlockState, Level)  getOtherPartStates},
+ * {@link ATMultiblock#getOtherPartStates(BlockPos, BlockState, LevelAccessor)  getOtherPartStates},
  * {@link ATMultiblock#getCorrectOtherParts(BlockState)  getCorrectOtherParts}, and
- * {@link ATMultiblock#checkOtherParts(BlockPos, BlockState, Level)  checkOtherParts}
+ * {@link ATMultiblock#checkOtherParts(BlockPos, BlockState, LevelAccessor)  checkOtherParts}
  */
 public class ATMultiblock {
 
@@ -154,7 +158,7 @@ public class ATMultiblock {
 
 	/**
 	 * Places the other three parts of the multiblock.
-	 * Called by BlockItem after this block has been placed.
+	 * Called by <code>BlockItem</code> after this block has been placed.
 	 */
 	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
 		BlockPos[] positions = getOtherPartPositions(pPos, pState);
@@ -165,21 +169,16 @@ public class ATMultiblock {
 	}
 
 	/**
-	 Used to make sure that only one item is dropped when the multiblock is broken. <br>
-	 Some code taken from {@link net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart(Level, BlockPos, BlockState, Player) net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart}
+	 * Breaks this part of the multiblock when another part is broken.
+	 * Called when this block receives an update.
 	 */
-	public void playerWillDestroy(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
-		if (!pLevel.isClientSide && pPlayer.isCreative()) {
-			BlockPos[] positions = getOtherPartPositions(pPos, pState);
-			BlockState[] states = getOtherPartStates(pPos, pState, pLevel);
-			for (int i = 0; i <= 2; i++) {
-				if (checkOtherParts(pPos, pState, pLevel)[i]) {
-					BlockState replacementState = states[i].hasProperty(BlockStateProperties.WATERLOGGED) && states[i].getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-					pLevel.setBlock(positions[i], replacementState, 35);
-					pLevel.levelEvent(pPlayer, 2001, positions[i], Block.getId(states[i]));
-				}
-			}
+	public <T extends Block> BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos, T object) {
+		if (!Arrays.equals(checkOtherParts(pCurrentPos, pState, pLevel), new boolean[]{true, true, true})) {
+			BlockState replacementState = pState.hasProperty(BlockStateProperties.WATERLOGGED) && pState.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+			pLevel.setBlock(pCurrentPos, replacementState, 35);
+			return replacementState;
 		}
+		return pState;
 	}
 
 	/**
@@ -235,7 +234,7 @@ public class ATMultiblock {
 	 * @param state This part's state
 	 * @return An array containing the BlockStates in this order: Above/below, above/below-left/right, left/right
 	 */
-	public BlockState[] getOtherPartStates(BlockPos pos, BlockState state, Level level) {
+	public BlockState[] getOtherPartStates(BlockPos pos, BlockState state, LevelAccessor level) {
 		BlockState[] toReturn = new BlockState[3];
 		BlockPos[] positions = getOtherPartPositions(pos, state);
 		for (int i = 0; i <= 2; i++) {
@@ -282,7 +281,7 @@ public class ATMultiblock {
 	 * @param state This part's state
 	 * @return An array containing a boolean value for each part in this order: Above/below, above/below-left/right, left/right
 	 */
-	public boolean[] checkOtherParts(BlockPos pos, BlockState state, Level level) {
+	public boolean[] checkOtherParts(BlockPos pos, BlockState state, LevelAccessor level) {
 		boolean[] toReturn = new boolean[3];
 		BlockState[] states = getOtherPartStates(pos, state, level);
 		ATMultiblockPart[] correctParts = getCorrectOtherParts(state);

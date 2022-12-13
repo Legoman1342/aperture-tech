@@ -54,5 +54,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.unlockedBy("has_iron_ingot", inventoryTrigger(ItemPredicate.Builder.item()
 						.of(Tags.Items.INGOTS_IRON).build()))
 				.save(finishedRecipeConsumer);
+
+		//Surface button
+		ShapedRecipeBuilder.shaped(BlockRegistration.SURFACE_BUTTON.get())
+				.define('i', Tags.Items.INGOTS_IRON)
+				.define('c', Items.RED_CONCRETE)
+				.define('p', Items.HEAVY_WEIGHTED_PRESSURE_PLATE)
+				.pattern("   ")
+				.pattern("ccc")
+				.pattern("ipi")
+				.unlockedBy("has_iron_ingot", inventoryTrigger(ItemPredicate.Builder.item()
+						.of(Tags.Items.INGOTS_IRON).build()))
+				.save(finishedRecipeConsumer);
 	}
 }
