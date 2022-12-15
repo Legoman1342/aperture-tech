@@ -4,13 +4,14 @@ import com.Legoman1342.blocks.ATMultiblock;
 import com.Legoman1342.blocks.ATMultiblock.ATMultiblockPart;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.BasePressurePlateBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -18,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -26,17 +28,22 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.stream.Stream;
 
-public class SurfaceButton extends Block {
+public class SurfaceButton extends BasePressurePlateBlock {
 
 	Logger LOGGER = LogManager.getLogger();
-
-	ATMultiblock multiblock = new ATMultiblock(true, true, true, FACING, PART);
 
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 	public static final EnumProperty<ATMultiblockPart> PART = EnumProperty.create("part", ATMultiblockPart.class);
 	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+	protected static final AABB BOTTOM_LEFT_AABB = new AABB(0D, 0.125D, 0.375D, 0.625D, 0.375D, 1D);
+	protected static final AABB BOTTOM_RIGHT_AABB = new AABB(0.375D, 0.125D, 0.375D, 1D, 0.375D, 1D);
+	protected static final AABB TOP_LEFT_AABB = new AABB(0D, 0.125D, 0D, 0.625D, 0.375D, 0.625D);
+	protected static final AABB TOP_RIGHT_AABB = new AABB(0.375D, 0.125D, 0D, 1D, 0.375D, 0.625D);
+
+	ATMultiblock multiblock = new ATMultiblock(true, true, true, FACING, PART);
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
@@ -64,6 +71,56 @@ public class SurfaceButton extends Block {
 	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
 		multiblock.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
 	}
+
+	@Override
+	protected void playOnSound(LevelAccessor pLevel, BlockPos pPos) {
+		//TODO
+	}
+
+	@Override
+	protected void playOffSound(LevelAccessor pLevel, BlockPos pPos) {
+		//TODO
+	}
+
+	public boolean isSignalSource(BlockState pState) {
+		return true;
+	}
+
+	@Override
+	protected int getSignalStrength(Level pLevel, BlockPos pPos) {
+		LOGGER.info("getSignalStrength");
+		BlockState state = pLevel.getBlockState(pPos);
+		AABB aabb = switch (state.getValue(PART)) {
+			case BOTTOM_LEFT -> BOTTOM_LEFT_AABB.move(pPos);
+			case BOTTOM_RIGHT -> BOTTOM_RIGHT_AABB.move(pPos);
+			case TOP_LEFT -> TOP_LEFT_AABB.move(pPos);
+			case TOP_RIGHT -> TOP_RIGHT_AABB.move(pPos);
+		};
+		List<? extends LivingEntity> entitiesOnButton = pLevel.getEntitiesOfClass(LivingEntity.class, aabb);
+		LOGGER.info(entitiesOnButton);
+
+		if (!entitiesOnButton.isEmpty()) {
+			LOGGER.info("Entities on button");
+			for(Entity entity : entitiesOnButton) {
+				if (!entity.isIgnoringBlockTriggers()) {
+					LOGGER.info("Powered");
+					return 15;
+				}
+			}
+		}
+		return 0;
+	}
+
+	@Override
+	protected int getSignalForState(BlockState pState) {
+		return pState.getValue(POWERED) ? 15 : 0;
+	}
+
+	@Override
+	protected BlockState setSignalForState(BlockState pState, int pStrength) {
+		return pState.setValue(POWERED, pStrength > 0);
+	}
+
 
 	@Override
 	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
