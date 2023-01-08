@@ -38,10 +38,6 @@ public class SurfaceButton extends BasePressurePlateBlock {
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 	public static final EnumProperty<ATMultiblockPart> PART = EnumProperty.create("part", ATMultiblockPart.class);
 	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-	protected static final AABB BOTTOM_LEFT_AABB = new AABB(0D, 0.125D, 0.375D, 0.625D, 0.375D, 1D);
-	protected static final AABB BOTTOM_RIGHT_AABB = new AABB(0.375D, 0.125D, 0.375D, 1D, 0.375D, 1D);
-	protected static final AABB TOP_LEFT_AABB = new AABB(0D, 0.125D, 0D, 0.625D, 0.375D, 0.625D);
-	protected static final AABB TOP_RIGHT_AABB = new AABB(0.375D, 0.125D, 0D, 1D, 0.375D, 0.625D);
 
 	ATMultiblock multiblock = new ATMultiblock(true, true, true, FACING, PART);
 
@@ -90,11 +86,43 @@ public class SurfaceButton extends BasePressurePlateBlock {
 	protected int getSignalStrength(Level pLevel, BlockPos pPos) {
 		LOGGER.info("getSignalStrength");
 		BlockState state = pLevel.getBlockState(pPos);
-		AABB aabb = switch (state.getValue(PART)) {
-			case BOTTOM_LEFT -> BOTTOM_LEFT_AABB.move(pPos);
-			case BOTTOM_RIGHT -> BOTTOM_RIGHT_AABB.move(pPos);
-			case TOP_LEFT -> TOP_LEFT_AABB.move(pPos);
-			case TOP_RIGHT -> TOP_RIGHT_AABB.move(pPos);
+		AABB aabb = switch (state.getValue(FACING)) {
+			case UP ->  switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> UP_BOTTOM_LEFT_AABB.move(pPos);
+				case BOTTOM_RIGHT -> UP_BOTTOM_RIGHT_AABB.move(pPos);
+				case TOP_LEFT -> UP_TOP_LEFT_AABB.move(pPos);
+				case TOP_RIGHT -> UP_TOP_RIGHT_AABB.move(pPos);
+			};
+			case DOWN -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> DOWN_BOTTOM_LEFT_AABB.move(pPos);
+				case BOTTOM_RIGHT -> DOWN_BOTTOM_RIGHT_AABB.move(pPos);
+				case TOP_LEFT -> DOWN_TOP_LEFT_AABB.move(pPos);
+				case TOP_RIGHT -> DOWN_TOP_RIGHT_AABB.move(pPos);
+			};
+			case NORTH -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> NORTH_BOTTOM_LEFT_AABB.move(pPos);
+				case BOTTOM_RIGHT -> NORTH_BOTTOM_RIGHT_AABB.move(pPos);
+				case TOP_LEFT -> NORTH_TOP_LEFT_AABB.move(pPos);
+				case TOP_RIGHT -> NORTH_TOP_RIGHT_AABB.move(pPos);
+			};
+			case EAST -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> EAST_BOTTOM_LEFT_AABB.move(pPos);
+				case BOTTOM_RIGHT -> EAST_BOTTOM_RIGHT_AABB.move(pPos);
+				case TOP_LEFT -> EAST_TOP_LEFT_AABB.move(pPos);
+				case TOP_RIGHT -> EAST_TOP_RIGHT_AABB.move(pPos);
+			};
+			case SOUTH -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> SOUTH_BOTTOM_LEFT_AABB.move(pPos);
+				case BOTTOM_RIGHT -> SOUTH_BOTTOM_RIGHT_AABB.move(pPos);
+				case TOP_LEFT -> SOUTH_TOP_LEFT_AABB.move(pPos);
+				case TOP_RIGHT -> SOUTH_TOP_RIGHT_AABB.move(pPos);
+			};
+			case WEST -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> WEST_BOTTOM_LEFT_AABB.move(pPos);
+				case BOTTOM_RIGHT -> WEST_BOTTOM_RIGHT_AABB.move(pPos);
+				case TOP_LEFT -> WEST_TOP_LEFT_AABB.move(pPos);
+				case TOP_RIGHT -> WEST_TOP_RIGHT_AABB.move(pPos);
+			};
 		};
 		List<? extends LivingEntity> entitiesOnButton = pLevel.getEntitiesOfClass(LivingEntity.class, aabb);
 		LOGGER.info(entitiesOnButton);
@@ -171,6 +199,34 @@ public class SurfaceButton extends BasePressurePlateBlock {
 			};
 		};
 	}
+
+	//Defining AABBs (Axis Aligned Bounding Boxes) used for detecting collisions
+	protected static final AABB UP_BOTTOM_LEFT_AABB = new AABB(0, 0.125, 0.375, 0.625, 0.375, 1);
+	protected static final AABB UP_BOTTOM_RIGHT_AABB = new AABB(0.375, 0.125, 0.375, 1, 0.375, 1);
+	protected static final AABB UP_TOP_LEFT_AABB = new AABB(0, 0.125, 0, 0.625, 0.375, 0.625);
+	protected static final AABB UP_TOP_RIGHT_AABB = new AABB(0.375, 0.125, 0, 1, 0.375, 0.625);
+	protected static final AABB DOWN_BOTTOM_LEFT_AABB = new AABB(0, 0.625, 0, 0.625, 0.875, 0.625);
+	protected static final AABB DOWN_BOTTOM_RIGHT_AABB = new AABB(0.375, 0.625, 0, 1, 0.875, 0.625);
+	protected static final AABB DOWN_TOP_LEFT_AABB = new AABB(0, 0.625, 0.375, 0.625, 0.875, 1);
+	protected static final AABB DOWN_TOP_RIGHT_AABB = new AABB(0.375, 0.625, 0.375, 1, 0.875, 1);
+	protected static final AABB NORTH_BOTTOM_LEFT_AABB = new AABB(0,  0.375, 0.625, 0.625, 1, 0.875);
+	protected static final AABB NORTH_BOTTOM_RIGHT_AABB = new AABB(0.375, 0.375, 0.625, 1, 1, 0.875);
+	protected static final AABB NORTH_TOP_LEFT_AABB = new AABB(0, 0, 0.625, 0.625, 0.625, 0.875);
+	protected static final AABB NORTH_TOP_RIGHT_AABB = new AABB(0.375, 0.375, 0.625, 1, 1, 0.875);
+	protected static final AABB SOUTH_BOTTOM_LEFT_AABB = new AABB (0.375,0.375,0.125,1,1,0.375);
+	protected static final AABB SOUTH_BOTTOM_RIGHT_AABB = new AABB(0, 0.375, 0.125, 0.625, 1, 0.375);
+	protected static final AABB SOUTH_TOP_LEFT_AABB = new AABB(0.375, 0, 0.125, 1, 0.625, 0.375);
+	protected static final AABB SOUTH_TOP_RIGHT_AABB = new AABB(0, 0, 0.125, 0.625, 0.625, 0.375);
+	protected static final AABB EAST_BOTTOM_LEFT_AABB = new AABB(0.125, 0.375, 0, 0.375, 1, 0.625);
+	protected static final AABB EAST_BOTTOM_RIGHT_AABB = new AABB(0.125, 0.375, 0.375, 0.375, 1, 1);
+	protected static final AABB EAST_TOP_LEFT_AABB = new AABB(0.125, 0, 0, 0.375, 0.625, 0.625);
+	protected static final AABB EAST_TOP_RIGHT_AABB = new AABB(0.125, 0, 0.375, 0.375, 0.625, 1);
+	protected static final AABB WEST_BOTTOM_LEFT_AABB = new AABB(0.625, 0.375, 0.375, 0.875, 1, 1);
+	protected static final AABB WEST_BOTTOM_RIGHT_AABB = new AABB(0.625, 0.375, 0, 0.875, 1, 0.625);
+	protected static final AABB WEST_TOP_LEFT_AABB = new AABB(0.625, 0, 0.375, 0.875, 0.625, 1);
+	protected static final AABB WEST_TOP_RIGHT_AABB = new AABB(0.625, 0, 0, 0.875, 0.625, 0.625);
+
+
 
 	//Defining VoxelShapes used for different block states
 	private static final VoxelShape UP_BOTTOM_LEFT_ACTIVATED = Stream.of(
@@ -342,10 +398,10 @@ public class SurfaceButton extends BasePressurePlateBlock {
 			Block.box(9, 7, 13, 16, 10, 14)
 	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 	private static final VoxelShape SOUTH_BOTTOM_LEFT_ACTIVATED = Stream.of(
-			Block.box(4, 0, 14, 16, 8, 16),
-			Block.box(8, 8, 14, 16, 12, 16),
-			Block.box(0, 0, 15, 4, 2, 16),
-			Block.box(14, 12, 15, 16, 16, 16)
+			Block.box(4, 8, 0, 16, 16, 2),
+			Block.box(8, 4, 0, 16, 8, 2),
+			Block.box(14, 0, 0, 16, 4, 1),
+			Block.box(0, 14, 0, 4, 16, 1)
 	).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 	private static final VoxelShape SOUTH_BOTTOM_LEFT_DEACTIVATED = Stream.of(
 			Block.box(4, 8, 0, 16, 16, 2),
