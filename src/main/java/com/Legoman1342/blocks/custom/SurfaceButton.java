@@ -83,8 +83,12 @@ public class SurfaceButton extends BasePressurePlateBlock {
 	}
 
 	@Override
+	protected int getPressedTime() {
+		return 0;
+	}
+
+	@Override
 	protected int getSignalStrength(Level pLevel, BlockPos pPos) {
-		LOGGER.info("getSignalStrength");
 		BlockState state = pLevel.getBlockState(pPos);
 		AABB aabb = switch (state.getValue(FACING)) {
 			case UP ->  switch (state.getValue(PART)) {
@@ -125,13 +129,9 @@ public class SurfaceButton extends BasePressurePlateBlock {
 			};
 		};
 		List<? extends LivingEntity> entitiesOnButton = pLevel.getEntitiesOfClass(LivingEntity.class, aabb);
-		LOGGER.info(entitiesOnButton);
-
 		if (!entitiesOnButton.isEmpty()) {
-			LOGGER.info("Entities on button");
 			for(Entity entity : entitiesOnButton) {
 				if (!entity.isIgnoringBlockTriggers()) {
-					LOGGER.info("Powered");
 					return 15;
 				}
 			}
