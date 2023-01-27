@@ -1,5 +1,6 @@
 package com.Legoman1342.entities.custom;
 
+import com.Legoman1342.blocks.custom.SurfaceButton;
 import com.Legoman1342.items.ItemRegistration;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.NonNullList;
@@ -94,7 +95,7 @@ public class CubeEntity extends Mob implements IAnimatable {
 
 		//If the cube is activating a pressure plate, turn the light ring orange
 		BlockState feetBlockState = this.getFeetBlockState();
-		if (isPoweredPressurePlate(feetBlockState)) {
+		if (isPoweredPressurePlateOrSurfaceButton(feetBlockState)) {
 			entityData.set(ACTIVATING, true);
 		} else {
 			entityData.set(ACTIVATING, false);
@@ -142,14 +143,16 @@ public class CubeEntity extends Mob implements IAnimatable {
 	}
 
 	/**
-	 * Convenience method used to determine if a block is a powered pressure plate or weighted pressure plate.
+	 * Convenience method used to determine if a block is a powered pressure plate, weighted pressure plate, or surface button.
 	 */
-	public boolean isPoweredPressurePlate(BlockState blockState) {
+	public boolean isPoweredPressurePlateOrSurfaceButton(BlockState blockState) {
 		Block block = blockState.getBlock();
 		if (block instanceof PressurePlateBlock) {
 			return blockState.getValue(PressurePlateBlock.POWERED);
 		} else if (block instanceof WeightedPressurePlateBlock) {
 			return blockState.getValue(WeightedPressurePlateBlock.POWER) > 0;
+		} else if (block instanceof SurfaceButton) {
+			return blockState.getValue(SurfaceButton.POWERED);
 		} else {
 			return false;
 		}
