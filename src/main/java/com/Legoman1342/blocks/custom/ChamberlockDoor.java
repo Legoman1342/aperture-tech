@@ -80,15 +80,15 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	 */
 	@Override
 	public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
-		BlockPos[] positions = multiblock.getOtherPartPositions(pPos, pState);
+		BlockState[] states = multiblock.getOtherPartStates(pPos, pState, pLevel);
 		if (pLevel.hasNeighborSignal(pPos)) { //If I'm powered...
 			if (!pLevel.getBlockState(pPos).getValue(OPEN)) { //If I'm not already open, play a sound
 				pLevel.playSound(null, pPos, SoundRegistration.CHAMBERLOCK_DOOR_OPEN.get(), SoundSource.BLOCKS, 1, 1);
 			}
 			pLevel.setBlock(pPos, pState.setValue(POWERED, true).setValue(OPEN, true), 3); //...open me and mark me as powered
-		} else if (pLevel.getBlockState(positions[0]).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && pLevel.getBlockState(positions[0]).getValue(POWERED)
-				|| pLevel.getBlockState(positions[1]).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && pLevel.getBlockState(positions[1]).getValue(POWERED)
-				|| pLevel.getBlockState(positions[2]).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && pLevel.getBlockState(positions[2]).getValue(POWERED)) { //If I'm not powered, but one of the other door parts is...
+		} else if (states[0].getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && states[0].getValue(POWERED)
+				|| states[1].getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && states[1].getValue(POWERED)
+				|| states[2].getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get() && states[2].getValue(POWERED)) { //If I'm not powered, but one of the other door parts is...
 			pLevel.setBlock(pPos, pState.setValue(POWERED, false).setValue(OPEN, true), 3); //...just open me
 		} else { //Otherwise, close the door
 			if (pLevel.getBlockState(pPos).getValue(POWERED)) { //If I was the powered part of the door, play a sound as I close
