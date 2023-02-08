@@ -2,8 +2,11 @@ package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blocks.ATMultiblock;
 import com.Legoman1342.blocks.ATMultiblock.ATMultiblockPart;
+import com.Legoman1342.blocks.BlockRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.protocol.game.DebugPackets;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -29,6 +32,7 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 public class SurfaceButton extends BasePressurePlateBlock {
@@ -87,47 +91,16 @@ public class SurfaceButton extends BasePressurePlateBlock {
 		return 0;
 	}
 
+	/**
+	 * Presses/unpresses segments of the button when they're stepped on/off.
+	 */
 	@Override
 	protected int getSignalStrength(Level pLevel, BlockPos pPos) {
 		BlockState state = pLevel.getBlockState(pPos);
-		AABB aabb = switch (state.getValue(FACING)) {
-			case UP ->  switch (state.getValue(PART)) {
-				case BOTTOM_LEFT -> UP_BOTTOM_LEFT_AABB.move(pPos);
-				case BOTTOM_RIGHT -> UP_BOTTOM_RIGHT_AABB.move(pPos);
-				case TOP_LEFT -> UP_TOP_LEFT_AABB.move(pPos);
-				case TOP_RIGHT -> UP_TOP_RIGHT_AABB.move(pPos);
-			};
-			case DOWN -> switch (state.getValue(PART)) {
-				case BOTTOM_LEFT -> DOWN_BOTTOM_LEFT_AABB.move(pPos);
-				case BOTTOM_RIGHT -> DOWN_BOTTOM_RIGHT_AABB.move(pPos);
-				case TOP_LEFT -> DOWN_TOP_LEFT_AABB.move(pPos);
-				case TOP_RIGHT -> DOWN_TOP_RIGHT_AABB.move(pPos);
-			};
-			case NORTH -> switch (state.getValue(PART)) {
-				case BOTTOM_LEFT -> NORTH_BOTTOM_LEFT_AABB.move(pPos);
-				case BOTTOM_RIGHT -> NORTH_BOTTOM_RIGHT_AABB.move(pPos);
-				case TOP_LEFT -> NORTH_TOP_LEFT_AABB.move(pPos);
-				case TOP_RIGHT -> NORTH_TOP_RIGHT_AABB.move(pPos);
-			};
-			case EAST -> switch (state.getValue(PART)) {
-				case BOTTOM_LEFT -> EAST_BOTTOM_LEFT_AABB.move(pPos);
-				case BOTTOM_RIGHT -> EAST_BOTTOM_RIGHT_AABB.move(pPos);
-				case TOP_LEFT -> EAST_TOP_LEFT_AABB.move(pPos);
-				case TOP_RIGHT -> EAST_TOP_RIGHT_AABB.move(pPos);
-			};
-			case SOUTH -> switch (state.getValue(PART)) {
-				case BOTTOM_LEFT -> SOUTH_BOTTOM_LEFT_AABB.move(pPos);
-				case BOTTOM_RIGHT -> SOUTH_BOTTOM_RIGHT_AABB.move(pPos);
-				case TOP_LEFT -> SOUTH_TOP_LEFT_AABB.move(pPos);
-				case TOP_RIGHT -> SOUTH_TOP_RIGHT_AABB.move(pPos);
-			};
-			case WEST -> switch (state.getValue(PART)) {
-				case BOTTOM_LEFT -> WEST_BOTTOM_LEFT_AABB.move(pPos);
-				case BOTTOM_RIGHT -> WEST_BOTTOM_RIGHT_AABB.move(pPos);
-				case TOP_LEFT -> WEST_TOP_LEFT_AABB.move(pPos);
-				case TOP_RIGHT -> WEST_TOP_RIGHT_AABB.move(pPos);
-			};
-		};
+		AABB aabb = getAABBForState(state, pPos);
+
+		this.neighborChanged(state, pLevel, pPos, state.getBlock(), pPos.above(), false);
+
 		List<? extends LivingEntity> entitiesOnButton = pLevel.getEntitiesOfClass(LivingEntity.class, aabb);
 		if (!entitiesOnButton.isEmpty()) {
 			for(Entity entity : entitiesOnButton) {
@@ -137,6 +110,31 @@ public class SurfaceButton extends BasePressurePlateBlock {
 			}
 		}
 		return 0;
+	}
+
+	/**
+	 * Presses/unpresses other segments of a button when one is pressed/unpressed.
+	 */
+	@Override
+	public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
+		BlockState fromState = pLevel.getBlockState(pFromPos);
+		BlockPos[] otherPositions = multiblock.getOtherPartPositions(pPos, pState);
+		boolean[] otherPartsCorrect = multiblock.checkOtherParts(pPos, pState, pLevel);
+		int fromPosIndex = -1;
+
+		for (int i = 0; i < 3; i++) {
+			if (otherPositions[i].equals(pFromPos)) {
+				fromPosIndex = i;
+			}
+		}
+
+		if (fromPosIndex != -1 && otherPartsCorrect[fromPosIndex]) {
+			if (fromState.getValue(POWERED)) {
+				pLevel.setBlock(pPos, pState.setValue(POWERED, true), 3);
+			} else {
+				pLevel.setBlock(pPos, pState.setValue(POWERED, false), 3);
+			}
+		}
 	}
 
 	@Override
@@ -153,6 +151,47 @@ public class SurfaceButton extends BasePressurePlateBlock {
 	@Override
 	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
 		return multiblock.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos, this);
+	}
+
+	public AABB getAABBForState(BlockState state, BlockPos pos) {
+		return switch (state.getValue(FACING)) {
+			case UP ->  switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> UP_BOTTOM_LEFT_AABB.move(pos);
+				case BOTTOM_RIGHT -> UP_BOTTOM_RIGHT_AABB.move(pos);
+				case TOP_LEFT -> UP_TOP_LEFT_AABB.move(pos);
+				case TOP_RIGHT -> UP_TOP_RIGHT_AABB.move(pos);
+			};
+			case DOWN -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> DOWN_BOTTOM_LEFT_AABB.move(pos);
+				case BOTTOM_RIGHT -> DOWN_BOTTOM_RIGHT_AABB.move(pos);
+				case TOP_LEFT -> DOWN_TOP_LEFT_AABB.move(pos);
+				case TOP_RIGHT -> DOWN_TOP_RIGHT_AABB.move(pos);
+			};
+			case NORTH -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> NORTH_BOTTOM_LEFT_AABB.move(pos);
+				case BOTTOM_RIGHT -> NORTH_BOTTOM_RIGHT_AABB.move(pos);
+				case TOP_LEFT -> NORTH_TOP_LEFT_AABB.move(pos);
+				case TOP_RIGHT -> NORTH_TOP_RIGHT_AABB.move(pos);
+			};
+			case EAST -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> EAST_BOTTOM_LEFT_AABB.move(pos);
+				case BOTTOM_RIGHT -> EAST_BOTTOM_RIGHT_AABB.move(pos);
+				case TOP_LEFT -> EAST_TOP_LEFT_AABB.move(pos);
+				case TOP_RIGHT -> EAST_TOP_RIGHT_AABB.move(pos);
+			};
+			case SOUTH -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> SOUTH_BOTTOM_LEFT_AABB.move(pos);
+				case BOTTOM_RIGHT -> SOUTH_BOTTOM_RIGHT_AABB.move(pos);
+				case TOP_LEFT -> SOUTH_TOP_LEFT_AABB.move(pos);
+				case TOP_RIGHT -> SOUTH_TOP_RIGHT_AABB.move(pos);
+			};
+			case WEST -> switch (state.getValue(PART)) {
+				case BOTTOM_LEFT -> WEST_BOTTOM_LEFT_AABB.move(pos);
+				case BOTTOM_RIGHT -> WEST_BOTTOM_RIGHT_AABB.move(pos);
+				case TOP_LEFT -> WEST_TOP_LEFT_AABB.move(pos);
+				case TOP_RIGHT -> WEST_TOP_RIGHT_AABB.move(pos);
+			};
+		};
 	}
 
 	@Override
