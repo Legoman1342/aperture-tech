@@ -2,11 +2,8 @@ package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blocks.ATMultiblock;
 import com.Legoman1342.blocks.ATMultiblock.ATMultiblockPart;
-import com.Legoman1342.blocks.BlockRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.network.protocol.game.DebugPackets;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -14,8 +11,10 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BasePressurePlateBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -27,18 +26,12 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class SurfaceButton extends BasePressurePlateBlock {
-
-	Logger LOGGER = LogManager.getLogger();
-
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 	public static final EnumProperty<ATMultiblockPart> PART = EnumProperty.create("part", ATMultiblockPart.class);
 	public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
@@ -70,6 +63,17 @@ public class SurfaceButton extends BasePressurePlateBlock {
 	@Override
 	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
 		multiblock.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
+	}
+
+	/**
+	 * Used to determine whether the block can exist in its current state or whether it should break.
+	 * For example, pressure plates use this to break if there isn't a supporting block under them.
+	 */
+	@Override
+	public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+		Direction facing = pState.getValue(FACING);
+		BlockPos behindPos = pPos.relative(facing.getOpposite());
+		return canSupportRigidBlock(pLevel, behindPos);
 	}
 
 	@Override
@@ -150,6 +154,12 @@ public class SurfaceButton extends BasePressurePlateBlock {
 
 	@Override
 	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+		if (!canSurvive(pState, pLevel, pCurrentPos)) {
+			BlockState replacementState = pState.hasProperty(BlockStateProperties.WATERLOGGED) && pState.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
+			pLevel.setBlock(pCurrentPos, replacementState, 3);
+			return replacementState;
+		}
+
 		return multiblock.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos, this);
 	}
 

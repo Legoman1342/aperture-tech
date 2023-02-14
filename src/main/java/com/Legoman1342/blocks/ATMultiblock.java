@@ -73,6 +73,13 @@ public class ATMultiblock {
 		}
 	}
 
+	/**
+	 * Places the first part of the multiblock in the correct state, allowing
+	 * {@link ATMultiblock#setPlacedBy(Level, BlockPos, BlockState, LivingEntity, ItemStack) setPlacedBy} to place the other parts.
+	 * @param object  The class for the multiblock that's being placed.  Usually, when this method is being called
+	 *                   in a block's class, <code>this</code> should be passed in.
+	 * @return
+	 */
 	public  <T extends Block> BlockState getStateForPlacement(BlockPlaceContext pContext, T object) {
 		Level level = pContext.getLevel();
 		BlockPos pos = pContext.getClickedPos();
@@ -126,17 +133,17 @@ public class ATMultiblock {
 		};
 		Direction leftDirection = rightDirection.getOpposite();
 
-		boolean canPlaceAbove = level.getBlockState(pos.relative(upDirection)).canBeReplaced(pContext);
-		boolean canPlaceBelow = level.getBlockState(pos.relative(downDirection)).canBeReplaced(pContext);
-		boolean canPlaceLeft = level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext);
-		boolean canPlaceRight = level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext);
-		boolean canPlaceAboveLeft = level.getBlockState(pos.relative(upDirection).relative(leftDirection)).canBeReplaced(pContext);
-		boolean canPlaceAboveRight = level.getBlockState(pos.relative(upDirection).relative(rightDirection)).canBeReplaced(pContext);
-		boolean canPlaceBelowLeft = level.getBlockState(pos.relative(downDirection).relative(leftDirection)).canBeReplaced(pContext);
-		boolean canPlaceBelowRight = level.getBlockState(pos.relative(downDirection).relative(rightDirection)).canBeReplaced(pContext);
-
 		BlockState toReturn = object.defaultBlockState()
 				.setValue(facingProperty, facing);
+
+		boolean canPlaceAbove = level.getBlockState(pos.relative(upDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(upDirection));
+		boolean canPlaceBelow = level.getBlockState(pos.relative(downDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection));
+		boolean canPlaceLeft = level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(leftDirection));
+		boolean canPlaceRight = level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(rightDirection));
+		boolean canPlaceAboveLeft = level.getBlockState(pos.relative(upDirection).relative(leftDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(upDirection).relative(leftDirection));
+		boolean canPlaceAboveRight = level.getBlockState(pos.relative(upDirection).relative(rightDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(upDirection).relative(rightDirection));
+		boolean canPlaceBelowLeft = level.getBlockState(pos.relative(downDirection).relative(leftDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection).relative(leftDirection));
+		boolean canPlaceBelowRight = level.getBlockState(pos.relative(downDirection).relative(rightDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection).relative(rightDirection));
 
 		if (canPlaceAbove) {
 			if (canPlaceRight && canPlaceAboveRight) {
@@ -171,9 +178,13 @@ public class ATMultiblock {
 	 * Called when this block receives an update.
 	 */
 	public <T extends Block> BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos, T object) {
+		BlockState replacementState = pState.hasProperty(BlockStateProperties.WATERLOGGED) && pState.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
 		if (!Arrays.equals(checkOtherParts(pCurrentPos, pState, pLevel), new boolean[]{true, true, true})) {
-			BlockState replacementState = pState.hasProperty(BlockStateProperties.WATERLOGGED) && pState.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-			pLevel.setBlock(pCurrentPos, replacementState, 35);
+			pLevel.setBlock(pCurrentPos, replacementState, 3);
+			return replacementState;
+		}
+		if (!pState.canSurvive(pLevel, pCurrentPos)) {
+			pLevel.destroyBlock(pCurrentPos, true);
 			return replacementState;
 		}
 		return pState;
