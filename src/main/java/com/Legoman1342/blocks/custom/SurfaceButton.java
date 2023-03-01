@@ -30,7 +30,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SurfaceButton extends BasePressurePlateBlock {
@@ -103,11 +105,34 @@ public class SurfaceButton extends BasePressurePlateBlock {
 	@Override
 	protected int getSignalStrength(Level pLevel, BlockPos pPos) {
 		BlockState state = pLevel.getBlockState(pPos);
-		AABB aabb = getAABBForState(state, pPos);
+		BlockPos[] otherPositions = multiblock.getOtherPartPositions(pPos, state);
+		BlockState[] otherStates = multiblock.getOtherPartStates(pPos, state, pLevel);
+		AABB[] aabbs = {
+				getAABBForState(state, pPos),
+				getAABBForState(otherStates[0], otherPositions[0]),
+				getAABBForState(otherStates[1], otherPositions[1]),
+				getAABBForState(otherStates[2], otherPositions[2])
+		};
 
 		this.neighborChanged(state, pLevel, pPos, state.getBlock(), pPos.above(), false);
 
-		List<? extends LivingEntity> entitiesOnButton = pLevel.getEntitiesOfClass(LivingEntity.class, aabb);
+		List<? extends LivingEntity>[] entitiesOnParts = new List[]{
+				pLevel.getEntitiesOfClass(LivingEntity.class, aabbs[0]),
+				pLevel.getEntitiesOfClass(LivingEntity.class, aabbs[1]),
+				pLevel.getEntitiesOfClass(LivingEntity.class, aabbs[2]),
+				pLevel.getEntitiesOfClass(LivingEntity.class, aabbs[3])
+		};
+		List<? extends LivingEntity> entitiesOnButton = Stream.concat(
+				Stream.concat(
+						entitiesOnParts[0].stream(),
+						entitiesOnParts[1].stream()
+				),
+				Stream.concat(
+						entitiesOnParts[2].stream(),
+						entitiesOnParts[3].stream()
+				)
+		).toList();
+
 		if (!entitiesOnButton.isEmpty()) {
 			for(Entity entity : entitiesOnButton) {
 				if (!entity.isIgnoringBlockTriggers()) {
