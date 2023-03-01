@@ -2,8 +2,10 @@ package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blocks.ATMultiblock;
 import com.Legoman1342.blocks.ATMultiblock.ATMultiblockPart;
+import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -78,12 +80,12 @@ public class SurfaceButton extends BasePressurePlateBlock {
 
 	@Override
 	protected void playOnSound(LevelAccessor pLevel, BlockPos pPos) {
-		//TODO
+		pLevel.playSound(null, pPos, SoundRegistration.SURFACE_BUTTON_ACTIVATE.get(), SoundSource.BLOCKS, 0.3F, 1);
 	}
 
 	@Override
 	protected void playOffSound(LevelAccessor pLevel, BlockPos pPos) {
-		//TODO
+		pLevel.playSound(null, pPos, SoundRegistration.SURFACE_BUTTON_DEACTIVATE.get(), SoundSource.BLOCKS, 0.3F, 1);
 	}
 
 	public boolean isSignalSource(BlockState pState) {

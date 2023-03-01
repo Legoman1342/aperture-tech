@@ -11,5 +11,17 @@
     "sounds": [
       "aperturetech:chamberlock_door_close"
     ]
+  },
+  "surface_button_activate": {
+    "subtitle": "sounds.aperturetech.surface_button_activate",
+    "sounds": [
+      "aperturetech:surface_button_activate"
+    ]
+  },
+  "surface_button_deactivate": {
+    "subtitle": "sounds.aperturetech.surface_button_deactivate",
+    "sounds": [
+      "aperturetech:surface_button_deactivate"
+    ]
   }
 }

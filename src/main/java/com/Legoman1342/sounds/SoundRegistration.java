@@ -18,8 +18,11 @@ public class SoundRegistration {
 		SOUND_EVENTS.register(bus);
 	}
 
+	//IMPORTANT: When adding sounds, make sure to update sounds.json
 	public static final RegistryObject<SoundEvent> CHAMBERLOCK_DOOR_OPEN = registerSoundEvent("chamberlock_door_open");
 	public static final RegistryObject<SoundEvent> CHAMBERLOCK_DOOR_CLOSE = registerSoundEvent("chamberlock_door_close");
+	public static final RegistryObject<SoundEvent> SURFACE_BUTTON_ACTIVATE = registerSoundEvent("surface_button_activate");
+	public static final RegistryObject<SoundEvent> SURFACE_BUTTON_DEACTIVATE = registerSoundEvent("surface_button_deactivate");
 
 	/**
 	 * Convenience method used for easier registering.
