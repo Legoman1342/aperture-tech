@@ -181,12 +181,6 @@ public class SurfaceButton extends BasePressurePlateBlock {
 
 	@Override
 	public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-		if (!canSurvive(pState, pLevel, pCurrentPos)) {
-			BlockState replacementState = pState.hasProperty(BlockStateProperties.WATERLOGGED) && pState.getValue(BlockStateProperties.WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState();
-			pLevel.setBlock(pCurrentPos, replacementState, 3);
-			return replacementState;
-		}
-
 		return multiblock.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos, this);
 	}
 

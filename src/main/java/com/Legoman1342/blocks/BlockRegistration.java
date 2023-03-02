@@ -52,7 +52,6 @@ public class BlockRegistration {
 					.Properties.of(Material.METAL)
 					.sound(SoundType.METAL)
 					.strength(2.0f)
-					.requiresCorrectToolForDrops()
 					.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
 	public static final RegistryObject<Block> SURFACE_BUTTON = registerBlock("surface_button", () -> new SurfaceButton(
@@ -60,7 +59,6 @@ public class BlockRegistration {
 					.Properties.of(Material.METAL)
 					.sound(SoundType.METAL)
 					.strength(2.0f)
-					.requiresCorrectToolForDrops()
 					.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
 
