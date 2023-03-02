@@ -40,7 +40,6 @@ public class BlockRegistration {
 					.Properties.of(Material.METAL)
 					.sound(SoundType.LANTERN)
 					.strength(2.0f)
-					.requiresCorrectToolForDrops()
 					.noOcclusion()),
 			ATCreativeTab.AT_CREATIVE_TAB);
 	public static final RegistryObject<Block> CATWALK_STAIRS = registerBlock("catwalk_stairs", () -> new CatwalkStairs(
