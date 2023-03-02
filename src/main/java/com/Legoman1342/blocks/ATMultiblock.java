@@ -136,12 +136,16 @@ public class ATMultiblock {
 		BlockState toReturn = object.defaultBlockState()
 				.setValue(facingProperty, facing);
 
-		boolean canPlaceAbove = level.getBlockState(pos.relative(upDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(upDirection));
+		boolean canPlaceAbove = level.getBlockState(pos.relative(upDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(upDirection)));
 		boolean canPlaceBelow = level.getBlockState(pos.relative(downDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection));
-		boolean canPlaceLeft = level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(leftDirection));
-		boolean canPlaceRight = level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(rightDirection));
-		boolean canPlaceAboveLeft = level.getBlockState(pos.relative(upDirection).relative(leftDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(upDirection).relative(leftDirection));
-		boolean canPlaceAboveRight = level.getBlockState(pos.relative(upDirection).relative(rightDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(upDirection).relative(rightDirection));
+
+		boolean debugCanBeReplacedLeft = level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext);
+		boolean debugCanSurviveLeft = ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(leftDirection)));
+		boolean canPlaceLeft = debugCanBeReplacedLeft && debugCanSurviveLeft;
+
+		boolean canPlaceRight = level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(rightDirection)));
+		boolean canPlaceAboveLeft = level.getBlockState(pos.relative(upDirection).relative(leftDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(upDirection).relative(leftDirection)));
+		boolean canPlaceAboveRight = level.getBlockState(pos.relative(upDirection).relative(rightDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(upDirection).relative(rightDirection)));
 		boolean canPlaceBelowLeft = level.getBlockState(pos.relative(downDirection).relative(leftDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection).relative(leftDirection));
 		boolean canPlaceBelowRight = level.getBlockState(pos.relative(downDirection).relative(rightDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection).relative(rightDirection));
 

@@ -14,6 +14,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -73,6 +74,16 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	@Override
 	public void setPlacedBy(Level pLevel, BlockPos pPos, BlockState pState, @Nullable LivingEntity pPlacer, ItemStack pStack) {
 		multiblock.setPlacedBy(pLevel, pPos, pState, pPlacer, pStack);
+	}
+
+	/**
+	 * Used to determine whether the block can exist in its current state or whether it should break.
+	 * For example, pressure plates use this to break if there isn't a supporting block under them.
+	 */
+	@Override
+	public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+		BlockPos below = pPos.below();
+		return canSupportRigidBlock(pLevel, below) || pLevel.getBlockState(below).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get();
 	}
 
 	/**
