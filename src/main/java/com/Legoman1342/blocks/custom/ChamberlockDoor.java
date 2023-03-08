@@ -82,8 +82,14 @@ public class ChamberlockDoor extends BaseEntityBlock {
 	 */
 	@Override
 	public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+		ATMultiblockPart part = pState.getValue(PART);
 		BlockPos below = pPos.below();
-		return canSupportRigidBlock(pLevel, below) || pLevel.getBlockState(below).getBlock() == BlockRegistration.CHAMBERLOCK_DOOR.get();
+		if (part == ATMultiblockPart.TOP_LEFT || part == ATMultiblockPart.TOP_RIGHT) {
+			return true;
+		} else if (part == ATMultiblockPart.BOTTOM_LEFT || part == ATMultiblockPart.BOTTOM_RIGHT) {
+			return canSupportRigidBlock(pLevel, below);
+		}
+		return true;
 	}
 
 	/**

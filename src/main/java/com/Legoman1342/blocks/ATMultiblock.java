@@ -35,6 +35,7 @@ public class ATMultiblock {
 	boolean canFaceHorizontally;
 	boolean canFaceUp;
 	boolean canFaceDown;
+	boolean canOnlyFaceHorizontally;
 	DirectionProperty facingProperty;
 	EnumProperty<ATMultiblockPart> partProperty;
 
@@ -51,6 +52,7 @@ public class ATMultiblock {
 		this.canFaceHorizontally = canFaceHorizontally;
 		this.canFaceUp = canFaceUp;
 		this.canFaceDown = canFaceDown;
+		this.canOnlyFaceHorizontally = !canFaceUp && !canFaceDown;
 		this.facingProperty = facingProperty;
 		this.partProperty = partProperty;
 	}
@@ -136,30 +138,35 @@ public class ATMultiblock {
 		BlockState toReturn = object.defaultBlockState()
 				.setValue(facingProperty, facing);
 
-		boolean canPlaceAbove = level.getBlockState(pos.relative(upDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(upDirection)));
-		boolean canPlaceBelow = level.getBlockState(pos.relative(downDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection));
+		boolean canPlaceAbove = level.getBlockState(pos.relative(upDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.TOP_LEFT).canSurvive(level, pos.relative(upDirection));
+		boolean canPlaceBelow = level.getBlockState(pos.relative(downDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_LEFT).canSurvive(level, pos.relative(downDirection));
 
-		boolean debugCanBeReplacedLeft = level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext);
-		boolean debugCanSurviveLeft = ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(leftDirection)));
-		boolean canPlaceLeft = debugCanBeReplacedLeft && debugCanSurviveLeft;
+		boolean canPlaceLeft;
+		boolean canPlaceRight;
+		if (canPlaceBelow) {
+			canPlaceLeft = level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.TOP_LEFT).canSurvive(level, pos.relative(leftDirection));
+			canPlaceRight = level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.TOP_RIGHT).canSurvive(level, pos.relative(rightDirection));
+		} else {
+			canPlaceLeft = level.getBlockState(pos.relative(leftDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_LEFT).canSurvive(level, pos.relative(leftDirection));
+			canPlaceRight = level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_RIGHT).canSurvive(level, pos.relative(rightDirection));
+		}
 
-		boolean canPlaceRight = level.getBlockState(pos.relative(rightDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(rightDirection)));
-		boolean canPlaceAboveLeft = level.getBlockState(pos.relative(upDirection).relative(leftDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(upDirection).relative(leftDirection)));
-		boolean canPlaceAboveRight = level.getBlockState(pos.relative(upDirection).relative(rightDirection)).canBeReplaced(pContext) && ((!canFaceUp && !canFaceDown) || toReturn.canSurvive(level, pos.relative(upDirection).relative(rightDirection)));
-		boolean canPlaceBelowLeft = level.getBlockState(pos.relative(downDirection).relative(leftDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection).relative(leftDirection));
-		boolean canPlaceBelowRight = level.getBlockState(pos.relative(downDirection).relative(rightDirection)).canBeReplaced(pContext) && toReturn.canSurvive(level, pos.relative(downDirection).relative(rightDirection));
+		boolean canPlaceAboveLeft = level.getBlockState(pos.relative(upDirection).relative(leftDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.TOP_LEFT).canSurvive(level, pos.relative(upDirection).relative(leftDirection));
+		boolean canPlaceAboveRight = level.getBlockState(pos.relative(upDirection).relative(rightDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.TOP_RIGHT).canSurvive(level, pos.relative(upDirection).relative(rightDirection));
+		boolean canPlaceBelowLeft = level.getBlockState(pos.relative(downDirection).relative(leftDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_LEFT).canSurvive(level, pos.relative(downDirection).relative(leftDirection));
+		boolean canPlaceBelowRight = level.getBlockState(pos.relative(downDirection).relative(rightDirection)).canBeReplaced(pContext) && toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_RIGHT).canSurvive(level, pos.relative(downDirection).relative(rightDirection));
 
-		if (canPlaceAbove) {
-			if (canPlaceRight && canPlaceAboveRight) {
-				return toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_LEFT);
-			} else if (canPlaceLeft && canPlaceAboveLeft) {
-				return toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_RIGHT);
-			}
-		} else if (canPlaceBelow) {
+		if (canPlaceBelow) {
 			if (canPlaceRight && canPlaceBelowRight) {
 				return toReturn.setValue(partProperty, ATMultiblockPart.TOP_LEFT);
 			} else if (canPlaceLeft && canPlaceBelowLeft) {
 				return toReturn.setValue(partProperty, ATMultiblockPart.TOP_RIGHT);
+			}
+		} else if (canPlaceAbove) {
+			if (canPlaceRight && canPlaceAboveRight) {
+				return toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_LEFT);
+			} else if (canPlaceLeft && canPlaceAboveLeft) {
+				return toReturn.setValue(partProperty, ATMultiblockPart.BOTTOM_RIGHT);
 			}
 		}
 		return null;
