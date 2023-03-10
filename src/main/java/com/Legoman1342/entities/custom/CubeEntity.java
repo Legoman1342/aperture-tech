@@ -2,6 +2,7 @@ package com.Legoman1342.entities.custom;
 
 import com.Legoman1342.blocks.custom.SurfaceButton;
 import com.Legoman1342.items.ItemRegistration;
+import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
@@ -186,7 +187,7 @@ public class CubeEntity extends Mob implements IAnimatable {
 	public void fizzle() {
 		entityData.set(FIZZLE_TIMER, 60);
 		entityData.set(FIZZLING, true);
-		level.playSound(null, position().x, position().y, position().z, SoundEvents.WITHER_DEATH, SoundSource.NEUTRAL, 0.35F, 1.5F);
+		level.playSound(null, position().x, position().y, position().z, SoundRegistration.FIZZLE.get(), SoundSource.NEUTRAL, 0.8F, 1F);
 	}
 
 	/**

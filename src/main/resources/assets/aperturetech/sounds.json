@@ -23,5 +23,11 @@
     "sounds": [
       "aperturetech:surface_button_deactivate"
     ]
+  },
+  "fizzle": {
+    "subtitle": "sounds.aperturetech.fizzle",
+    "sounds": [
+      "aperturetech:fizzle"
+    ]
   }
 }

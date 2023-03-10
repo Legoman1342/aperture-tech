@@ -23,6 +23,8 @@ public class SoundRegistration {
 	public static final RegistryObject<SoundEvent> CHAMBERLOCK_DOOR_CLOSE = registerSoundEvent("chamberlock_door_close");
 	public static final RegistryObject<SoundEvent> SURFACE_BUTTON_ACTIVATE = registerSoundEvent("surface_button_activate");
 	public static final RegistryObject<SoundEvent> SURFACE_BUTTON_DEACTIVATE = registerSoundEvent("surface_button_deactivate");
+	public static final RegistryObject<SoundEvent> FIZZLE = registerSoundEvent("fizzle");
+
 
 	/**
 	 * Convenience method used for easier registering.
