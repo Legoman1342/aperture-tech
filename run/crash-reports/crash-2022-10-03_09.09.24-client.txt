@@ -1,0 +1,211 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 10/3/22, 9:09 AM
+Description: Rendering Block Entity
+
+java.lang.IllegalArgumentException: Cannot get property BooleanProperty{name=powered, clazz=class java.lang.Boolean, values=[true, false]} as it does not exist in Block{minecraft:air}
+	at net.minecraft.world.level.block.state.StateHolder.getValue(StateHolder.java:98) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading}
+	at com.Legoman1342.blockentities.custom.ChamberlockDoorBE.predicate(ChamberlockDoorBE.java:35) ~[%2380!/:?] {re:classloading}
+	at software.bernie.geckolib3.core.controller.AnimationController.testAnimationPredicate(AnimationController.java:518) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.core.controller.AnimationController.process(AnimationController.java:397) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.core.processor.AnimationProcessor.tickAnimation(AnimationProcessor.java:71) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.model.AnimatedGeoModel.setLivingAnimations(AnimatedGeoModel.java:79) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.model.AnimatedGeoModel.setLivingAnimations(AnimatedGeoModel.java:32) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.core.IAnimatableModel.setLivingAnimations(IAnimatableModel.java:17) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.renderers.geo.GeoBlockRenderer.render(GeoBlockRenderer.java:58) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.renderers.geo.GeoBlockRenderer.render(GeoBlockRenderer.java:53) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.setupAndRender(BlockEntityRenderDispatcher.java:79) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.lambda$render$0(BlockEntityRenderDispatcher.java:63) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.tryRender(BlockEntityRenderDispatcher.java:99) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.render(BlockEntityRenderDispatcher.java:62) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:1279) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1071) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:845) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1070) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:668) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:205) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.lambda$launchService$0(ForgeClientUserdevLaunchHandler.java:24) ~[fmlloader-1.18.2-40.1.0.jar%230!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:149) [bootstraplauncher-1.0.0.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.minecraft.world.level.block.state.StateHolder.getValue(StateHolder.java:98) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading}
+	at com.Legoman1342.blockentities.custom.ChamberlockDoorBE.predicate(ChamberlockDoorBE.java:35) ~[%2380!/:?] {re:classloading}
+	at software.bernie.geckolib3.core.controller.AnimationController.testAnimationPredicate(AnimationController.java:518) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.core.controller.AnimationController.process(AnimationController.java:397) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.core.processor.AnimationProcessor.tickAnimation(AnimationProcessor.java:71) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.model.AnimatedGeoModel.setLivingAnimations(AnimatedGeoModel.java:79) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.model.AnimatedGeoModel.setLivingAnimations(AnimatedGeoModel.java:32) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.core.IAnimatableModel.setLivingAnimations(IAnimatableModel.java:17) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.renderers.geo.GeoBlockRenderer.render(GeoBlockRenderer.java:58) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.renderers.geo.GeoBlockRenderer.render(GeoBlockRenderer.java:53) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.setupAndRender(BlockEntityRenderDispatcher.java:79) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.lambda$render$0(BlockEntityRenderDispatcher.java:63) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.tryRender(BlockEntityRenderDispatcher.java:99) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.render(BlockEntityRenderDispatcher.java:62) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:1279) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1071) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+-- Block Entity Details --
+Details:
+	Name: aperturetech:chamberlock_door // com.Legoman1342.blockentities.custom.ChamberlockDoorBE
+	Block: Block{aperturetech:chamberlock_door}[back_conductive=true,facing=west,front_conductive=true,open=false,part=bottom_left,powered=false]
+	Block location: World: (-636,79,-861), Section: (at 4,15,3 in -40,4,-54; chunk contains blocks -640,-64,-864 to -625,319,-849), Region: (-2,-2; contains chunks -64,-64 to -33,-33, blocks -1024,-64,-1024 to -513,319,-513)
+	Block: Block{minecraft:air}
+	Block location: World: (-636,79,-861), Section: (at 4,15,3 in -40,4,-54; chunk contains blocks -640,-64,-864 to -625,319,-849), Region: (-2,-2; contains chunks -64,-64 to -33,-33, blocks -1024,-64,-1024 to -513,319,-513)
+Stacktrace:
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.tryRender(BlockEntityRenderDispatcher.java:99) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher.render(BlockEntityRenderDispatcher.java:62) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:1279) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1071) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:845) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1070) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:668) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:205) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.lambda$launchService$0(ForgeClientUserdevLaunchHandler.java:24) ~[fmlloader-1.18.2-40.1.0.jar%230!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:149) [bootstraplauncher-1.0.0.jar:?] {}
+
+
+-- Affected level --
+Details:
+	All players: 1 total; [LocalPlayer['Dev'/56, l='ClientLevel', x=-639.00, y=79.00, z=-861.71]]
+	Chunk stats: 961, 609
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (-44,87,95), Section: (at 4,7,15 in -3,5,5; chunk contains blocks -48,-64,80 to -33,319,95), Region: (-1,0; contains chunks -32,0 to -1,31, blocks -512,-64,0 to -1,319,511)
+	Level time: 245174 game time, 3000 day time
+	Server brand: forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.ClientLevel.fillReportDetails(ClientLevel.java:421) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.fillReport(Minecraft.java:2317) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:685) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:205) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.lambda$launchService$0(ForgeClientUserdevLaunchHandler.java:24) ~[fmlloader-1.18.2-40.1.0.jar%230!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:149) [bootstraplauncher-1.0.0.jar:?] {}
+
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: Default, Mod Resources
+
+-- System Details --
+Details:
+	Minecraft Version: 1.18.2
+	Minecraft Version ID: 1.18.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.3, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 1419240624 bytes (1353 MiB) / 2795503616 bytes (2666 MiB) up to 4215275520 bytes (4020 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: 11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz
+	Identifier: Intel64 Family 6 Model 140 Stepping 1
+	Microarchitecture: Tiger Lake
+	Frequency (GHz): 3.30
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) Iris(R) Xe Graphics
+	Graphics card #0 vendor: Intel Corporation (0x8086)
+	Graphics card #0 VRAM (MB): 1024.00
+	Graphics card #0 deviceId: 0x9a49
+	Graphics card #0 versionInfo: DriverVersion=30.0.101.1631
+	Graphics card #1 name: NVIDIA GeForce RTX 3070 Laptop GPU
+	Graphics card #1 vendor: NVIDIA (0x10de)
+	Graphics card #1 VRAM (MB): 4095.00
+	Graphics card #1 deviceId: 0x249d
+	Graphics card #1 versionInfo: DriverVersion=31.0.15.1694
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 3.20
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 3.20
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 24779.33
+	Virtual memory used (MB): 18775.02
+	Swap memory total (MB): 8704.00
+	Swap memory used (MB): 340.72
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.2.2 SNAPSHOT
+	Backend API: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2 GL version 3.2.0 NVIDIA 516.94, NVIDIA Corporation
+	Window size: 1920x1080
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: 
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Type: Integrated Server (map_client.txt)
+	Graphics mode: fancy
+	Resource Packs: 
+	Current Language: English (US)
+	CPU: 8x 11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/56, l='ServerLevel[Aperture Tech Testing]', x=-639.00, y=79.00, z=-861.71]]
+	Data Packs: vanilla (incompatible), mod:forge (incompatible), mod:aperturetech (incompatible), mod:geckolib3 (incompatible)
+	World Generation: Stable
+	ModLauncher: 9.1.3+9.1.3+main.9b69c82a
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		 mixin PLUGINSERVICE 
+		 eventbus PLUGINSERVICE 
+		 slf4jfixer PLUGINSERVICE 
+		 object_holder_definalize PLUGINSERVICE 
+		 runtime_enum_extender PLUGINSERVICE 
+		 capability_token_subclass PLUGINSERVICE 
+		 accesstransformer PLUGINSERVICE 
+		 runtimedistcleaner PLUGINSERVICE 
+		 mixin TRANSFORMATIONSERVICE 
+		 fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		javafml@null
+	Mod List: 
+		forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.|Minecraft                     |minecraft                     |1.18.2              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |Forge                         |forge                         |40.1.0              |DONE      |Manifest: NOSIGNATURE
+		main                                              |Aperture Tech                 |aperturetech                  |0.0NONE             |DONE      |Manifest: NOSIGNATURE
+		geckolib-1.18-forge-3.0.16_mapped_parchment_2022.0|GeckoLib                      |geckolib3                     |3.0.16              |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: 3d29554e-546e-4c83-b68d-bc245ada76e7
+	FML: 40.1
+	Forge: net.minecraftforge:40.1.0

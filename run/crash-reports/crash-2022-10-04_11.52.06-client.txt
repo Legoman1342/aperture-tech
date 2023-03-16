@@ -1,0 +1,191 @@
+---- Minecraft Crash Report ----
+// You should try our sister game, Minceraft!
+
+Time: 10/4/22, 11:52 AM
+Description: Rendering overlay
+
+java.lang.RuntimeException: software.bernie.shadowed.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "textures" (class software.bernie.geckolib3.geo.raw.pojo.RawGeoModel), not marked as ignorable (2 known properties: "format_version", "minecraft:geometry"])
+ at [Source: (String)"{
+	"format_version": "1.12.0",
+	"textures": {
+		"particle": "aperturetech:block/chamberlock_door_whiteblack"
+	},
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.chamberlock_door",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "frame",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "frameBottomLeft",
+					"parent": ""[truncated 4563 chars]; line: 3, column: 15] (through reference chain: software.bernie.geckolib3.geo.raw.pojo.RawGeoModel["textures"])
+	at software.bernie.geckolib3.file.GeoModelLoader.loadModel(GeoModelLoader.java:33) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.resource.GeckoLibCache.lambda$reload$1(GeckoLibCache.java:72) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.resource.GeckoLibCache.lambda$loadResources$5(GeckoLibCache.java:88) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760) ~[?:?] {}
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) ~[?:?] {}
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) ~[?:?] {}
+Caused by: software.bernie.shadowed.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "textures" (class software.bernie.geckolib3.geo.raw.pojo.RawGeoModel), not marked as ignorable (2 known properties: "format_version", "minecraft:geometry"])
+ at [Source: (String)"{
+	"format_version": "1.12.0",
+	"textures": {
+		"particle": "aperturetech:block/chamberlock_door_whiteblack"
+	},
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.chamberlock_door",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "frame",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "frameBottomLeft",
+					"parent": ""[truncated 4563 chars]; line: 3, column: 15] (through reference chain: software.bernie.geckolib3.geo.raw.pojo.RawGeoModel["textures"])
+	at software.bernie.shadowed.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:60) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:822) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1151) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1567) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1545) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.deser.BeanDeserializer.vanillaDeserialize(BeanDeserializer.java:293) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:151) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:1608) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.shadowed.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1216) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.geo.raw.pojo.Converter.fromJsonString(Converter.java:56) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	at software.bernie.geckolib3.file.GeoModelLoader.loadModel(GeoModelLoader.java:20) ~[geckolib-1.18-forge-3.0.16_mapped_parchment_2022.05.22-1.18.2.jar%2382!/:3.0.16] {re:classloading}
+	... 9 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:892) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+-- Overlay render details --
+Details:
+	Overlay name: net.minecraft.client.gui.screens.LoadingOverlay
+Stacktrace:
+	at net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:892) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1070) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:668) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:205) ~[forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.18.2-recomp.jar%2376!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.lambda$launchService$0(ForgeClientUserdevLaunchHandler.java:24) ~[fmlloader-1.18.2-40.1.0.jar%230!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:37) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:106) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:77) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-9.1.3.jar%2310!/:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:149) [bootstraplauncher-1.0.0.jar:?] {}
+
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: No
+	Packs: Default, Mod Resources
+
+-- System Details --
+Details:
+	Minecraft Version: 1.18.2
+	Minecraft Version ID: 1.18.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 17.0.3, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 769369712 bytes (733 MiB) / 2092957696 bytes (1996 MiB) up to 4215275520 bytes (4020 MiB)
+	CPUs: 8
+	Processor Vendor: GenuineIntel
+	Processor Name: 11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz
+	Identifier: Intel64 Family 6 Model 140 Stepping 1
+	Microarchitecture: Tiger Lake
+	Frequency (GHz): 3.30
+	Number of physical packages: 1
+	Number of physical CPUs: 4
+	Number of logical CPUs: 8
+	Graphics card #0 name: Intel(R) Iris(R) Xe Graphics
+	Graphics card #0 vendor: Intel Corporation (0x8086)
+	Graphics card #0 VRAM (MB): 1024.00
+	Graphics card #0 deviceId: 0x9a49
+	Graphics card #0 versionInfo: DriverVersion=30.0.101.1631
+	Graphics card #1 name: NVIDIA GeForce RTX 3070 Laptop GPU
+	Graphics card #1 vendor: NVIDIA (0x10de)
+	Graphics card #1 VRAM (MB): 4095.00
+	Graphics card #1 deviceId: 0x249d
+	Graphics card #1 versionInfo: DriverVersion=31.0.15.1694
+	Memory slot #0 capacity (MB): 8192.00
+	Memory slot #0 clockSpeed (GHz): 3.20
+	Memory slot #0 type: DDR4
+	Memory slot #1 capacity (MB): 8192.00
+	Memory slot #1 clockSpeed (GHz): 3.20
+	Memory slot #1 type: DDR4
+	Virtual memory max (MB): 24779.33
+	Virtual memory used (MB): 14688.61
+	Swap memory total (MB): 8704.00
+	Swap memory used (MB): 133.22
+	JVM Flags: 1 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.2.2 SNAPSHOT
+	Backend API: NVIDIA GeForce RTX 3070 Laptop GPU/PCIe/SSE2 GL version 3.2.0 NVIDIA 516.94, NVIDIA Corporation
+	Window size: 1920x1080
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: 
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'forge'
+	Type: Client (map_client.txt)
+	Graphics mode: fancy
+	Resource Packs: 
+	Current Language: English (US)
+	CPU: 8x 11th Gen Intel(R) Core(TM) i7-11370H @ 3.30GHz
+	ModLauncher: 9.1.3+9.1.3+main.9b69c82a
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		 mixin PLUGINSERVICE 
+		 eventbus PLUGINSERVICE 
+		 slf4jfixer PLUGINSERVICE 
+		 object_holder_definalize PLUGINSERVICE 
+		 runtime_enum_extender PLUGINSERVICE 
+		 capability_token_subclass PLUGINSERVICE 
+		 accesstransformer PLUGINSERVICE 
+		 runtimedistcleaner PLUGINSERVICE 
+		 mixin TRANSFORMATIONSERVICE 
+		 fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		javafml@null
+	Mod List: 
+		forge-1.18.2-40.1.0_mapped_parchment_2022.05.22-1.|Minecraft                     |minecraft                     |1.18.2              |SIDED_SETU|Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		                                                  |Forge                         |forge                         |40.1.0              |SIDED_SETU|Manifest: NOSIGNATURE
+		main                                              |Aperture Tech                 |aperturetech                  |0.0NONE             |SIDED_SETU|Manifest: NOSIGNATURE
+		geckolib-1.18-forge-3.0.16_mapped_parchment_2022.0|GeckoLib                      |geckolib3                     |3.0.16              |SIDED_SETU|Manifest: NOSIGNATURE
+	Crash Report UUID: 8c852818-b70a-4ef1-b192-d7d40be5baab
+	FML: 40.1
+	Forge: net.minecraftforge:40.1.0
