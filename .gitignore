@@ -17,6 +17,10 @@ out
 build
 .gradle
 
+# run
+run/crash-reports
+run/logs
+
 # other
 eclipse
 
