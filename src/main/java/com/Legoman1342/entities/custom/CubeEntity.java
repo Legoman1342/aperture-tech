@@ -206,14 +206,14 @@ public class CubeEntity extends Mob implements IAnimatable {
 	 */
 	@Override
 	public ItemStack getPickedResult(HitResult target) {
-		return new ItemStack(ItemRegistration.storage_cube.get());
+		return new ItemStack(ItemRegistration.STORAGE_CUBE.get());
 	}
 
 
 
 	@Override
 	protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
-		if (pPlayer.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == ItemRegistration.configuration_tool.get()
+		if (pPlayer.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == ItemRegistration.CONFIGURATION_TOOL.get()
 				&& pPlayer.isCrouching()) {
 			remove(RemovalReason.DISCARDED);
 			level.playSound(null, position().x, position().y, position().z, SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, 1);
@@ -221,7 +221,7 @@ public class CubeEntity extends Mob implements IAnimatable {
 				ServerPlayer serverPlayer = (ServerPlayer) pPlayer;
 				GameType gameMode = serverPlayer.gameMode.getGameModeForPlayer();
 				if (gameMode == GameType.SURVIVAL || gameMode == GameType.ADVENTURE) {
-					pPlayer.addItem(new ItemStack(ItemRegistration.storage_cube.get()));
+					pPlayer.addItem(new ItemStack(ItemRegistration.STORAGE_CUBE.get()));
 				}
 			}
 		}

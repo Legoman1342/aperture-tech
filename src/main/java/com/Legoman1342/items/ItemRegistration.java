@@ -20,9 +20,12 @@ public class ItemRegistration {
 		ITEMS.register(bus);
 	}
 
-	public static final RegistryObject<Item> configuration_tool = ITEMS.register("configuration_tool",
+	public static final RegistryObject<Item> CONFIGURATION_TOOL = ITEMS.register("configuration_tool",
 			() -> new ConfigurationTool(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 
-	public static final RegistryObject<Item> storage_cube = ITEMS.register("storage_cube",
+	public static final RegistryObject<Item> STORAGE_CUBE = ITEMS.register("storage_cube",
+			() -> new StorageCubeItem(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
+
+	public static final RegistryObject<Item> PORTAL_GUN = ITEMS.register("portal_gun",
 			() -> new StorageCubeItem(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 }

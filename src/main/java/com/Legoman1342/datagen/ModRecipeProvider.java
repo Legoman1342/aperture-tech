@@ -32,7 +32,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.save(finishedRecipeConsumer);
 
 		//Storage cube
-		ShapedRecipeBuilder.shaped(ItemRegistration.storage_cube.get())
+		ShapedRecipeBuilder.shaped(ItemRegistration.STORAGE_CUBE.get())
 				.define('i', Tags.Items.INGOTS_IRON)
 				.define('g', Items.GLOWSTONE)
 				.define('c', Tags.Items.CHESTS_WOODEN)
