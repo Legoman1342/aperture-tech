@@ -1,6 +1,7 @@
 package com.Legoman1342.items;
 
 import com.Legoman1342.items.custom.ConfigurationTool;
+import com.Legoman1342.items.custom.PortalGun;
 import com.Legoman1342.items.custom.StorageCubeItem;
 import com.Legoman1342.setup.ATCreativeTab;
 import net.minecraft.world.item.Item;
@@ -27,5 +28,5 @@ public class ItemRegistration {
 			() -> new StorageCubeItem(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 
 	public static final RegistryObject<Item> PORTAL_GUN = ITEMS.register("portal_gun",
-			() -> new StorageCubeItem(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
+			() -> new PortalGun(new Item.Properties().tab(ATCreativeTab.AT_CREATIVE_TAB).stacksTo(1)));
 }

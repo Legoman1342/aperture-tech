@@ -1,6 +1,7 @@
 package com.Legoman1342.entities;
 
 import com.Legoman1342.entities.custom.CubeEntity;
+import com.Legoman1342.entities.custom.PortalProjectile;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -27,5 +28,11 @@ public class EntityRegistration {
 					() -> EntityType.Builder.of(CubeEntity::new, MobCategory.MISC)
 							.sized(0.9375f, 0.9375f)
 							.build(new ResourceLocation(MODID, "storage_cube").toString()));
+
+	public static final RegistryObject<EntityType<PortalProjectile>> PORTAL_PROJECTILE =
+			ENTITY_TYPES.register("portal_projectile",
+					() -> EntityType.Builder.of(PortalProjectile::new, MobCategory.MISC)
+							.sized(0.125f, 0.125f)
+							.build(new ResourceLocation(MODID, "portal_projectile").toString()));
 
 }

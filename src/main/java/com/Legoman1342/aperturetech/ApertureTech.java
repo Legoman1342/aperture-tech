@@ -4,6 +4,7 @@ import com.Legoman1342.blockentities.BlockEntityRegistration;
 import com.Legoman1342.blockentities.client.ChamberlockDoorRenderer;
 import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.entities.EntityRegistration;
+import com.Legoman1342.entities.client.PortalProjectileRenderer;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
 import com.Legoman1342.items.ItemRegistration;
 import com.Legoman1342.sounds.SoundRegistration;
@@ -81,6 +82,7 @@ public class ApertureTech {
 
 		//Registers the renderers for entities and block entities
 		EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
+		EntityRenderers.register(EntityRegistration.PORTAL_PROJECTILE.get(), PortalProjectileRenderer::new);
 
 		BlockEntityRenderers.register(BlockEntityRegistration.CHAMBERLOCK_DOOR_BE.get(), ChamberlockDoorRenderer::new);
 	}
