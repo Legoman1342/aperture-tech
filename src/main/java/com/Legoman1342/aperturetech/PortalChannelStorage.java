@@ -1,5 +1,6 @@
 package com.Legoman1342.aperturetech;
 
+import com.Legoman1342.utilities.ColorUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.NbtIo;
@@ -65,6 +66,7 @@ public class PortalChannelStorage {
 		}
 	}
 
+	//TODO Add documentation to everything
 	public static void addPortalChannel(PortalChannel channel) {
 		portalChannels.add(channel);
 		dirty = true;
@@ -88,17 +90,8 @@ public class PortalChannelStorage {
 			tag.putUUID("owner", channel.getOwner());
 			tag.putString("name", channel.getName());
 			tag.putBoolean("global", channel.isGlobal());
-			//TODO Make a "color utilities" class with methods to transition between Color, Vector3f, and int[] types
-			tag.putIntArray("primaryColor", new int[] {
-					channel.getPrimaryColor().getRed(),
-					channel.getPrimaryColor().getGreen(),
-					channel.getPrimaryColor().getBlue()
-			});
-			tag.putIntArray("secondaryColor", new int[] {
-					channel.getSecondaryColor().getRed(),
-					channel.getSecondaryColor().getGreen(),
-					channel.getSecondaryColor().getBlue()
-			});
+			tag.putIntArray("primaryColor", ColorUtils.toIntArray(channel.getPrimaryColor()));
+			tag.putIntArray("secondaryColor", ColorUtils.toIntArray(channel.getSecondaryColor()));
 			channelInfo.add(tag);
 		}
 
@@ -128,17 +121,8 @@ public class PortalChannelStorage {
 					channelTag.getUUID("owner"),
 					channelTag.getString("name"),
 					channelTag.getBoolean("global"),
-					//TODO Make a "color utilities" class with methods to transition between Color, Vector3f, and int[] types
-					new Color(
-							primaryColor[0],
-							primaryColor[1],
-							primaryColor[2]
-					),
-					new Color(
-							secondaryColor[0],
-							secondaryColor[1],
-							secondaryColor[2]
-					)
+					ColorUtils.toColor(primaryColor),
+					ColorUtils.toColor(secondaryColor)
 			);
 			portalChannels.add(channel);
 		}
