@@ -1,5 +1,6 @@
 package com.Legoman1342.entities.custom;
 
+import com.Legoman1342.aperturetech.PortalChannel;
 import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -11,8 +12,8 @@ import net.minecraft.world.level.Level;
 
 public class PortalProjectile extends Projectile {
 
+	private static final EntityDataAccessor<Integer> CHANNEL = SynchedEntityData.defineId(PortalProjectile.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Byte> ID_FLAGS = SynchedEntityData.defineId(PortalProjectile.class, EntityDataSerializers.BYTE);
-
 	private static final Vector3f BLUE_DUST_COLOR = new Vector3f(0F, 0F, 1F);
 	private static final Vector3f ORANGE_DUST_COLOR = new Vector3f(1F, 0.55F, 0F);
 
@@ -22,6 +23,7 @@ public class PortalProjectile extends Projectile {
 
 	@Override
 	protected void defineSynchedData() {
+		this.entityData.define(CHANNEL, 0);
 		this.entityData.define(ID_FLAGS, (byte)0);
 	}
 

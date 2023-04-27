@@ -4,7 +4,7 @@
 package com.Legoman1342.datagen.blockstates;
 
 import com.Legoman1342.aperturetech.ApertureTech;
-import com.Legoman1342.blocks.ATMultiblock;
+import com.Legoman1342.aperturetech.ATMultiblock;
 import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.Catwalk.ATCatwalkEnd;

@@ -1,7 +1,7 @@
 package com.Legoman1342.blocks.custom;
 
-import com.Legoman1342.blocks.ATMultiblock;
-import com.Legoman1342.blocks.ATMultiblock.ATMultiblockPart;
+import com.Legoman1342.aperturetech.ATMultiblock;
+import com.Legoman1342.aperturetech.ATMultiblock.ATMultiblockPart;
 import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,7 +16,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BasePressurePlateBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -30,9 +29,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class SurfaceButton extends BasePressurePlateBlock {
