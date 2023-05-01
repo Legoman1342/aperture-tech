@@ -20,5 +20,7 @@
   "sounds.aperturetech.chamberlock_door_close": "Chamberlock Door closes",
   "sounds.aperturetech.surface_button_activate": "Surface Button activates",
   "sounds.aperturetech.surface_button_deactivate": "Surface Button deactivates",
-  "sounds.aperturetech.fizzle": "Object fizzles"
+  "sounds.aperturetech.fizzle": "Object fizzles",
+
+  "message.portal_gun.tooltip": "Channel: %s (ID %s)"
 }
