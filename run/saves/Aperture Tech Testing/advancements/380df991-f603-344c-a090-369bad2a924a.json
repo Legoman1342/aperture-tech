@@ -227,6 +227,12 @@
     },
     "done": true
   },
+  "aperturetech:recipes/atcreativetab/portal_gun": {
+    "criteria": {
+      "has_nether_star": "2023-05-01 09:32:15 -0400"
+    },
+    "done": true
+  },
   "minecraft:recipes/transportation/detector_rail": {
     "criteria": {
       "has_rail": "2022-08-27 14:51:37 -0400"
@@ -470,6 +476,12 @@
   "minecraft:recipes/transportation/minecart": {
     "criteria": {
       "has_iron_ingot": "2022-08-27 14:44:05 -0400"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/beacon": {
+    "criteria": {
+      "has_nether_star": "2023-05-01 09:32:15 -0400"
     },
     "done": true
   },
@@ -880,6 +892,12 @@
   "minecraft:recipes/building_blocks/deepslate_tile_stairs": {
     "criteria": {
       "has_deepslate_tiles": "2022-11-29 09:21:27 -0500"
+    },
+    "done": true
+  },
+  "aperturetech:recipes/atcreativetab/surface_button": {
+    "criteria": {
+      "has_iron_ingot": "2023-05-01 09:32:23 -0400"
     },
     "done": true
   },

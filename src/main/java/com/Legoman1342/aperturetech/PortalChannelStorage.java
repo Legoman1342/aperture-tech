@@ -12,6 +12,7 @@ import net.minecraft.world.level.storage.LevelResource;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Mod.EventBusSubscriber
 public class PortalChannelStorage {
 	private static final Logger LOGGER = LogManager.getLogger();
 
@@ -39,6 +41,7 @@ public class PortalChannelStorage {
 	 */
 	@SubscribeEvent
 	public static void onServerStarting(ServerAboutToStartEvent event) {
+		LOGGER.info("Hello from PortalChannelStorage.onServerStaring!");
 		// Clear portalChannels list when switching between saves
 		portalChannels.clear();
 		dirty = false;
@@ -62,7 +65,9 @@ public class PortalChannelStorage {
 	 * Saves the data from the saved list into the NBT file whenever the world saves (autosaves or shutting down).
 	 */
 	@SubscribeEvent
-	public static void onWorldSave(WorldEvent.Save event){
+	public static void onWorldSave(WorldEvent.Save event) {
+		LOGGER.info("Hello from PortalChannelStorage.onWorldSave!");
+		LOGGER.info("dirty = " + dirty);
 		if(!(event.getWorld() instanceof ServerLevel)) {
 			return;
 		}
@@ -72,9 +77,9 @@ public class PortalChannelStorage {
 			CompoundTag data = write();
 			File file = new File(((ServerLevel)event.getWorld()).getServer().getWorldPath(LevelResource.ROOT).toFile(), "aperturetech/portal_channels.nbt");
 			file.getParentFile().mkdirs();
-			try{
+			try {
 				NbtIo.write(data, file);
-			}catch(IOException exception){
+			} catch(IOException exception) {
 				LOGGER.error("Failed to write portal channel data!", exception);
 				return;
 			}
@@ -89,6 +94,9 @@ public class PortalChannelStorage {
 	public static void addPortalChannel(PortalChannel channel) {
 		portalChannels.add(channel);
 		dirty = true;
+		for (PortalChannel i : portalChannels) {
+			LOGGER.info("Channel ID: " + i.getId());
+		}
 	}
 
 	/**

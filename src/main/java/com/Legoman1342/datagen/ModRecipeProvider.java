@@ -66,5 +66,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 				.unlockedBy("has_iron_ingot", inventoryTrigger(ItemPredicate.Builder.item()
 						.of(Tags.Items.INGOTS_IRON).build()))
 				.save(finishedRecipeConsumer);
+
+		//Portal gun
+		ShapedRecipeBuilder.shaped(ItemRegistration.PORTAL_GUN.get())
+				.define('n', Items.NETHER_STAR)
+				.define('o', Tags.Items.OBSIDIAN)
+				.define('i', Tags.Items.INGOTS_IRON)
+				.define('e', Items.END_ROD)
+				.pattern("eii")
+				.pattern("eno")
+				.pattern("e o")
+				.unlockedBy("has_nether_star", inventoryTrigger(ItemPredicate.Builder.item()
+						.of(Items.NETHER_STAR).build()))
+				.save(finishedRecipeConsumer);
 	}
 }

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "eii",
+    "eno",
+    "e o"
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:nether_star"
+    },
+    "o": {
+      "tag": "forge:obsidian"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    },
+    "e": {
+      "item": "minecraft:end_rod"
+    }
+  },
+  "result": {
+    "item": "aperturetech:portal_gun"
+  }
+}

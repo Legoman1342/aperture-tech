@@ -10,6 +10,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -21,12 +24,14 @@ public class PortalGun extends Item {
 	}
 
 	@Override
-	public void onCraftedBy(ItemStack pStack, Level pLevel, Player pPlayer) {
+	public void onCraftedBy(ItemStack pStack, Level pLevel, @NotNull Player pPlayer) {
 		super.onCraftedBy(pStack, pLevel, pPlayer);
-		PortalChannel channel = new PortalChannel(pPlayer.getUUID());
-		CompoundTag tag = new CompoundTag();
-		tag.putInt("channelID", channel.getId());
-		pStack.setTag(tag);
+		if (!pLevel.isClientSide()) {
+			PortalChannel channel = new PortalChannel(pPlayer.getUUID());
+			CompoundTag tag = new CompoundTag();
+			tag.putInt("channelID", channel.getId());
+			pStack.setTag(tag);
+		}
 	}
 
 	@Override
@@ -34,7 +39,7 @@ public class PortalGun extends Item {
 		super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
 		if (pStack.hasTag()) {
 			try {
-				int channelId = pStack.getTag().getInt("channel");
+				int channelId = pStack.getTag().getInt("channelID");
 				PortalChannel channel = PortalChannelStorage.getPortalChannel(channelId);
 				pTooltipComponents.add(new TranslatableComponent("message.portal_gun.tooltip", channel.getName(), channelId));
 			} catch (Exception ignored) {}

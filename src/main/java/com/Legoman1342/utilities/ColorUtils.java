@@ -15,7 +15,7 @@ public class ColorUtils {
 	 * Finds the inverse of a <code>Color</code> by subtracting its RGB values from 1.
 	 */
 	public static Color invertColor(Color input) {
-		return new Color(1 - input.getRed(), 1 - input.getGreen(), 1 - input.getBlue());
+		return new Color(255 - input.getRed(), 255 - input.getGreen(), 255 - input.getBlue());
 	}
 
 	/**
