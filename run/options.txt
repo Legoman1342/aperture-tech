@@ -11,7 +11,7 @@ discrete_mouse_scroll:false
 invertYMouse:false
 realmsNotifications:true
 reducedDebugInfo:false
-showSubtitles:true
+showSubtitles:false
 touchscreen:false
 fullscreen:true
 bobView:false
@@ -31,7 +31,7 @@ guiScale:3
 particles:0
 maxFps:120
 difficulty:2
-graphicsMode:1
+graphicsMode:2
 ao:2
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
@@ -111,7 +111,7 @@ key_key.hotbar.9:key.keyboard.9
 soundCategory_master:1.0
 soundCategory_music:0.0
 soundCategory_record:1.0
-soundCategory_weather:1.0
+soundCategory_weather:0.1056338
 soundCategory_block:1.0
 soundCategory_hostile:1.0
 soundCategory_neutral:1.0

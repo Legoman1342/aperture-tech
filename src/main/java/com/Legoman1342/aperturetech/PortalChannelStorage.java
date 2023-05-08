@@ -41,7 +41,6 @@ public class PortalChannelStorage {
 	 */
 	@SubscribeEvent
 	public static void onServerStarting(ServerAboutToStartEvent event) {
-		LOGGER.info("Hello from PortalChannelStorage.onServerStaring!");
 		// Clear portalChannels list when switching between saves
 		portalChannels.clear();
 		dirty = false;
@@ -66,14 +65,12 @@ public class PortalChannelStorage {
 	 */
 	@SubscribeEvent
 	public static void onWorldSave(WorldEvent.Save event) {
-		LOGGER.info("Hello from PortalChannelStorage.onWorldSave!");
-		LOGGER.info("dirty = " + dirty);
-		if(!(event.getWorld() instanceof ServerLevel)) {
+		if (!(event.getWorld() instanceof ServerLevel)) {
 			return;
 		}
 
 		// Save everything when world gets saved
-		if(dirty) {
+		if (dirty) {
 			CompoundTag data = write();
 			File file = new File(((ServerLevel)event.getWorld()).getServer().getWorldPath(LevelResource.ROOT).toFile(), "aperturetech/portal_channels.nbt");
 			file.getParentFile().mkdirs();
@@ -94,9 +91,6 @@ public class PortalChannelStorage {
 	public static void addPortalChannel(PortalChannel channel) {
 		portalChannels.add(channel);
 		dirty = true;
-		for (PortalChannel i : portalChannels) {
-			LOGGER.info("Channel ID: " + i.getId());
-		}
 	}
 
 	/**
@@ -122,7 +116,7 @@ public class PortalChannelStorage {
 		ListTag channelInfo = new ListTag();
 
 		// Write portal channels
-		for(PortalChannel channel : portalChannels){
+		for (PortalChannel channel : portalChannels) {
 			CompoundTag tag = new CompoundTag();
 			tag.putInt("id", channel.getId());
 			tag.putUUID("owner", channel.getOwner());
@@ -144,18 +138,18 @@ public class PortalChannelStorage {
 	 * Takes a tag from the NBT file and loads all of its data into the saved list.
 	 */
 	private static void read(CompoundTag tag) {
-		// Get the list from the tag
+		// Get the portal channels from the tag
 		ListTag channelInfo = tag.getList("portal_channels", Tag.TAG_COMPOUND);
+
+		//Write each portal channel to the list
 		for(Tag nbt : channelInfo) {
-			if(!(nbt instanceof CompoundTag))
+			if (!(nbt instanceof CompoundTag)) {
 				continue;
+			}
 
 			CompoundTag channelTag = (CompoundTag)nbt;
-			if(!channelTag.contains("player", Tag.TAG_INT_ARRAY) || !channelTag.contains("time", Tag.TAG_LONG))
-				continue;
-
-			int[] primaryColor = channelTag.getIntArray("primary_color");
-			int[] secondaryColor = channelTag.getIntArray("secondary_color");
+			int[] primaryColor = channelTag.getIntArray("primaryColor");
+			int[] secondaryColor = channelTag.getIntArray("secondaryColor");
 
 			PortalChannel channel = new PortalChannel(
 					channelTag.getInt("id"),
