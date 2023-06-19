@@ -2,16 +2,17 @@ package com.Legoman1342.items.custom;
 
 import com.Legoman1342.aperturetech.PortalChannel;
 import com.Legoman1342.aperturetech.PortalChannelStorage;
+import com.Legoman1342.entities.custom.PortalProjectile;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -44,5 +45,26 @@ public class PortalGun extends Item {
 				pTooltipComponents.add(new TranslatableComponent("message.portal_gun.tooltip", channel.getName(), channelId));
 			} catch (Exception ignored) {}
 		}
+	}
+
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+		PortalProjectile projectile = getPortalProjectile(pPlayer, pUsedHand);
+		projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0F, 0.5F, 0F);
+		pLevel.addFreshEntity(projectile);
+		return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
+	}
+
+	private PortalChannel getChannel(ItemStack stack) {
+		if (stack.hasTag()){
+			int id = stack.getTag().getInt("channelID");
+			return PortalChannelStorage.getPortalChannel(id);
+		} else {
+			throw new NullPointerException("Portal gun's channel hasn't been defined");
+		}
+	}
+
+	private PortalProjectile getPortalProjectile(Player player, InteractionHand usedHand) {
+		return PortalProjectile.newPortalProjectile(player, getChannel(player.getItemInHand(usedHand)));
 	}
 }

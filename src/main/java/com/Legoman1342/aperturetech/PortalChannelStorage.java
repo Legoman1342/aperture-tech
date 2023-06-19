@@ -18,8 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Mod.EventBusSubscriber
 public class PortalChannelStorage {
@@ -85,6 +84,13 @@ public class PortalChannelStorage {
 	}
 
 	/**
+	 * Marks the saved list as dirty. Should be called whenever a channel is modified in any way.
+	 */
+	public static void setDirty() {
+		dirty = true;
+	}
+
+	/**
 	 * Adds a new channel to the saved list. Used whenever new portal channels are created.
 	 * @param channel A <code>portalChannel</code> to add to the list
 	 */
@@ -109,6 +115,20 @@ public class PortalChannelStorage {
 	}
 
 	/**
+	 * Gets all channel users from all portal channels and returns them, along with their channel.
+	 * @return A <code>Map</code> containing channel user UUIDs (keys) and their respective portal channels (values)
+	 */
+	public static Map<UUID, PortalChannel> getAllChannelUsers() {
+		Map<UUID, PortalChannel> toReturn = new HashMap<>();
+		for (PortalChannel i : portalChannels) {
+			for (UUID j : i.getUsers()) {
+				toReturn.put(j, i);
+			}
+		}
+		return toReturn;
+	}
+
+	/**
 	 * Compiles the saved list into a tag to put into the NBT file.
 	 * @return An NBT tag containing the entire list of portal channels and all of their data
 	 */
@@ -120,6 +140,9 @@ public class PortalChannelStorage {
 			CompoundTag tag = new CompoundTag();
 			tag.putInt("id", channel.getId());
 			tag.putUUID("owner", channel.getOwner());
+			for (int i = 0; i < channel.getUsers().size(); i++) {
+				tag.putUUID("user" + i, channel.getUsers().get(i));
+			}
 			tag.putString("name", channel.getName());
 			tag.putBoolean("global", channel.isGlobal());
 			tag.putIntArray("primaryColor", ColorUtils.toIntArray(channel.getPrimaryColor()));
@@ -130,7 +153,6 @@ public class PortalChannelStorage {
 		// Write the list to a tag
 		CompoundTag toReturn = new CompoundTag();
 		toReturn.put("portal_channels", channelInfo);
-
 		return toReturn;
 	}
 
@@ -148,12 +170,26 @@ public class PortalChannelStorage {
 			}
 
 			CompoundTag channelTag = (CompoundTag)nbt;
+
+			ArrayList<UUID> users = new ArrayList<>();
+			boolean moreUsers = true;
+			int i = 0;
+			while (moreUsers) {
+				if (channelTag.contains("user" + i)) {
+					users.add(channelTag.getUUID("user" + i));
+					i++;
+				} else {
+					moreUsers = false;
+				}
+			}
+
 			int[] primaryColor = channelTag.getIntArray("primaryColor");
 			int[] secondaryColor = channelTag.getIntArray("secondaryColor");
 
 			PortalChannel channel = new PortalChannel(
 					channelTag.getInt("id"),
 					channelTag.getUUID("owner"),
+					users,
 					channelTag.getString("name"),
 					channelTag.getBoolean("global"),
 					ColorUtils.toColor(primaryColor),
