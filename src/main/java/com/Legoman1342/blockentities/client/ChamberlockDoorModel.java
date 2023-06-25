@@ -10,7 +10,7 @@ import static com.Legoman1342.aperturetech.ApertureTech.MODID;
 
 public class ChamberlockDoorModel extends AnimatedGeoModel<ChamberlockDoorBE> {
 	@Override
-	public ResourceLocation getModelLocation(ChamberlockDoorBE object) {
+	public ResourceLocation getModelResource(ChamberlockDoorBE object) {
 		return new ResourceLocation(MODID, switch (object.getBlockState().getValue(ChamberlockDoor.PART)) {
 			case TOP_LEFT -> "geo/chamberlock_door/top_left.geo.json";
 			case TOP_RIGHT -> "geo/chamberlock_door/top_right.geo.json";
@@ -20,7 +20,7 @@ public class ChamberlockDoorModel extends AnimatedGeoModel<ChamberlockDoorBE> {
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(ChamberlockDoorBE object) {
+	public ResourceLocation getTextureResource(ChamberlockDoorBE object) {
 		BlockState blockState = object.getBlockState();
 		if (blockState.getValue(ChamberlockDoor.FRONT_CONDUCTIVE)) {
 			if (blockState.getValue(ChamberlockDoor.BACK_CONDUCTIVE)) {
@@ -38,7 +38,7 @@ public class ChamberlockDoorModel extends AnimatedGeoModel<ChamberlockDoorBE> {
 	}
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(ChamberlockDoorBE animatable) {
+	public ResourceLocation getAnimationResource(ChamberlockDoorBE animatable) {
 		return new ResourceLocation(MODID, "animations/chamberlock_door.animation.json");
 	}
 }

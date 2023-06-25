@@ -6,7 +6,6 @@ import com.Legoman1342.blocks.custom.ChamberlockDoor;
 import com.Legoman1342.blocks.custom.SurfaceButton;
 import com.Legoman1342.setup.ATCreativeTab;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -107,7 +106,7 @@ public class BlockRegistration {
 				new Item.Properties().tab(tab)) {
 			@Override
 			public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-				pTooltip.add(new TranslatableComponent(tooltipKey));
+				pTooltip.add(Component.translatable(tooltipKey));
 			}
 		});
 	}

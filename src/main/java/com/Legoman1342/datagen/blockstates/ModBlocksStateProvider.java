@@ -4,7 +4,7 @@
 package com.Legoman1342.datagen.blockstates;
 
 import com.Legoman1342.aperturetech.ApertureTech;
-import com.Legoman1342.aperturetech.ATMultiblock;
+import com.Legoman1342.utilities.ATMultiblock;
 import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.blocks.custom.Catwalk;
 import com.Legoman1342.blocks.custom.Catwalk.ATCatwalkEnd;
@@ -20,6 +20,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import static com.Legoman1342.blocks.custom.Catwalk.*;
 import static com.Legoman1342.blocks.custom.CatwalkStairs.*;
+
+import com.Legoman1342.blocks.custom.Catwalk.ATCatwalkSides;
 
 public class ModBlocksStateProvider extends BlockStateProvider {
 	public ModBlocksStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {

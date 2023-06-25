@@ -1,7 +1,7 @@
 package com.Legoman1342.blocks.custom;
 
-import com.Legoman1342.aperturetech.ATMultiblock;
-import com.Legoman1342.aperturetech.ATMultiblock.ATMultiblockPart;
+import com.Legoman1342.utilities.ATMultiblock;
+import com.Legoman1342.utilities.ATMultiblock.ATMultiblockPart;
 import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

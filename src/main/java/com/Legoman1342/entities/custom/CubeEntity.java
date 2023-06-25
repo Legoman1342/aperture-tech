@@ -31,6 +31,7 @@ import net.minecraft.world.phys.HitResult;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -38,6 +39,9 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import net.minecraft.world.entity.Entity.RemovalReason;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class CubeEntity extends Mob implements IAnimatable {
 	/**
@@ -57,7 +61,7 @@ public class CubeEntity extends Mob implements IAnimatable {
 			DamageSource.LIGHTNING_BOLT
 	));
 
-	private AnimationFactory factory = new AnimationFactory(this);
+	private AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
 	public CubeEntity(EntityType<? extends Mob> pEntityType, Level pLevel) {
 		super(pEntityType, pLevel);
@@ -238,13 +242,13 @@ public class CubeEntity extends Mob implements IAnimatable {
 	 */
 	private <T extends IAnimatable>PlayState predicate(AnimationEvent<T> event) {
 		if (entityData.get(FIZZLING)) {
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("fizzle", false));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("fizzle", ILoopType.EDefaultLoopTypes.HOLD_ON_LAST_FRAME));
 			return PlayState.CONTINUE;
 		} else if (entityData.get(ACTIVATING)) {
-			event.getController().setAnimation(new AnimationBuilder().addAnimation("activate", true));
+			event.getController().setAnimation(new AnimationBuilder().addAnimation("activate", ILoopType.EDefaultLoopTypes.LOOP));
 			return PlayState.CONTINUE;
 		}
-		event.getController().setAnimation(new AnimationBuilder().addAnimation("deactivate", true));
+		event.getController().setAnimation(new AnimationBuilder().addAnimation("deactivate", ILoopType.EDefaultLoopTypes.LOOP));
 		return PlayState.CONTINUE;
 	}
 

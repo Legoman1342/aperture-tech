@@ -1,12 +1,11 @@
 package com.Legoman1342.items.custom;
 
-import com.Legoman1342.aperturetech.PortalChannel;
-import com.Legoman1342.aperturetech.PortalChannelStorage;
+import com.Legoman1342.utilities.PortalChannel;
+import com.Legoman1342.utilities.PortalChannelStorage;
 import com.Legoman1342.entities.custom.PortalProjectile;
 import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -45,7 +44,7 @@ public class PortalGun extends Item {
 			try {
 				int channelId = pStack.getTag().getInt("channelID");
 				PortalChannel channel = PortalChannelStorage.getPortalChannel(channelId);
-				pTooltipComponents.add(new TranslatableComponent("message.portal_gun.tooltip", channel.getName(), channelId));
+				pTooltipComponents.add(Component.translatable("message.portal_gun.tooltip", channel.getName(), channelId));
 			} catch (Exception ignored) {}
 		}
 	}

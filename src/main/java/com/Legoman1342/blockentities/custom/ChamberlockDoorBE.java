@@ -11,13 +11,15 @@ import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class ChamberlockDoorBE extends BlockEntity implements IAnimatable {
-	private AnimationFactory factory = new AnimationFactory(this);
+	private final AnimationFactory factory = GeckoLibUtil.createFactory(this);
 	/**
 	 * Used to determine when to play open/close animations.
 	 */
@@ -35,7 +37,7 @@ public class ChamberlockDoorBE extends BlockEntity implements IAnimatable {
 			//If the powered state this tick is different from what it was last tick, play an animation
 			if (open != openCheck) {
 				event.getController().setAnimation(new AnimationBuilder().addAnimation(
-						open ? "animation.chamberlock_door.open" : "animation.chamberlock_door.close",false));
+						open ? "animation.chamberlock_door.open" : "animation.chamberlock_door.close", ILoopType.EDefaultLoopTypes.HOLD_ON_LAST_FRAME));
 			}
 			openCheck = open;
 			if (open && event.getController().getAnimationState() == AnimationState.Stopped) {

@@ -1,7 +1,7 @@
 package com.Legoman1342.entities.custom;
 
-import com.Legoman1342.aperturetech.PortalChannel;
-import com.Legoman1342.aperturetech.PortalChannelStorage;
+import com.Legoman1342.utilities.PortalChannel;
+import com.Legoman1342.utilities.PortalChannelStorage;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.utilities.ColorUtils;
 import net.minecraft.core.particles.DustParticleOptions;

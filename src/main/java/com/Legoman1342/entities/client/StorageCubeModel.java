@@ -8,17 +8,17 @@ import static com.Legoman1342.aperturetech.ApertureTech.MODID;
 
 public class StorageCubeModel extends AnimatedGeoModel<CubeEntity> {
 	@Override
-	public ResourceLocation getModelLocation(CubeEntity object) {
+	public ResourceLocation getModelResource(CubeEntity object) {
 		return new ResourceLocation(MODID, "geo/weighted_cube.geo.json");
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(CubeEntity object) {
+	public ResourceLocation getTextureResource(CubeEntity object) {
 		return new ResourceLocation(MODID, "textures/entity/storage_cube.png");
 	}
 
 	@Override
-	public ResourceLocation getAnimationFileLocation(CubeEntity animatable) {
+	public ResourceLocation getAnimationResource(CubeEntity animatable) {
 		return new ResourceLocation(MODID, "animations/weighted_cube.animation.json");
 	}
 }

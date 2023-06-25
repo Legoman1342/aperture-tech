@@ -8,14 +8,11 @@ import com.Legoman1342.entities.client.PortalProjectileRenderer;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
 import com.Legoman1342.items.ItemRegistration;
 import com.Legoman1342.sounds.SoundRegistration;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -24,7 +21,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -71,15 +67,10 @@ public class ApertureTech {
 	private void setup(final FMLCommonSetupEvent event) {
 		// some preinit code
 		LOGGER.info("HELLO FROM PREINIT");
-		LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+		LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getName());
 	}
 
 	private void clientSetup(final FMLClientSetupEvent event) {
-		//Sets how to render different blocks, needed for any non-entity block with transparency
-		ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(BlockRegistration.CATWALK_STAIRS.get(), RenderType.cutout());
-		ItemBlockRenderTypes.setRenderLayer(BlockRegistration.SURFACE_BUTTON.get(), RenderType.cutout());
-
 		//Registers the renderers for entities and block entities
 		EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
 		EntityRenderers.register(EntityRegistration.PORTAL_PROJECTILE.get(), PortalProjectileRenderer::new);
@@ -99,22 +90,5 @@ public class ApertureTech {
 		LOGGER.info("Got IMC {}", event.getIMCStream().
 				map(m->m.messageSupplier().get()).
 				collect(Collectors.toList()));
-	}
-	// You can use SubscribeEvent and let the Event Bus discover methods to call
-	@SubscribeEvent
-	public void onServerStarting(ServerStartingEvent event) {
-		// do something when the server starts
-		LOGGER.info("HELLO from server starting");
-	}
-
-	// You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-	// Event bus for receiving Registry Events)
-	@Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-	public static class RegistryEvents {
-		@SubscribeEvent
-		public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-			// register a new block here
-			LOGGER.info("HELLO from Register Block");
-		}
 	}
 }

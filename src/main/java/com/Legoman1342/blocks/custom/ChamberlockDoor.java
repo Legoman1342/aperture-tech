@@ -1,8 +1,8 @@
 package com.Legoman1342.blocks.custom;
 
 import com.Legoman1342.blockentities.BlockEntityRegistration;
-import com.Legoman1342.aperturetech.ATMultiblock;
-import com.Legoman1342.aperturetech.ATMultiblock.ATMultiblockPart;
+import com.Legoman1342.utilities.ATMultiblock;
+import com.Legoman1342.utilities.ATMultiblock.ATMultiblockPart;
 import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.core.BlockPos;

@@ -23,6 +23,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
+import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
+
 public class CatwalkStairs extends Block {
 
 	//Creating block state properties

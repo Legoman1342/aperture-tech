@@ -14,7 +14,7 @@ import net.minecraftforge.registries.RegistryObject;
 import static com.Legoman1342.aperturetech.ApertureTech.MODID;
 
 public class EntityRegistration {
-	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, MODID);
+	public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MODID);
 
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();

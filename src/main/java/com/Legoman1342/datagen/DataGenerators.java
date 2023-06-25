@@ -6,7 +6,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.data.event.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = ApertureTech.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
@@ -16,13 +16,13 @@ public class DataGenerators {
 		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
 		
 		//Generate recipes
-		generator.addProvider(new ModRecipeProvider(generator));
+		generator.addProvider(event.includeServer(), new ModRecipeProvider(generator));
 		//Generate loot tables
-		generator.addProvider(new ModLootTableProvider(generator));
+		generator.addProvider(event.includeServer(), new ModLootTableProvider(generator));
 		//Generate tags
-		generator.addProvider(new ModBlockTagsProvider(generator, existingFileHelper));
+		generator.addProvider(event.includeServer(), new ModBlockTagsProvider(generator, existingFileHelper));
 		//Generate block states
-		generator.addProvider(new ModBlocksStateProvider(generator, existingFileHelper));
+		generator.addProvider(event.includeServer(), new ModBlocksStateProvider(generator, existingFileHelper));
 		
 	}
 }
