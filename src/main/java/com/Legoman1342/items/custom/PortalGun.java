@@ -6,6 +6,8 @@ import com.Legoman1342.entities.custom.PortalProjectile;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -50,9 +52,10 @@ public class PortalGun extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
 		PortalProjectile projectile = getPortalProjectile(pPlayer, pUsedHand);
-		projectile.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0F, 0.5F, 0F);
-		pLevel.addFreshEntity(projectile);
-		return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
+		if (!pLevel.isClientSide) {
+			pLevel.addFreshEntity(projectile);
+		}
+		return InteractionResultHolder.sidedSuccess(pPlayer.getItemInHand(pUsedHand), pLevel.isClientSide);
 	}
 
 	private PortalChannel getChannel(ItemStack stack) {
@@ -65,6 +68,6 @@ public class PortalGun extends Item {
 	}
 
 	private PortalProjectile getPortalProjectile(Player player, InteractionHand usedHand) {
-		return PortalProjectile.newPortalProjectile(player, getChannel(player.getItemInHand(usedHand)));
+		return PortalProjectile.newPortalProjectile(player, getChannel(player.getItemInHand(usedHand)), player.getEyePosition(), player.xRotO, player.yRotO);
 	}
 }
