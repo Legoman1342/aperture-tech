@@ -66,12 +66,12 @@ public class PortalProjectile extends Projectile {
 	/**
 	 * Calculates the velocity the projectile should have based on its rotation. Modified from <a href="https://github.com/VazkiiMods/Botania/blob/1.18.x/Xplat/src/main/java/vazkii/botania/common/entity/EntityManaBurst.java">Botania's mana bursts</a>.
 	 */
-	public static Vec3 calculateVelocity(float xRot, float yRot) { //TODO The math in this function might be wrong
-		float f = 0.4F;
-		double mx = Mth.sin(yRot / 180.0F * (float) Math.PI) * Mth.cos(xRot / 180.0F * (float) Math.PI) * f / 2D;
-		double mz = -(Mth.cos(yRot / 180.0F * (float) Math.PI) * Mth.cos(xRot / 180.0F * (float) Math.PI) * f) / 2D;
-		double my = Mth.sin(xRot / 180.0F * (float) Math.PI) * f / 2D;
-		return new Vec3(mx, my, mz);
+	public static Vec3 calculateVelocity(float xRot, float yRot) {
+		float multiplier = 2F;
+		double xVel = -Math.sin(xRot / 180 * Math.PI) * Math.cos(yRot / 180 * Math.PI) * multiplier;
+		double yVel = -Math.sin(yRot / 180 * Math.PI) * multiplier;
+		double zVel = Math.cos(xRot / 180 * Math.PI) * Math.cos(yRot / 180 * Math.PI) * multiplier;
+		return new Vec3(xVel, yVel, zVel);
 	}
 
 	@Override
@@ -112,7 +112,7 @@ public class PortalProjectile extends Projectile {
 		}
 
 		Vec3 velocity = getDeltaMovement();
-		this.setPos(this.getX() + velocity.x(), this.getY() + velocity.y(), this.getZ() + velocity.z());;
+		this.setPos(this.getX() + velocity.x(), this.getY() + velocity.y(), this.getZ() + velocity.z());
 	}
 
 	/**
