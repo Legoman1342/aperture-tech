@@ -6,10 +6,9 @@ import com.Legoman1342.entities.custom.PortalProjectile;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -48,14 +47,29 @@ public class PortalGun extends Item {
 			} catch (Exception ignored) {}
 		}
 	}
+	/**
+	 * Shoots a primary projectile when the player left-clicks.
+	 */
+	@Override
+	public boolean onEntitySwing(ItemStack pStack, LivingEntity pEntity) {
+		Level level = pEntity.getLevel();
+		PortalProjectile projectile = getPortalProjectile((Player) pEntity, InteractionHand.MAIN_HAND, true);
+		if (!level.isClientSide) {
+			level.addFreshEntity(projectile);
+		}
+		return true;
+	}
 
+	/**
+	 * Shoots a secondary projectile when the player right-clicks.
+	 */
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-		PortalProjectile projectile = getPortalProjectile(pPlayer, pUsedHand);
+		PortalProjectile projectile = getPortalProjectile(pPlayer, InteractionHand.MAIN_HAND, false);
 		if (!pLevel.isClientSide) {
 			pLevel.addFreshEntity(projectile);
 		}
-		return InteractionResultHolder.sidedSuccess(pPlayer.getItemInHand(pUsedHand), pLevel.isClientSide);
+		return InteractionResultHolder.pass(pPlayer.getItemInHand(pUsedHand));
 	}
 
 	private PortalChannel getChannel(ItemStack stack) {
@@ -67,7 +81,7 @@ public class PortalGun extends Item {
 		}
 	}
 
-	private PortalProjectile getPortalProjectile(Player player, InteractionHand usedHand) {
-		return PortalProjectile.newPortalProjectile(player, getChannel(player.getItemInHand(usedHand)), player.getEyePosition(), player.xRotO, player.yRotO);
+	private PortalProjectile getPortalProjectile(Player player, InteractionHand usedHand, boolean primary) {
+		return PortalProjectile.newPortalProjectile(player, getChannel(player.getItemInHand(usedHand)), primary, player.getEyePosition(), player.xRotO, player.yRotO);
 	}
 }

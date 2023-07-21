@@ -4,22 +4,16 @@ import com.Legoman1342.aperturetech.PortalChannel;
 import com.Legoman1342.aperturetech.PortalChannelStorage;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.utilities.ColorUtils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Position;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.util.Map;
@@ -27,21 +21,16 @@ import java.util.UUID;
 
 public class PortalProjectile extends Projectile {
 
-	private static final Logger LOGGER = LogManager.getLogger(); //TODO Used for debugging, remove
-
 	private static final EntityDataAccessor<Integer> CHANNEL = SynchedEntityData.defineId(PortalProjectile.class, EntityDataSerializers.INT);
+	private static final EntityDataAccessor<Boolean> PRIMARY = SynchedEntityData.defineId(PortalProjectile.class, EntityDataSerializers.BOOLEAN);
 	private static final EntityDataAccessor<Byte> ID_FLAGS = SynchedEntityData.defineId(PortalProjectile.class, EntityDataSerializers.BYTE);
 
-	private PortalProjectile(Player player, PortalChannel channel, Vec3 pos, float rotX, float rotY) {
+	private PortalProjectile(Player player, PortalChannel channel, boolean primary, Vec3 pos, float rotX, float rotY) {
 		this(EntityRegistration.PORTAL_PROJECTILE.get(), player.level);
 		setChannel(channel);
+		this.entityData.set(PRIMARY, primary);
 		moveTo(pos.x(), pos.y(), pos.z(), rotX, rotY);
 		setDeltaMovement(calculateVelocity(getXRot(), getYRot()));
-		LOGGER.info("Hello from PortalProjectile!");
-		LOGGER.info("X rotation: " + getXRot());
-		LOGGER.info("Y rotation: " + getYRot());
-		LOGGER.info("Calculated velocity: " + calculateVelocity(getXRot(), getYRot()));
-		LOGGER.info("Velocity: " + getDeltaMovement());
 	}
 
 	public PortalProjectile(EntityType<? extends Projectile> entityType, Level level) {
@@ -53,13 +42,14 @@ public class PortalProjectile extends Projectile {
 	 * The constructor that this method uses has to be private to make some code in {@link EntityRegistration} work, so this
 	 * method exists to provide access to it.
 	 */
-	public static PortalProjectile newPortalProjectile(Player player, PortalChannel channel, Vec3 pos, float rotX, float rotY) {
-		return new PortalProjectile(player, channel, pos, rotX, rotY);
+	public static PortalProjectile newPortalProjectile(Player player, PortalChannel channel, boolean primary, Vec3 pos, float rotX, float rotY) {
+		return new PortalProjectile(player, channel, primary, pos, rotX, rotY);
 	}
 
 	@Override
 	protected void defineSynchedData() {
 		this.entityData.define(CHANNEL, -1); //Default state, signifies that the portal channel hasn't been set
+		this.entityData.define(PRIMARY, true); //Default state
 		this.entityData.define(ID_FLAGS, (byte)0);
 	}
 
@@ -107,8 +97,8 @@ public class PortalProjectile extends Projectile {
 	@Override
 	public void tick() {
 		if (this.getChannel() != null) {
-			Color primaryColor = this.getChannel().getPrimaryColor();
-			level.addParticle(new DustParticleOptions(ColorUtils.toVector3f(primaryColor), 1F), true, position().x, position().y, position().z, 0, 0, 0);
+			Color particleColor = this.entityData.get(PRIMARY) ? this.getChannel().getPrimaryColor() : this.getChannel().getSecondaryColor();
+			level.addParticle(new DustParticleOptions(ColorUtils.toVector3f(particleColor), 1F), true, position().x, position().y, position().z, 0, 0, 0);
 		}
 
 		Vec3 velocity = getDeltaMovement();
