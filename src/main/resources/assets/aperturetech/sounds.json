@@ -29,5 +29,29 @@
     "sounds": [
       "aperturetech:fizzle"
     ]
+  },
+  "portal_fire_primary": {
+    "subtitle": "sounds.aperturetech.portal_fire",
+    "sounds": [
+      "aperturetech:portal_fire_primary"
+    ]
+  },
+  "portal_fire_secondary": {
+    "subtitle": "sounds.aperturetech.portal_fire",
+    "sounds": [
+      "aperturetech:portal_fire_secondary"
+    ]
+  },
+  "portal_open_primary": {
+    "subtitle": "sounds.aperturetech.portal_open",
+    "sounds": [
+      "aperturetech:portal_open_primary"
+    ]
+  },
+  "portal_open_secondary": {
+    "subtitle": "sounds.aperturetech.portal_open",
+    "sounds": [
+      "aperturetech:portal_open_secondary"
+    ]
   }
 }

@@ -21,6 +21,8 @@
   "sounds.aperturetech.surface_button_activate": "Surface Button activates",
   "sounds.aperturetech.surface_button_deactivate": "Surface Button deactivates",
   "sounds.aperturetech.fizzle": "Object fizzles",
+  "sounds.aperturetech.portal_fire": "Handheld Portal Device fires",
+  "sounds.aperturetech.portal_open": "Portal opens",
 
   "message.portal_gun.tooltip": "Channel: %s (ID %s)"
 }

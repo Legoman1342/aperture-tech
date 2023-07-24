@@ -24,6 +24,10 @@ public class SoundRegistration {
 	public static final RegistryObject<SoundEvent> SURFACE_BUTTON_ACTIVATE = registerSoundEvent("surface_button_activate");
 	public static final RegistryObject<SoundEvent> SURFACE_BUTTON_DEACTIVATE = registerSoundEvent("surface_button_deactivate");
 	public static final RegistryObject<SoundEvent> FIZZLE = registerSoundEvent("fizzle");
+	public static final RegistryObject<SoundEvent> PORTAL_FIRE_PRIMARY = registerSoundEvent("portal_fire_primary");
+	public static final RegistryObject<SoundEvent> PORTAL_FIRE_SECONDARY = registerSoundEvent("portal_fire_secondary");
+	public static final RegistryObject<SoundEvent> PORTAL_OPEN_PRIMARY = registerSoundEvent("portal_open_primary");
+	public static final RegistryObject<SoundEvent> PORTAL_OPEN_SECONDARY = registerSoundEvent("portal_open_secondary");
 
 
 	/**

@@ -3,9 +3,11 @@ package com.Legoman1342.items.custom;
 import com.Legoman1342.aperturetech.PortalChannel;
 import com.Legoman1342.aperturetech.PortalChannelStorage;
 import com.Legoman1342.entities.custom.PortalProjectile;
+import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -57,6 +59,7 @@ public class PortalGun extends Item {
 		if (!level.isClientSide) {
 			level.addFreshEntity(projectile);
 		}
+		level.playSound(null, pEntity.getX(), pEntity.getEyeY(), pEntity.getZ(), SoundRegistration.PORTAL_FIRE_PRIMARY.get(), SoundSource.PLAYERS, 0.5F, 1F);
 		return true;
 	}
 
@@ -68,8 +71,9 @@ public class PortalGun extends Item {
 		PortalProjectile projectile = getPortalProjectile(pPlayer, InteractionHand.MAIN_HAND, false);
 		if (!pLevel.isClientSide) {
 			pLevel.addFreshEntity(projectile);
+			pLevel.playSound(null, pPlayer.getX(), pPlayer.getEyeY(), pPlayer.getZ(), SoundRegistration.PORTAL_FIRE_SECONDARY.get(), SoundSource.PLAYERS, 0.5F, 1F);
 		}
-		return InteractionResultHolder.pass(pPlayer.getItemInHand(pUsedHand));
+		return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
 	}
 
 	private PortalChannel getChannel(ItemStack stack) {
