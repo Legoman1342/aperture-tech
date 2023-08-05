@@ -24,5 +24,9 @@
   "sounds.aperturetech.portal_fire": "Handheld Portal Device fires",
   "sounds.aperturetech.portal_open": "Portal opens",
 
+  "key.category.aperturetech": "Aperture Tech",
+  "key.aperturetech.primary_fire": "Primary Fire",
+  "key.aperturetech.secondary_fire": "Secondary Fire",
+
   "message.portal_gun.tooltip": "Channel: %s (ID %s)"
 }

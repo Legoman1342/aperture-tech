@@ -111,6 +111,8 @@ key_key.hotbar.6:key.keyboard.6
 key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
+key_key.aperturetech.primary_fire:key.keyboard.unknown
+key_key.aperturetech.secondary_fire:key.keyboard.unknown
 soundCategory_master:1.0
 soundCategory_music:0.20422535
 soundCategory_record:1.0

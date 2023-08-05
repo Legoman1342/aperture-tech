@@ -7,14 +7,14 @@ import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.entities.client.PortalProjectileRenderer;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
 import com.Legoman1342.items.ItemRegistration;
+import com.Legoman1342.items.custom.PortalGun;
+import com.Legoman1342.networking.ModMessages;
 import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -47,27 +47,32 @@ public class ApertureTech {
 		//Initializes GeckoLib
 		GeckoLib.initialize();
 
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		//Add listeners to the Forge event bus
+		IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+		forgeEventBus.addListener(PortalGun::onLeftClickEmpty);
+		forgeEventBus.addListener(PortalGun::onLeftClickBlock);
+		forgeEventBus.addListener(PortalGun::onRightClickEmpty);
+		forgeEventBus.addListener(PortalGun::onRightClickBlock);
 
+		//Add listeners to the mod event bus
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		// Register the setup method for modloading
-		bus.addListener(this::setup);
+		modEventBus.addListener(this::commonSetup);
 		// Register the enqueueIMC method for modloading
-		bus.addListener(this::enqueueIMC);
+		modEventBus.addListener(this::enqueueIMC);
 		// Register the processIMC method for modloading
-		bus.addListener(this::processIMC);
-		// Register the setup event for modloading
-		bus.addListener(this::setup);
+		modEventBus.addListener(this::processIMC);
 		// Register the clientSetup event for modloading
-		bus.addListener(this::clientSetup);
+		modEventBus.addListener(this::clientSetup);
 
 		// Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	private void setup(final FMLCommonSetupEvent event) {
-		// some preinit code
-		LOGGER.info("HELLO FROM PREINIT");
-		LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getName());
+	private void commonSetup(final FMLCommonSetupEvent event) {
+		event.enqueueWork(() -> {
+			ModMessages.register();
+		});
 	}
 
 	private void clientSetup(final FMLClientSetupEvent event) {
