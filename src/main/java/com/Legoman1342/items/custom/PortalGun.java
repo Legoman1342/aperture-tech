@@ -6,12 +6,16 @@ import com.Legoman1342.networking.ModMessages;
 import com.Legoman1342.networking.packets.PortalGunFirePacket;
 import com.Legoman1342.utilities.PortalChannel;
 import com.Legoman1342.utilities.PortalChannelStorage;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
@@ -51,9 +55,9 @@ public class PortalGun extends Item {
 	private static void firePortalProjectile(Player player, boolean primary) {
 		ItemCooldowns cooldowns = player.getCooldowns();
 		if (!cooldowns.isOnCooldown(ItemRegistration.PORTAL_GUN.get())) {
-			cooldowns.addCooldown(ItemRegistration.PORTAL_GUN.get(), 7);
 			ModMessages.sendToServer(new PortalGunFirePacket(primary));
 		}
+		cooldowns.addCooldown(ItemRegistration.PORTAL_GUN.get(), 8);
 	}
 
 	@SubscribeEvent
@@ -129,6 +133,6 @@ public class PortalGun extends Item {
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack pStack) {
-		return UseAnim.CUSTOM;
+		return UseAnim.NONE;
 	}
 }
