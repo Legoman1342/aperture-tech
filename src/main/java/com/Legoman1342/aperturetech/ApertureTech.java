@@ -49,10 +49,7 @@ public class ApertureTech {
 
 		//Add listeners to the Forge event bus
 		IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
-		forgeEventBus.addListener(PortalGun::onLeftClickEmpty);
 		forgeEventBus.addListener(PortalGun::onLeftClickBlock);
-		forgeEventBus.addListener(PortalGun::onRightClickEmpty);
-		forgeEventBus.addListener(PortalGun::onRightClickBlock);
 
 		//Add listeners to the mod event bus
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();

@@ -2,20 +2,19 @@ package com.Legoman1342.items.custom;
 
 import com.Legoman1342.entities.custom.PortalProjectile;
 import com.Legoman1342.items.ItemRegistration;
-import com.Legoman1342.networking.ModMessages;
-import com.Legoman1342.networking.packets.PortalGunFirePacket;
+import com.Legoman1342.sounds.SoundRegistration;
 import com.Legoman1342.utilities.PortalChannel;
 import com.Legoman1342.utilities.PortalChannelStorage;
-import net.minecraft.core.BlockPos;
+import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
@@ -53,54 +52,41 @@ public class PortalGun extends Item {
 	}
 
 	private static void firePortalProjectile(Player player, boolean primary) {
-		ItemCooldowns cooldowns = player.getCooldowns();
-		if (!cooldowns.isOnCooldown(ItemRegistration.PORTAL_GUN.get())) {
-			ModMessages.sendToServer(new PortalGunFirePacket(primary));
-		}
-		cooldowns.addCooldown(ItemRegistration.PORTAL_GUN.get(), 8);
+		Level level = player.getLevel();
+		PortalProjectile projectile = PortalGun.getPortalProjectile(player, InteractionHand.MAIN_HAND, primary);
+		level.addFreshEntity(projectile);
+		level.playSound(null, player.getX(), player.getEyeY(), player.getZ(),
+				primary ? SoundRegistration.PORTAL_GUN_FIRE_PRIMARY.get() : SoundRegistration.PORTAL_GUN_FIRE_SECONDARY.get(),
+				SoundSource.PLAYERS, 0.5F, 1F);
 	}
 
-	@SubscribeEvent
-	public static void onLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
-		//TODO Make this keep firing when left click is held down
-		Player player = event.getEntity();
-		if (portalGunInHand(player) == InteractionHand.MAIN_HAND) {
-			firePortalProjectile(player, true);
-			event.setCanceled(true);
+	@Override
+	public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+		if (pIsSelected && pEntity.getType() == EntityType.PLAYER && !pLevel.isClientSide) {
+			Player player = (Player) pEntity;
+			ItemCooldowns cooldowns = player.getCooldowns();
+			final int cooldownTime = 8;
+
+			if (!cooldowns.isOnCooldown(ItemRegistration.PORTAL_GUN.get())) {
+				if (Minecraft.getInstance().options.keyAttack.isDown()) {
+					firePortalProjectile(player, true);
+					cooldowns.addCooldown(ItemRegistration.PORTAL_GUN.get(), cooldownTime);
+				} else if (Minecraft.getInstance().options.keyUse.isDown()) {
+					firePortalProjectile(player, false);
+					cooldowns.addCooldown(ItemRegistration.PORTAL_GUN.get(), cooldownTime);
+				}
+			}
 		}
 	}
+
 
 	@SubscribeEvent
 	public static void onLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
-		//TODO Figure out why the cooldown is different between left and right click
 		Player player = event.getEntity();
 		if (portalGunInHand(player) == InteractionHand.MAIN_HAND) {
-			firePortalProjectile(player, true);
 			event.setCanceled(true);
 		}
 	}
-
-	@SubscribeEvent
-	public static void onRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
-		Player player = event.getEntity();
-		if (portalGunInHand(player) == InteractionHand.MAIN_HAND) {
-			firePortalProjectile(player, false);
-			event.setCanceled(true);
-		}
-	}
-
-	@SubscribeEvent
-	public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-		//TODO Change this so that interacting with blocks is still possible
-		//TODO Figure out why right-clicking blocks shoots two projectiles
-		Player player = event.getEntity();
-		if (portalGunInHand(player) == InteractionHand.MAIN_HAND) {
-			firePortalProjectile(player, false);
-			event.setCanceled(true);
-		}
-	}
-
-	//TODO Add more event listeners as needed
 
 	/**
 	 * Convenience method to determine if a player has a portal gun in either of their hands.
@@ -133,6 +119,6 @@ public class PortalGun extends Item {
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack pStack) {
-		return UseAnim.NONE;
+		return UseAnim.CUSTOM;
 	}
 }

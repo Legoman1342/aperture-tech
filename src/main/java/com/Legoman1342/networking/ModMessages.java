@@ -1,10 +1,8 @@
 package com.Legoman1342.networking;
 
 import com.Legoman1342.aperturetech.ApertureTech;
-import com.Legoman1342.networking.packets.PortalGunFirePacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -29,12 +27,6 @@ public class ModMessages {
 				.serverAcceptedVersions(s -> true)
 				.simpleChannel();
 		INSTANCE = net;
-
-		net.messageBuilder(PortalGunFirePacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-				.decoder(PortalGunFirePacket::new)
-				.encoder(PortalGunFirePacket::toBytes)
-				.consumerMainThread(PortalGunFirePacket::handle)
-				.add();
 	}
 
 	/**
