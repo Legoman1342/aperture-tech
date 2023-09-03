@@ -4,22 +4,32 @@ import com.Legoman1342.utilities.PortalChannel;
 import com.Legoman1342.utilities.PortalChannelStorage;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.utilities.ColorUtils;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.util.Map;
 import java.util.UUID;
 
 public class PortalProjectile extends Projectile {
+
+	private static final Logger LOGGER = LogManager.getLogger(); //TODO Remove
 
 	private static final EntityDataAccessor<Integer> CHANNEL = SynchedEntityData.defineId(PortalProjectile.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Boolean> PRIMARY = SynchedEntityData.defineId(PortalProjectile.class, EntityDataSerializers.BOOLEAN);
@@ -102,7 +112,41 @@ public class PortalProjectile extends Projectile {
 		}
 
 		Vec3 velocity = getDeltaMovement();
-		this.setPos(this.getX() + velocity.x(), this.getY() + velocity.y(), this.getZ() + velocity.z());
+		this.move(MoverType.SELF, velocity);
+
+		for (Direction direction : new Direction[] {Direction.UP, Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST}) {
+			if (hasHitBlockFace(direction)) {
+				this.remove(RemovalReason.DISCARDED);
+				LOGGER.debug("Portal projectile collided with face: " + direction);
+			}
+		}
+
+	}
+
+	/**
+	 * Detects if this portal projectile is currently colliding with a block face in a given direction.
+	 */
+	public boolean hasHitBlockFace (Direction direction) {
+		BlockPos projectileBlockPos = this.blockPosition();
+		BlockPos testBlockPos = projectileBlockPos.relative(direction);
+		VoxelShape testVoxelShape = this.level.getBlockState(testBlockPos).getCollisionShape(this.level, testBlockPos);
+		AABB expandedProjectileAABB = this.getBoundingBox().expandTowards(
+				switch (direction) {
+					case DOWN -> new Vec3(0,-0.1,0);
+					case UP -> new Vec3(0,0.1,0);
+					case NORTH -> new Vec3(0,0,-0.1);
+					case SOUTH -> new Vec3(0,0,0.1);
+					case WEST -> new Vec3(-0.1,0,0);
+					case EAST -> new Vec3(0.1,0,0);
+				}
+		);
+
+		for (AABB aabb : testVoxelShape.toAabbs()) {
+			if (expandedProjectileAABB.intersects(aabb.move(testBlockPos))) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
