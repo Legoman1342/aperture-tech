@@ -22,6 +22,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 import java.util.Map;
@@ -114,39 +115,58 @@ public class PortalProjectile extends Projectile {
 		Vec3 velocity = getDeltaMovement();
 		this.move(MoverType.SELF, velocity);
 
-		for (Direction direction : new Direction[] {Direction.UP, Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST}) {
-			if (hasHitBlockFace(direction)) {
+		if (!this.level.isClientSide) {
+			Direction collisionDirection = hasHitBlockFace();
+			if (collisionDirection != null) {
 				this.remove(RemovalReason.DISCARDED);
-				LOGGER.debug("Portal projectile collided with face: " + direction);
+				LOGGER.debug("Portal projectile collided with face: " + collisionDirection);
 			}
 		}
-
 	}
 
 	/**
-	 * Detects if this portal projectile is currently colliding with a block face in a given direction.
+	 * If this portal projectile is currently colliding with a block face, returns the side of the block as a <code>Direction</code>. <br>
+	 * If the projectile is colliding with multiple block faces, the priority order is <code>north</code>, <code>east</code>, <code>south</code>, <code>west</code>, <code>up</code>, <code>down</code>. <br>
+	 * If the projectile isn't colliding with any block faces, returns <code>null</code>.
 	 */
-	public boolean hasHitBlockFace (Direction direction) {
-		BlockPos projectileBlockPos = this.blockPosition();
-		BlockPos testBlockPos = projectileBlockPos.relative(direction);
-		VoxelShape testVoxelShape = this.level.getBlockState(testBlockPos).getCollisionShape(this.level, testBlockPos);
-		AABB expandedProjectileAABB = this.getBoundingBox().expandTowards(
+	@Nullable
+	public Direction hasHitBlockFace() {
+		for (Direction direction : new Direction[]{Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST, Direction.UP, Direction.DOWN}) {
+			//Gets the projectile's hitbox, expanded by 0.1 blocks in the direction currently being tested
+			AABB expandedProjectileAABB = this.getBoundingBox().expandTowards(
 				switch (direction) {
-					case DOWN -> new Vec3(0,-0.1,0);
-					case UP -> new Vec3(0,0.1,0);
-					case NORTH -> new Vec3(0,0,-0.1);
-					case SOUTH -> new Vec3(0,0,0.1);
-					case WEST -> new Vec3(-0.1,0,0);
-					case EAST -> new Vec3(0.1,0,0);
+					case NORTH -> new Vec3(0, 0, -0.1);
+					case EAST -> new Vec3(0.1, 0, 0);
+					case SOUTH -> new Vec3(0, 0, 0.1);
+					case WEST -> new Vec3(-0.1, 0, 0);
+					case UP -> new Vec3(0, 0.1, 0);
+					case DOWN -> new Vec3(0, -0.1, 0);
 				}
-		);
+			);
 
-		for (AABB aabb : testVoxelShape.toAabbs()) {
-			if (expandedProjectileAABB.intersects(aabb.move(testBlockPos))) {
-				return true;
+			//Gets the position and VoxelShape of the block that the projectile is currently inside
+			BlockPos projectileBlockPos = this.blockPosition();
+			VoxelShape projectileBlockVoxelShape = this.level.getBlockState(projectileBlockPos).getCollisionShape(this.level,projectileBlockPos);
+
+			//Checks if the expanded projectile hitbox is overlapping with the block the projectile is inside
+			for (AABB aabb : projectileBlockVoxelShape.toAabbs()) {
+				if (expandedProjectileAABB.intersects(aabb.move(projectileBlockPos))) {
+					return direction.getOpposite();
+				}
+			}
+
+			//Gets the position and VoxelShape of a block adjacent to the projectile's BlockPos (depending on which direction is being checked)
+			BlockPos adjacentBlockPos = projectileBlockPos.relative(direction);
+			VoxelShape adjacentBlockVoxelShape = this.level.getBlockState(adjacentBlockPos).getCollisionShape(this.level, adjacentBlockPos);
+
+			//Checks if the expanded projectile hitbox is overlapping with the adjacent block
+			for (AABB aabb : adjacentBlockVoxelShape.toAabbs()) {
+				if (expandedProjectileAABB.intersects(aabb.move(adjacentBlockPos))) {
+					return direction.getOpposite();
+				}
 			}
 		}
-		return false;
+		return null;
 	}
 
 	/**
