@@ -12,8 +12,8 @@
 			},
 			"bones": [
 				{
-					"name": "bb_main",
-					"pivot": [0, 0, 0],
+					"name": "portal",
+					"pivot": [0, 16, 8],
 					"cubes": [
 						{"origin": [-8, 0, 8], "size": [16, 32, 0], "uv": [0, 0]}
 					]
