@@ -1,231 +1,231 @@
-[12Sep2023 23:33:55.780] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.19, --assetsDir, C:\Users\lexwj\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 43.2.0, --fml.mcVersion, 1.19.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220805.130853]
-[12Sep2023 23:33:55.789] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.3 by Amazon.com Inc.; OS Windows 10 arch amd64 version 10.0
-[12Sep2023 23:33:55.812] [main/DEBUG] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Found launch services [fmlclientdev,forgeclient,minecraft,forgegametestserverdev,fmlserveruserdev,fmlclient,fmldatauserdev,forgeserverdev,forgeserveruserdev,forgeclientdev,forgeclientuserdev,forgeserver,forgedatadev,fmlserver,fmlclientuserdev,fmlserverdev,forgedatauserdev,testharness,forgegametestserveruserdev]
-[12Sep2023 23:33:55.824] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Found naming services : [srgtomcp]
-[12Sep2023 23:33:55.837] [main/DEBUG] [cpw.mods.modlauncher.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [mixin,eventbus,slf4jfixer,object_holder_definalize,runtime_enum_extender,capability_token_subclass,accesstransformer,runtimedistcleaner]
-[12Sep2023 23:33:55.847] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
-[12Sep2023 23:33:55.854] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services: 
-[12Sep2023 23:33:55.864] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found transformer services : [mixin,fml]
-[12Sep2023 23:33:55.864] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading
-[12Sep2023 23:33:55.864] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service mixin
-[12Sep2023 23:33:55.866] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service mixin
-[12Sep2023 23:33:55.866] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service fml
-[12Sep2023 23:33:55.868] [main/DEBUG] [net.minecraftforge.fml.loading.LauncherVersion/CORE]: Found FMLLauncher version 1.0
-[12Sep2023 23:33:55.868] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML 1.0 loading
-[12Sep2023 23:33:55.869] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found ModLauncher version : 10.0.9+10.0.9+main.dcd20f30
-[12Sep2023 23:33:55.869] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found AccessTransformer version : 8.0.4+66+master.c09db6d7
-[12Sep2023 23:33:55.869] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found EventBus version : 6.0.3+6.0.3+master.039e4ea9
-[12Sep2023 23:33:55.870] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found Runtime Dist Cleaner
-[12Sep2023 23:33:55.871] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found CoreMod version : 5.0.1+15+master.dc5a2922
-[12Sep2023 23:33:55.872] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package implementation version 6.0.0+6.0.0+master.42474703
-[12Sep2023 23:33:55.872] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package specification 5
-[12Sep2023 23:33:55.876] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service fml
-[12Sep2023 23:33:55.877] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Configuring option handling for services
-[12Sep2023 23:33:55.881] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services initializing
-[12Sep2023 23:33:55.881] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service mixin
-[12Sep2023 23:33:55.900] [main/DEBUG] [mixin/]: MixinService [ModLauncher] was successfully booted in cpw.mods.cl.ModuleClassLoader@7ff95560
-[12Sep2023 23:33:55.910] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/lexwj/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23126!/ Service=ModLauncher Env=CLIENT
-[12Sep2023 23:33:55.914] [main/DEBUG] [mixin/]: Initialising Mixin Platform Manager
-[12Sep2023 23:33:55.914] [main/DEBUG] [mixin/]: Adding mixin platform agents for container ModLauncher Root Container(ModLauncher:4f56a0a2)
-[12Sep2023 23:33:55.915] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for ModLauncher Root Container(ModLauncher:4f56a0a2)
-[12Sep2023 23:33:55.916] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container ModLauncher Root Container(ModLauncher:4f56a0a2)
-[12Sep2023 23:33:55.916] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for ModLauncher Root Container(ModLauncher:4f56a0a2)
-[12Sep2023 23:33:55.916] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container ModLauncher Root Container(ModLauncher:4f56a0a2)
-[12Sep2023 23:33:55.918] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service mixin
-[12Sep2023 23:33:55.918] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service fml
-[12Sep2023 23:33:55.919] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Setting up basic FML game directories
-[12Sep2023 23:33:55.921] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing GAMEDIR directory : C:\Users\lexwj\aperture-tech\run
-[12Sep2023 23:33:55.921] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is C:\Users\lexwj\aperture-tech\run
-[12Sep2023 23:33:55.921] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing MODSDIR directory : C:\Users\lexwj\aperture-tech\run\mods
-[12Sep2023 23:33:55.921] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is C:\Users\lexwj\aperture-tech\run\mods
-[12Sep2023 23:33:55.921] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing CONFIGDIR directory : C:\Users\lexwj\aperture-tech\run\config
-[12Sep2023 23:33:55.921] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is C:\Users\lexwj\aperture-tech\run\config
-[12Sep2023 23:33:55.922] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is C:\Users\lexwj\aperture-tech\run\config\fml.toml
-[12Sep2023 23:33:55.922] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading configuration
-[12Sep2023 23:33:55.972] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing default config directory directory : C:\Users\lexwj\aperture-tech\run\defaultconfigs
-[12Sep2023 23:33:55.973] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing ModFile
-[12Sep2023 23:33:55.979] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing launch handler
-[12Sep2023 23:33:55.981] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Using forgeclientuserdev as launch service
-[12Sep2023 23:33:56.001] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Received command line version data  : VersionInfo[forgeVersion=43.2.0, mcVersion=1.19.2, mcpVersion=20220805.130853, forgeGroup=net.minecraftforge]
-[12Sep2023 23:33:56.004] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service fml
-[12Sep2023 23:33:56.005] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Current naming domain is 'mcp'
-[12Sep2023 23:33:56.006] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Identified name mapping providers {srg=srgtomcp:1234}
-[12Sep2023 23:33:56.008] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services begin scanning
-[12Sep2023 23:33:56.009] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service mixin
-[12Sep2023 23:33:56.010] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service mixin
-[12Sep2023 23:33:56.010] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service fml
-[12Sep2023 23:33:56.010] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Initiating mod scan
-[12Sep2023 23:33:56.028] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModListHandler/CORE]: Found mod coordinates from lists: []
-[12Sep2023 23:33:56.032] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Mod Locators : (mods folder:null),(maven libs:null),(exploded directory:null),(minecraft:null),(userdev classpath:null)
-[12Sep2023 23:33:56.033] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Dependency Locators : (JarInJar:null)
-[12Sep2023 23:33:56.040] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Got mod coordinates examplemod%%C:\Users\lexwj\aperture-tech\build\resources\main;examplemod%%C:\Users\lexwj\aperture-tech\build\classes\java\main from env
-[12Sep2023 23:33:56.043] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{examplemod=[C:\Users\lexwj\aperture-tech\build\resources\main, C:\Users\lexwj\aperture-tech\build\classes\java\main]}]
-[12Sep2023 23:33:56.251] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar with {minecraft} mods - versions {1.19.2}
-[12Sep2023 23:33:56.256] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.2-43.2.0\5713dfd49576886a7ffc353f14f067ad42369592\javafmllanguage-1.19.2-43.2.0.jar
-[12Sep2023 23:33:56.257] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.2-43.2.0\5713dfd49576886a7ffc353f14f067ad42369592\javafmllanguage-1.19.2-43.2.0.jar is missing mods.toml file
-[12Sep2023 23:33:56.259] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.2-43.2.0\51c88985dd125457fb8b6c2c58a4f3b9349a6b57\lowcodelanguage-1.19.2-43.2.0.jar
-[12Sep2023 23:33:56.260] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.2-43.2.0\51c88985dd125457fb8b6c2c58a4f3b9349a6b57\lowcodelanguage-1.19.2-43.2.0.jar is missing mods.toml file
-[12Sep2023 23:33:56.262] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.19.2-43.2.0\f4fa83ef8129c7f7cc5847fbafb07f7ae86c1bb\mclanguage-1.19.2-43.2.0.jar
-[12Sep2023 23:33:56.262] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.19.2-43.2.0\f4fa83ef8129c7f7cc5847fbafb07f7ae86c1bb\mclanguage-1.19.2-43.2.0.jar is missing mods.toml file
-[12Sep2023 23:33:56.264] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.19.2-43.2.0\d4dcb5b809b7f035ac22b058941cf81f84451545\fmlcore-1.19.2-43.2.0.jar
-[12Sep2023 23:33:56.264] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.19.2-43.2.0\d4dcb5b809b7f035ac22b058941cf81f84451545\fmlcore-1.19.2-43.2.0.jar is missing mods.toml file
-[12Sep2023 23:33:56.268] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\aperture-tech\build\resources\main
-[12Sep2023 23:33:56.285] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {aperturetech} mods - versions {0.0NONE}
-[12Sep2023 23:33:56.288] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
-[12Sep2023 23:33:56.290] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {43.2.0}
-[12Sep2023 23:33:56.306] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
-[12Sep2023 23:33:56.307] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with {geckolib3} mods - versions {3.1.40}
-[12Sep2023 23:33:56.310] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
-[12Sep2023 23:33:56.311] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with {geckolib3} mods - versions {3.1.40}
-[12Sep2023 23:33:56.315] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid geckolib3, selecting most recent based on version data
-[12Sep2023 23:33:56.315] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar for modid geckolib3 with version 3.1.40
-[12Sep2023 23:33:56.321] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar, it does not contain dependency information.
-[12Sep2023 23:33:56.322] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from , it does not contain dependency information.
-[12Sep2023 23:33:56.322] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from main, it does not contain dependency information.
-[12Sep2023 23:33:56.322] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar, it does not contain dependency information.
-[12Sep2023 23:33:56.322] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mclanguage-1.19.2-43.2.0.jar, it does not contain dependency information.
-[12Sep2023 23:33:56.322] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from javafmllanguage-1.19.2-43.2.0.jar, it does not contain dependency information.
-[12Sep2023 23:33:56.323] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from fmlcore-1.19.2-43.2.0.jar, it does not contain dependency information.
-[12Sep2023 23:33:56.323] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from lowcodelanguage-1.19.2-43.2.0.jar, it does not contain dependency information.
-[12Sep2023 23:33:56.344] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[12Sep2023 23:33:56.346] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar with {minecraft} mods - versions {1.19.2}
-[12Sep2023 23:33:56.348] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\lexwj\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2\forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar with languages [LanguageSpec[languageName=minecraft, acceptedVersions=1]]
-[12Sep2023 23:33:56.349] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\aperture-tech\build\resources\main
-[12Sep2023 23:33:56.351] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {aperturetech} mods - versions {0.0NONE}
-[12Sep2023 23:33:56.352] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\lexwj\aperture-tech\build\resources\main with languages [LanguageSpec[languageName=javafml, acceptedVersions=[43,)]]
-[12Sep2023 23:33:56.352] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
-[12Sep2023 23:33:56.352] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {43.2.0}
-[12Sep2023 23:33:56.353] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file / with languages [LanguageSpec[languageName=javafml, acceptedVersions=[24,]]]
-[12Sep2023 23:33:56.374] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_method with Javascript path coremods/field_to_method.js
-[12Sep2023 23:33:56.374] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_instanceof with Javascript path coremods/field_to_instanceof.js
-[12Sep2023 23:33:56.375] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod add_bouncer_method with Javascript path coremods/add_bouncer_method.js
-[12Sep2023 23:33:56.375] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_method.js
-[12Sep2023 23:33:56.375] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_instanceof.js
-[12Sep2023 23:33:56.375] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/add_bouncer_method.js
-[12Sep2023 23:33:56.375] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
-[12Sep2023 23:33:56.375] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with {geckolib3} mods - versions {3.1.40}
-[12Sep2023 23:33:56.376] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[41,)]]
-[12Sep2023 23:33:56.377] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service fml
-[12Sep2023 23:33:56.387] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found 3 language providers
-[12Sep2023 23:33:56.387] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider minecraft, version 1.0
-[12Sep2023 23:33:56.388] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider lowcodefml, version 43
-[12Sep2023 23:33:56.388] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider javafml, version 43
-[12Sep2023 23:33:56.391] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Configured system mods: [minecraft, forge]
-[12Sep2023 23:33:56.392] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: minecraft
-[12Sep2023 23:33:56.392] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: forge
-[12Sep2023 23:33:56.393] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 4 mod requirements (4 mandatory, 0 optional)
-[12Sep2023 23:33:56.394] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 0 mod requirements missing (0 mandatory, 0 optional)
-[12Sep2023 23:33:56.810] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 31029 method mappings from methods.csv
-[12Sep2023 23:33:56.832] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 28905 field mappings from fields.csv
-[12Sep2023 23:33:56.875] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading transformers
-[12Sep2023 23:33:56.876] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service mixin
-[12Sep2023 23:33:56.876] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service mixin
-[12Sep2023 23:33:56.876] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service fml
-[12Sep2023 23:33:56.876] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading coremod transformers
-[12Sep2023 23:33:56.878] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_method.js
-[12Sep2023 23:33:57.052] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
-[12Sep2023 23:33:57.053] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_instanceof.js
-[12Sep2023 23:33:57.142] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
-[12Sep2023 23:33:57.142] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/add_bouncer_method.js
-[12Sep2023 23:33:57.181] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
-[12Sep2023 23:33:57.193] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@b1534d3 to Target : CLASS {Lnet/minecraft/world/level/biome/Biome;} {} {V}
-[12Sep2023 23:33:57.195] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@2d64160c to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/Structure;} {} {V}
-[12Sep2023 23:33:57.195] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@5f254608 to Target : CLASS {Lnet/minecraft/world/effect/MobEffectInstance;} {} {V}
-[12Sep2023 23:33:57.195] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@2eeb0f9b to Target : CLASS {Lnet/minecraft/world/level/block/LiquidBlock;} {} {V}
-[12Sep2023 23:33:57.196] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@1b1c538d to Target : CLASS {Lnet/minecraft/world/item/BucketItem;} {} {V}
-[12Sep2023 23:33:57.196] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@1645f294 to Target : CLASS {Lnet/minecraft/world/level/block/StairBlock;} {} {V}
-[12Sep2023 23:33:57.196] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6325f352 to Target : CLASS {Lnet/minecraft/world/level/block/FlowerPotBlock;} {} {V}
-[12Sep2023 23:33:57.196] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@15c4af7a to Target : CLASS {Lnet/minecraft/world/item/ItemStack;} {} {V}
-[12Sep2023 23:33:57.196] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6cbd0674 to Target : CLASS {Lnet/minecraft/network/play/client/CClientSettingsPacket;} {} {V}
-[12Sep2023 23:33:57.196] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service fml
-[12Sep2023 23:33:57.577] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
-[12Sep2023 23:33:57.577] [main/DEBUG] [mixin/]: Processing launch tasks for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
-[12Sep2023 23:33:57.577] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(minecraft)
-[12Sep2023 23:33:57.577] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(minecraft)
-[12Sep2023 23:33:57.577] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(minecraft)
-[12Sep2023 23:33:57.577] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(minecraft)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(minecraft)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(aperturetech)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(aperturetech)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(aperturetech)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(aperturetech)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(aperturetech)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(aperturetech)]
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(forge)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(forge)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(forge)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(forge)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(forge)
-[12Sep2023 23:33:57.578] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(geckolib3)
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(geckolib3)
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(geckolib3)
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(geckolib3)
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(geckolib3)
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(geckolib3)]
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: inject() running with 5 agents
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(aperturetech)]
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
-[12Sep2023 23:33:57.579] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(geckolib3)]
-[12Sep2023 23:33:57.581] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\lexwj\.gradle\caches\forge_gradle\assets, --assetIndex, 1.19]
-[12Sep2023 23:33:57.634] [main/DEBUG] [mixin/]: Error cleaning class output directory: .mixin.out
-[12Sep2023 23:33:57.638] [main/DEBUG] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
-[12Sep2023 23:33:57.662] [main/DEBUG] [io.netty.util.internal.logging.InternalLoggerFactory/]: Using SLF4J as the default logging framework
-[12Sep2023 23:33:57.665] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
-[12Sep2023 23:33:57.666] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
-[12Sep2023 23:33:57.805] [main/DEBUG] [oshi.util.FileUtil/]: No oshi.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@5a3a1bf9
-[12Sep2023 23:33:58.141] [main/DEBUG] [oshi.util.FileUtil/]: No oshi.architecture.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@5a3a1bf9
-[12Sep2023 23:33:58.819] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/Structure
-[12Sep2023 23:33:58.982] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/LiquidBlock
-[12Sep2023 23:33:59.016] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/StairBlock
-[12Sep2023 23:33:59.090] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/FlowerPotBlock
-[12Sep2023 23:33:59.832] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/ItemStack
-[12Sep2023 23:34:01.162] [pool-3-thread-1/INFO] [net.minecraft.util.datafix.DataFixers/]: Building unoptimized datafixer
-[12Sep2023 23:34:01.786] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/biome/Biome
-[12Sep2023 23:34:02.125] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/BucketItem
-[12Sep2023 23:34:02.193] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/effect/MobEffectInstance
-[12Sep2023 23:34:02.765] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/lexwj/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2/forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar%23188!/assets/.mcassetsroot' uses unexpected schema
-[12Sep2023 23:34:02.766] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/lexwj/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2/forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar%23188!/data/.mcassetsroot' uses unexpected schema
-[12Sep2023 23:34:02.780] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
-[12Sep2023 23:34:02.783] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
-[12Sep2023 23:34:02.920] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
-[12Sep2023 23:34:03.944] [Render thread/DEBUG] [net.minecraftforge.common.ForgeI18n/CORE]: Loading I18N data entries: 5641
-[12Sep2023 23:34:03.970] [Render thread/DEBUG] [net.minecraftforge.fml.ModWorkManager/LOADING]: Using 8 threads for parallel mod-loading
-[12Sep2023 23:34:03.978] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@5a3a1bf9 - got cpw.mods.cl.ModuleClassLoader@6eafb10e
-[12Sep2023 23:34:03.978] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.minecraftforge.common.ForgeMod
-[12Sep2023 23:34:03.983] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@5a3a1bf9 - got cpw.mods.cl.ModuleClassLoader@6eafb10e
-[12Sep2023 23:34:03.984] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for com.Legoman1342.aperturetech.ApertureTech
-[12Sep2023 23:34:03.985] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@5a3a1bf9 - got cpw.mods.cl.ModuleClassLoader@6eafb10e
-[12Sep2023 23:34:03.985] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for software.bernie.example.GeckoLibMod
-[12Sep2023 23:34:04.023] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Forge Version package package net.minecraftforge.versions.forge, Forge, version 43.2 from cpw.mods.modlauncher.TransformingClassLoader@5a3a1bf9
-[12Sep2023 23:34:04.023] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge version 43.2.0
-[12Sep2023 23:34:04.023] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge spec 43.2
-[12Sep2023 23:34:04.023] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge group net.minecraftforge
-[12Sep2023 23:34:04.024] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: MCP Version package package net.minecraftforge.versions.mcp, Minecraft, version 1.19.2 from cpw.mods.modlauncher.TransformingClassLoader@5a3a1bf9
-[12Sep2023 23:34:04.024] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MC version information 1.19.2
-[12Sep2023 23:34:04.024] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MCP version information 20220805.130853
-[12Sep2023 23:34:04.024] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 43.2.0, for MC 1.19.2 with MCP 20220805.130853
-[12Sep2023 23:34:04.027] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v43.2.0 Initialized
-[12Sep2023 23:34:04.070] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for aperturetech
-[12Sep2023 23:34:04.074] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.datagen.DataGenerators to MOD
-[12Sep2023 23:34:04.079] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.event.ClientEvents$ClientForgeEvents to FORGE
-[12Sep2023 23:34:04.080] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.event.ClientEvents$ClientModBusEvents to MOD
-[12Sep2023 23:34:04.082] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.event.ModEventBusEvents to MOD
-[12Sep2023 23:34:04.084] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.utilities.PortalChannelStorage to FORGE
-[12Sep2023 23:34:04.087] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for geckolib3
-[12Sep2023 23:34:04.088] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing software.bernie.example.GeckoLibMod to FORGE
-[12Sep2023 23:34:04.090] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing software.bernie.example.CommonListener to MOD
-[12Sep2023 23:34:04.092] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing software.bernie.example.ClientListener to MOD
-[12Sep2023 23:34:04.101] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: -Dio.netty.noUnsafe: false
-[12Sep2023 23:34:04.101] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: Java version: 17
-[12Sep2023 23:34:04.102] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.theUnsafe: available
-[12Sep2023 23:34:04.103] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.copyMemory: available
-[12Sep2023 23:34:04.103] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.storeFence: available
-[12Sep2023 23:34:04.104] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Buffer.address: available
-[12Sep2023 23:34:04.104] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: direct buffer constructor: unavailable
+[19Nov2023 15:53:33.641] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientuserdev, --version, MOD_DEV, --assetIndex, 1.19, --assetsDir, C:\Users\lexwj\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 43.2.0, --fml.mcVersion, 1.19.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20220805.130853]
+[19Nov2023 15:53:33.649] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.8.1 by Amazon.com Inc.; OS Windows 10 arch amd64 version 10.0
+[19Nov2023 15:53:33.681] [main/DEBUG] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Found launch services [fmlclientdev,forgeclient,minecraft,forgegametestserverdev,fmlserveruserdev,fmlclient,fmldatauserdev,forgeserverdev,forgeserveruserdev,forgeclientdev,forgeclientuserdev,forgeserver,forgedatadev,fmlserver,fmlclientuserdev,fmlserverdev,forgedatauserdev,testharness,forgegametestserveruserdev]
+[19Nov2023 15:53:33.693] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Found naming services : [srgtomcp]
+[19Nov2023 15:53:33.706] [main/DEBUG] [cpw.mods.modlauncher.LaunchPluginHandler/MODLAUNCHER]: Found launch plugins: [mixin,eventbus,slf4jfixer,object_holder_definalize,runtime_enum_extender,capability_token_subclass,accesstransformer,runtimedistcleaner]
+[19Nov2023 15:53:33.715] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Discovering transformation services
+[19Nov2023 15:53:33.725] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found additional transformation services from discovery services: 
+[19Nov2023 15:53:33.738] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Found transformer services : [mixin,fml]
+[19Nov2023 15:53:33.739] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading
+[19Nov2023 15:53:33.740] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service mixin
+[19Nov2023 15:53:33.741] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service mixin
+[19Nov2023 15:53:33.742] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loading service fml
+[19Nov2023 15:53:33.749] [main/DEBUG] [net.minecraftforge.fml.loading.LauncherVersion/CORE]: Found FMLLauncher version 1.0
+[19Nov2023 15:53:33.749] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML 1.0 loading
+[19Nov2023 15:53:33.749] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found ModLauncher version : 10.0.9+10.0.9+main.dcd20f30
+[19Nov2023 15:53:33.750] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found AccessTransformer version : 8.0.4+66+master.c09db6d7
+[19Nov2023 15:53:33.750] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found EventBus version : 6.0.3+6.0.3+master.039e4ea9
+[19Nov2023 15:53:33.751] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found Runtime Dist Cleaner
+[19Nov2023 15:53:33.753] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: FML found CoreMod version : 5.0.1+15+master.dc5a2922
+[19Nov2023 15:53:33.753] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package implementation version 6.0.0+6.0.0+master.42474703
+[19Nov2023 15:53:33.753] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Found ForgeSPI package specification 5
+[19Nov2023 15:53:33.756] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Loaded service fml
+[19Nov2023 15:53:33.757] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Configuring option handling for services
+[19Nov2023 15:53:33.763] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services initializing
+[19Nov2023 15:53:33.764] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service mixin
+[19Nov2023 15:53:33.785] [main/DEBUG] [mixin/]: MixinService [ModLauncher] was successfully booted in cpw.mods.cl.ModuleClassLoader@7ff95560
+[19Nov2023 15:53:33.804] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/lexwj/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23126!/ Service=ModLauncher Env=CLIENT
+[19Nov2023 15:53:33.808] [main/DEBUG] [mixin/]: Initialising Mixin Platform Manager
+[19Nov2023 15:53:33.809] [main/DEBUG] [mixin/]: Adding mixin platform agents for container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[19Nov2023 15:53:33.809] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[19Nov2023 15:53:33.810] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[19Nov2023 15:53:33.811] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for ModLauncher Root Container(ModLauncher:4f56a0a2)
+[19Nov2023 15:53:33.811] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container ModLauncher Root Container(ModLauncher:4f56a0a2)
+[19Nov2023 15:53:33.813] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service mixin
+[19Nov2023 15:53:33.814] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformation service fml
+[19Nov2023 15:53:33.814] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Setting up basic FML game directories
+[19Nov2023 15:53:33.816] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing GAMEDIR directory : C:\Users\lexwj\aperture-tech\run
+[19Nov2023 15:53:33.816] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path GAMEDIR is C:\Users\lexwj\aperture-tech\run
+[19Nov2023 15:53:33.816] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing MODSDIR directory : C:\Users\lexwj\aperture-tech\run\mods
+[19Nov2023 15:53:33.816] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path MODSDIR is C:\Users\lexwj\aperture-tech\run\mods
+[19Nov2023 15:53:33.817] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing CONFIGDIR directory : C:\Users\lexwj\aperture-tech\run\config
+[19Nov2023 15:53:33.817] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path CONFIGDIR is C:\Users\lexwj\aperture-tech\run\config
+[19Nov2023 15:53:33.817] [main/DEBUG] [net.minecraftforge.fml.loading.FMLPaths/CORE]: Path FMLCONFIG is C:\Users\lexwj\aperture-tech\run\config\fml.toml
+[19Nov2023 15:53:33.817] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading configuration
+[19Nov2023 15:53:33.872] [main/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing default config directory directory : C:\Users\lexwj\aperture-tech\run\defaultconfigs
+[19Nov2023 15:53:33.873] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing ModFile
+[19Nov2023 15:53:33.880] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Preparing launch handler
+[19Nov2023 15:53:33.881] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Using forgeclientuserdev as launch service
+[19Nov2023 15:53:33.905] [main/DEBUG] [net.minecraftforge.fml.loading.FMLLoader/CORE]: Received command line version data  : VersionInfo[forgeVersion=43.2.0, mcVersion=1.19.2, mcpVersion=20220805.130853, forgeGroup=net.minecraftforge]
+[19Nov2023 15:53:33.906] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformation service fml
+[19Nov2023 15:53:33.907] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Current naming domain is 'mcp'
+[19Nov2023 15:53:33.907] [main/DEBUG] [cpw.mods.modlauncher.NameMappingServiceHandler/MODLAUNCHER]: Identified name mapping providers {srg=srgtomcp:1234}
+[19Nov2023 15:53:33.908] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services begin scanning
+[19Nov2023 15:53:33.908] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service mixin
+[19Nov2023 15:53:33.910] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service mixin
+[19Nov2023 15:53:33.910] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Beginning scan trigger - transformation service fml
+[19Nov2023 15:53:33.910] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Initiating mod scan
+[19Nov2023 15:53:33.920] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModListHandler/CORE]: Found mod coordinates from lists: []
+[19Nov2023 15:53:33.923] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Mod Locators : (mods folder:null),(maven libs:null),(exploded directory:null),(minecraft:null),(userdev classpath:null)
+[19Nov2023 15:53:33.924] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModDiscoverer/CORE]: Found Dependency Locators : (JarInJar:null)
+[19Nov2023 15:53:33.930] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Got mod coordinates examplemod%%C:\Users\lexwj\aperture-tech\build\resources\main;examplemod%%C:\Users\lexwj\aperture-tech\build\classes\java\main from env
+[19Nov2023 15:53:33.933] [main/DEBUG] [net.minecraftforge.fml.loading.targets.CommonLaunchHandler/CORE]: Found supplied mod coordinates [{examplemod=[C:\Users\lexwj\aperture-tech\build\resources\main, C:\Users\lexwj\aperture-tech\build\classes\java\main]}]
+[19Nov2023 15:53:34.182] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar with {minecraft} mods - versions {1.19.2}
+[19Nov2023 15:53:34.185] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.2-43.2.0\5713dfd49576886a7ffc353f14f067ad42369592\javafmllanguage-1.19.2-43.2.0.jar
+[19Nov2023 15:53:34.187] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.2-43.2.0\5713dfd49576886a7ffc353f14f067ad42369592\javafmllanguage-1.19.2-43.2.0.jar is missing mods.toml file
+[19Nov2023 15:53:34.189] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.2-43.2.0\51c88985dd125457fb8b6c2c58a4f3b9349a6b57\lowcodelanguage-1.19.2-43.2.0.jar
+[19Nov2023 15:53:34.189] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.2-43.2.0\51c88985dd125457fb8b6c2c58a4f3b9349a6b57\lowcodelanguage-1.19.2-43.2.0.jar is missing mods.toml file
+[19Nov2023 15:53:34.191] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.19.2-43.2.0\f4fa83ef8129c7f7cc5847fbafb07f7ae86c1bb\mclanguage-1.19.2-43.2.0.jar
+[19Nov2023 15:53:34.191] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.19.2-43.2.0\f4fa83ef8129c7f7cc5847fbafb07f7ae86c1bb\mclanguage-1.19.2-43.2.0.jar is missing mods.toml file
+[19Nov2023 15:53:34.193] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.19.2-43.2.0\d4dcb5b809b7f035ac22b058941cf81f84451545\fmlcore-1.19.2-43.2.0.jar
+[19Nov2023 15:53:34.193] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\lexwj\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.19.2-43.2.0\d4dcb5b809b7f035ac22b058941cf81f84451545\fmlcore-1.19.2-43.2.0.jar is missing mods.toml file
+[19Nov2023 15:53:34.197] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\aperture-tech\build\resources\main
+[19Nov2023 15:53:34.206] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {aperturetech} mods - versions {0.0NONE}
+[19Nov2023 15:53:34.207] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
+[19Nov2023 15:53:34.210] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {43.2.0}
+[19Nov2023 15:53:34.225] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
+[19Nov2023 15:53:34.226] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with {geckolib3} mods - versions {3.1.40}
+[19Nov2023 15:53:34.230] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
+[19Nov2023 15:53:34.231] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with {geckolib3} mods - versions {3.1.40}
+[19Nov2023 15:53:34.237] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Found 2 mods for first modid geckolib3, selecting most recent based on version data
+[19Nov2023 15:53:34.238] [main/DEBUG] [net.minecraftforge.fml.loading.UniqueModListBuilder/]: Selected file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar for modid geckolib3 with version 3.1.40
+[19Nov2023 15:53:34.243] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar, it does not contain dependency information.
+[19Nov2023 15:53:34.245] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from , it does not contain dependency information.
+[19Nov2023 15:53:34.245] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from main, it does not contain dependency information.
+[19Nov2023 15:53:34.246] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar, it does not contain dependency information.
+[19Nov2023 15:53:34.246] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from mclanguage-1.19.2-43.2.0.jar, it does not contain dependency information.
+[19Nov2023 15:53:34.246] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from javafmllanguage-1.19.2-43.2.0.jar, it does not contain dependency information.
+[19Nov2023 15:53:34.246] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from fmlcore-1.19.2-43.2.0.jar, it does not contain dependency information.
+[19Nov2023 15:53:34.246] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.AbstractJarFileDependencyLocator/]: Failed to load resource META-INF\jarjar\metadata.json from lowcodelanguage-1.19.2-43.2.0.jar, it does not contain dependency information.
+[19Nov2023 15:53:34.274] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[19Nov2023 15:53:34.276] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar with {minecraft} mods - versions {1.19.2}
+[19Nov2023 15:53:34.279] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\lexwj\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2\forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar with languages [LanguageSpec[languageName=minecraft, acceptedVersions=1]]
+[19Nov2023 15:53:34.280] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\aperture-tech\build\resources\main
+[19Nov2023 15:53:34.282] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file main with {aperturetech} mods - versions {0.0NONE}
+[19Nov2023 15:53:34.282] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\lexwj\aperture-tech\build\resources\main with languages [LanguageSpec[languageName=javafml, acceptedVersions=[43,)]]
+[19Nov2023 15:53:34.282] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate /
+[19Nov2023 15:53:34.283] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file  with {forge} mods - versions {43.2.0}
+[19Nov2023 15:53:34.284] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file / with languages [LanguageSpec[languageName=javafml, acceptedVersions=[24,]]]
+[19Nov2023 15:53:34.308] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_method with Javascript path coremods/field_to_method.js
+[19Nov2023 15:53:34.309] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod field_to_instanceof with Javascript path coremods/field_to_instanceof.js
+[19Nov2023 15:53:34.309] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Found coremod add_bouncer_method with Javascript path coremods/add_bouncer_method.js
+[19Nov2023 15:53:34.309] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_method.js
+[19Nov2023 15:53:34.309] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/field_to_instanceof.js
+[19Nov2023 15:53:34.309] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Found coremod coremods/add_bouncer_method.js
+[19Nov2023 15:53:34.309] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Considering mod file candidate C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
+[19Nov2023 15:53:34.310] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFileInfo/LOADING]: Found valid mod file geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with {geckolib3} mods - versions {3.1.40}
+[19Nov2023 15:53:34.310] [main/DEBUG] [net.minecraftforge.fml.loading.moddiscovery.ModFile/LOADING]: Loading mod file C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar with languages [LanguageSpec[languageName=javafml, acceptedVersions=[41,)]]
+[19Nov2023 15:53:34.312] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: End scan trigger - transformation service fml
+[19Nov2023 15:53:34.320] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found 3 language providers
+[19Nov2023 15:53:34.321] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider minecraft, version 1.0
+[19Nov2023 15:53:34.322] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider lowcodefml, version 43
+[19Nov2023 15:53:34.322] [main/DEBUG] [net.minecraftforge.fml.loading.LanguageLoadingProvider/CORE]: Found language provider javafml, version 43
+[19Nov2023 15:53:34.328] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Configured system mods: [minecraft, forge]
+[19Nov2023 15:53:34.328] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: minecraft
+[19Nov2023 15:53:34.328] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/]: Found system mod: forge
+[19Nov2023 15:53:34.330] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 4 mod requirements (4 mandatory, 0 optional)
+[19Nov2023 15:53:34.332] [main/DEBUG] [net.minecraftforge.fml.loading.ModSorter/LOADING]: Found 0 mod requirements missing (0 mandatory, 0 optional)
+[19Nov2023 15:53:34.770] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 31029 method mappings from methods.csv
+[19Nov2023 15:53:34.791] [main/DEBUG] [net.minecraftforge.fml.loading.MCPNamingService/CORE]: Loaded 28905 field mappings from fields.csv
+[19Nov2023 15:53:34.841] [main/DEBUG] [cpw.mods.modlauncher.TransformationServicesHandler/MODLAUNCHER]: Transformation services loading transformers
+[19Nov2023 15:53:34.842] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service mixin
+[19Nov2023 15:53:34.842] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service mixin
+[19Nov2023 15:53:34.843] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initializing transformers for transformation service fml
+[19Nov2023 15:53:34.843] [main/DEBUG] [net.minecraftforge.fml.loading.FMLServiceProvider/CORE]: Loading coremod transformers
+[19Nov2023 15:53:34.843] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_method.js
+[19Nov2023 15:53:35.010] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[19Nov2023 15:53:35.011] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/field_to_instanceof.js
+[19Nov2023 15:53:35.069] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[19Nov2023 15:53:35.069] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: Loading CoreMod from coremods/add_bouncer_method.js
+[19Nov2023 15:53:35.115] [main/DEBUG] [net.minecraftforge.coremod.CoreModEngine/COREMOD]: CoreMod loaded successfully
+[19Nov2023 15:53:35.125] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@7544ac86 to Target : CLASS {Lnet/minecraft/world/level/biome/Biome;} {} {V}
+[19Nov2023 15:53:35.128] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6cd3ad8a to Target : CLASS {Lnet/minecraft/world/level/levelgen/structure/Structure;} {} {V}
+[19Nov2023 15:53:35.129] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@75181b50 to Target : CLASS {Lnet/minecraft/world/effect/MobEffectInstance;} {} {V}
+[19Nov2023 15:53:35.129] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@2d64160c to Target : CLASS {Lnet/minecraft/world/level/block/LiquidBlock;} {} {V}
+[19Nov2023 15:53:35.129] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@5f254608 to Target : CLASS {Lnet/minecraft/world/item/BucketItem;} {} {V}
+[19Nov2023 15:53:35.130] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@2eeb0f9b to Target : CLASS {Lnet/minecraft/world/level/block/StairBlock;} {} {V}
+[19Nov2023 15:53:35.130] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@1b1c538d to Target : CLASS {Lnet/minecraft/world/level/block/FlowerPotBlock;} {} {V}
+[19Nov2023 15:53:35.131] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@1645f294 to Target : CLASS {Lnet/minecraft/world/item/ItemStack;} {} {V}
+[19Nov2023 15:53:35.132] [main/DEBUG] [cpw.mods.modlauncher.TransformStore/MODLAUNCHER]: Adding transformer net.minecraftforge.coremod.transformer.CoreModClassTransformer@6325f352 to Target : CLASS {Lnet/minecraft/network/play/client/CClientSettingsPacket;} {} {V}
+[19Nov2023 15:53:35.132] [main/DEBUG] [cpw.mods.modlauncher.TransformationServiceDecorator/MODLAUNCHER]: Initialized transformers for transformation service fml
+[19Nov2023 15:53:35.532] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[19Nov2023 15:53:35.532] [main/DEBUG] [mixin/]: Processing launch tasks for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(minecraft)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(minecraft)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(minecraft)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(minecraft)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(minecraft)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(aperturetech)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(aperturetech)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(aperturetech)
+[19Nov2023 15:53:35.533] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(aperturetech)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(aperturetech)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(aperturetech)]
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(forge)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(forge)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(forge)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(forge)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(forge)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Adding mixin platform agents for container SecureJarResource(geckolib3)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentMinecraftForge for SecureJarResource(geckolib3)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: MixinPlatformAgentMinecraftForge rejected container SecureJarResource(geckolib3)
+[19Nov2023 15:53:35.535] [main/DEBUG] [mixin/]: Instancing new MixinPlatformAgentDefault for SecureJarResource(geckolib3)
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: MixinPlatformAgentDefault accepted container SecureJarResource(geckolib3)
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: Processing prepare() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(geckolib3)]
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: inject() running with 5 agents
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:ModLauncher Root Container(ModLauncher:4f56a0a2)]
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(minecraft)]
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(aperturetech)]
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(forge)]
+[19Nov2023 15:53:35.536] [main/DEBUG] [mixin/]: Processing inject() for PlatformAgent[MixinPlatformAgentDefault:SecureJarResource(geckolib3)]
+[19Nov2023 15:53:35.537] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientuserdev' with arguments [--version, MOD_DEV, --gameDir, ., --assetsDir, C:\Users\lexwj\.gradle\caches\forge_gradle\assets, --assetIndex, 1.19]
+[19Nov2023 15:53:35.603] [main/DEBUG] [mixin/]: Error cleaning class output directory: .mixin.out
+[19Nov2023 15:53:35.606] [main/DEBUG] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[19Nov2023 15:53:35.628] [main/DEBUG] [io.netty.util.internal.logging.InternalLoggerFactory/]: Using SLF4J as the default logging framework
+[19Nov2023 15:53:35.630] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.level: simple
+[19Nov2023 15:53:35.630] [main/DEBUG] [io.netty.util.ResourceLeakDetector/]: -Dio.netty.leakDetection.targetRecords: 4
+[19Nov2023 15:53:35.835] [main/DEBUG] [oshi.util.FileUtil/]: No oshi.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@94e51e8
+[19Nov2023 15:53:36.212] [main/DEBUG] [oshi.util.FileUtil/]: No oshi.architecture.properties file found from ClassLoader cpw.mods.modlauncher.TransformingClassLoader@94e51e8
+[19Nov2023 15:53:37.246] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/levelgen/structure/Structure
+[19Nov2023 15:53:37.417] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/LiquidBlock
+[19Nov2023 15:53:37.455] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/StairBlock
+[19Nov2023 15:53:37.526] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/block/FlowerPotBlock
+[19Nov2023 15:53:38.234] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/ItemStack
+[19Nov2023 15:53:39.220] [pool-3-thread-1/INFO] [net.minecraft.util.datafix.DataFixers/]: Building unoptimized datafixer
+[19Nov2023 15:53:39.887] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/level/biome/Biome
+[19Nov2023 15:53:40.248] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/item/BucketItem
+[19Nov2023 15:53:40.322] [pool-3-thread-1/DEBUG] [net.minecraftforge.coremod.transformer.CoreModBaseTransformer/COREMOD]: Transforming net/minecraft/world/effect/MobEffectInstance
+[19Nov2023 15:53:40.973] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/lexwj/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2/forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar%23188!/assets/.mcassetsroot' uses unexpected schema
+[19Nov2023 15:53:40.973] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResources/]: Assets URL 'union:/C:/Users/lexwj/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2/forge-1.19.2-43.2.0_mapped_parchment_2022.11.27-1.19.2-recomp.jar%23188!/data/.mcassetsroot' uses unexpected schema
+[19Nov2023 15:53:40.993] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[19Nov2023 15:53:41.001] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[19Nov2023 15:53:41.133] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.1 build 7
+[19Nov2023 15:53:41.924] [Render thread/DEBUG] [net.minecraftforge.common.ForgeI18n/CORE]: Loading I18N data entries: 5641
+[19Nov2023 15:53:41.949] [Render thread/DEBUG] [net.minecraftforge.fml.ModWorkManager/LOADING]: Using 8 threads for parallel mod-loading
+[19Nov2023 15:53:41.958] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@94e51e8 - got cpw.mods.cl.ModuleClassLoader@53667cbe
+[19Nov2023 15:53:41.958] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.minecraftforge.common.ForgeMod
+[19Nov2023 15:53:41.964] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@94e51e8 - got cpw.mods.cl.ModuleClassLoader@53667cbe
+[19Nov2023 15:53:41.965] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for com.Legoman1342.aperturetech.ApertureTech
+[19Nov2023 15:53:41.966] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@94e51e8 - got cpw.mods.cl.ModuleClassLoader@53667cbe
+[19Nov2023 15:53:41.966] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for software.bernie.example.GeckoLibMod
+[19Nov2023 15:53:42.014] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Forge Version package package net.minecraftforge.versions.forge, Forge, version 43.2 from cpw.mods.modlauncher.TransformingClassLoader@94e51e8
+[19Nov2023 15:53:42.014] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge version 43.2.0
+[19Nov2023 15:53:42.014] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge spec 43.2
+[19Nov2023 15:53:42.015] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.forge.ForgeVersion/CORE]: Found Forge group net.minecraftforge
+[19Nov2023 15:53:42.016] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: MCP Version package package net.minecraftforge.versions.mcp, Minecraft, version 1.19.2 from cpw.mods.modlauncher.TransformingClassLoader@94e51e8
+[19Nov2023 15:53:42.016] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MC version information 1.19.2
+[19Nov2023 15:53:42.016] [modloading-worker-0/DEBUG] [net.minecraftforge.versions.mcp.MCPVersion/CORE]: Found MCP version information 20220805.130853
+[19Nov2023 15:53:42.016] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 43.2.0, for MC 1.19.2 with MCP 20220805.130853
+[19Nov2023 15:53:42.021] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v43.2.0 Initialized
+[19Nov2023 15:53:42.070] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for aperturetech
+[19Nov2023 15:53:42.078] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.datagen.DataGenerators to MOD
+[19Nov2023 15:53:42.083] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.event.ClientEvents$ClientForgeEvents to FORGE
+[19Nov2023 15:53:42.083] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for geckolib3
+[19Nov2023 15:53:42.084] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing software.bernie.example.GeckoLibMod to FORGE
+[19Nov2023 15:53:42.084] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.event.ClientEvents$ClientModBusEvents to MOD
+[19Nov2023 15:53:42.085] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing software.bernie.example.CommonListener to MOD
+[19Nov2023 15:53:42.087] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.event.ModEventBusEvents to MOD
+[19Nov2023 15:53:42.088] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing software.bernie.example.ClientListener to MOD
+[19Nov2023 15:53:42.090] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing com.Legoman1342.utilities.PortalChannelStorage to FORGE
+[19Nov2023 15:53:42.103] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: -Dio.netty.noUnsafe: false
+[19Nov2023 15:53:42.103] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: Java version: 17
+[19Nov2023 15:53:42.104] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.theUnsafe: available
+[19Nov2023 15:53:42.105] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.copyMemory: available
+[19Nov2023 15:53:42.105] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: sun.misc.Unsafe.storeFence: available
+[19Nov2023 15:53:42.106] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Buffer.address: available
+[19Nov2023 15:53:42.107] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: direct buffer constructor: unavailable
 java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
 	at io.netty.util.internal.ReflectionUtil.trySetAccessible(ReflectionUtil.java:31) ~[netty-common-4.1.77.Final.jar%23146!/:4.1.77.Final]
 	at io.netty.util.internal.PlatformDependent0$5.run(PlatformDependent0.java:287) ~[netty-common-4.1.77.Final.jar%23146!/:4.1.77.Final]
@@ -252,8 +252,8 @@ java.lang.UnsupportedOperationException: Reflective setAccessible(true) disabled
 	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) [?:?]
 	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) [?:?]
 	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) [?:?]
-[12Sep2023 23:34:04.105] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Bits.unaligned: available, true
-[12Sep2023 23:34:04.107] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+[19Nov2023 15:53:42.108] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.Bits.unaligned: available, true
+[19Nov2023 15:53:42.111] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
 java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent0$7 (in module io.netty.common) cannot access class jdk.internal.misc.Unsafe (in module java.base) because module java.base does not export jdk.internal.misc to module io.netty.common
 	at jdk.internal.reflect.Reflection.newIllegalAccessException(Reflection.java:392) ~[?:?]
 	at java.lang.reflect.AccessibleObject.checkAccess(AccessibleObject.java:674) ~[?:?]
@@ -282,55 +282,57 @@ java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent
 	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655) [?:?]
 	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622) [?:?]
 	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165) [?:?]
-[12Sep2023 23:34:04.108] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.DirectByteBuffer.<init>(long, int): unavailable
-[12Sep2023 23:34:04.109] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: sun.misc.Unsafe: available
-[12Sep2023 23:34:04.109] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: maxDirectMemory: 4215275520 bytes (maybe)
-[12Sep2023 23:34:04.109] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.tmpdir: C:\Users\lexwj\AppData\Local\Temp (java.io.tmpdir)
-[12Sep2023 23:34:04.109] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.bitMode: 64 (sun.arch.data.model)
-[12Sep2023 23:34:04.110] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: Platform: Windows
-[12Sep2023 23:34:04.110] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.maxDirectMemory: -1 bytes
-[12Sep2023 23:34:04.110] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.uninitializedArrayAllocationThreshold: -1
-[12Sep2023 23:34:04.111] [modloading-worker-0/DEBUG] [io.netty.util.internal.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): available
-[12Sep2023 23:34:04.111] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
-[12Sep2023 23:34:04.133] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Loading Network data for FML net version: FML3
-[12Sep2023 23:34:04.159] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-client.toml for forge tracking
-[12Sep2023 23:34:04.160] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-server.toml for forge tracking
-[12Sep2023 23:34:04.160] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-common.toml for forge tracking
-[12Sep2023 23:34:04.182] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for forge
-[12Sep2023 23:34:04.182] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$CommonHandler to MOD
-[12Sep2023 23:34:04.184] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$ColorRegisterHandler to MOD
-[12Sep2023 23:34:04.188] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.model.data.ModelDataManager to FORGE
-[12Sep2023 23:34:04.190] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ForgeHooksClient$ClientEvents to MOD
-[12Sep2023 23:34:04.197] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ClientForgeMod to MOD
-[12Sep2023 23:34:04.234] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/energy/IEnergyStorage;
-[12Sep2023 23:34:04.236] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandler;
-[12Sep2023 23:34:04.236] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandlerItem;
-[12Sep2023 23:34:04.236] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/items/IItemHandler;
-[12Sep2023 23:34:04.577] [Render thread/DEBUG] [software.bernie.geckolib3.GeckoLib/]: Registered syncable for software.bernie.example.item.JackInTheBoxItem
-[12Sep2023 23:34:04.580] [Render thread/DEBUG] [software.bernie.geckolib3.GeckoLib/]: Registered syncable for software.bernie.example.item.PistolItem
-[12Sep2023 23:34:04.810] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:forge for mod file /
-[12Sep2023 23:34:04.816] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:aperturetech for mod file C:\Users\lexwj\aperture-tech\build\resources\main
-[12Sep2023 23:34:04.816] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:geckolib3 for mod file C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
-[12Sep2023 23:34:05.156] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
-[12Sep2023 23:34:05.613] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: Default, Mod Resources
-[12Sep2023 23:34:05.724] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Loading configs type CLIENT
-[12Sep2023 23:34:05.745] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\lexwj\aperture-tech\run\config\forge-client.toml
-[12Sep2023 23:34:05.800] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-client.toml
-[12Sep2023 23:34:05.817] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-client.toml for changes
-[12Sep2023 23:34:05.830] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Loaded forge config file forge-client.toml
-[12Sep2023 23:34:05.832] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Loading configs type COMMON
-[12Sep2023 23:34:05.873] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\lexwj\aperture-tech\run\config\forge-common.toml
-[12Sep2023 23:34:05.930] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-common.toml
-[12Sep2023 23:34:05.931] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-common.toml for changes
-[12Sep2023 23:34:05.932] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Loaded forge config file forge-common.toml
-[12Sep2023 23:34:05.935] [Thread-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Config file forge-common.toml changed, sending notifies
-[12Sep2023 23:34:05.935] [Thread-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Forge config just got changed on the file system!
-[12Sep2023 23:34:05.938] [Thread-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Config file forge-common.toml changed, sending notifies
-[12Sep2023 23:34:05.947] [Thread-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Forge config just got changed on the file system!
-[12Sep2023 23:34:06.572] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Dispatching synchronous work for work queue COMMON_SETUP: 1 jobs
-[12Sep2023 23:34:06.575] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Synchronous work queue completed in 1.997 ms
-[12Sep2023 23:34:06.710] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
-[12Sep2023 23:34:07.073] [Forge Version Check/DEBUG] [net.minecraftforge.fml.VersionChecker/]: [forge] Received version check data:
+[19Nov2023 15:53:42.112] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent0/]: java.nio.DirectByteBuffer.<init>(long, int): unavailable
+[19Nov2023 15:53:42.112] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: sun.misc.Unsafe: available
+[19Nov2023 15:53:42.113] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: maxDirectMemory: 4215275520 bytes (maybe)
+[19Nov2023 15:53:42.113] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.tmpdir: C:\Users\lexwj\AppData\Local\Temp (java.io.tmpdir)
+[19Nov2023 15:53:42.113] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.bitMode: 64 (sun.arch.data.model)
+[19Nov2023 15:53:42.114] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: Platform: Windows
+[19Nov2023 15:53:42.115] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.maxDirectMemory: -1 bytes
+[19Nov2023 15:53:42.115] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.uninitializedArrayAllocationThreshold: -1
+[19Nov2023 15:53:42.116] [modloading-worker-0/DEBUG] [io.netty.util.internal.CleanerJava9/]: java.nio.ByteBuffer.cleaner(): available
+[19Nov2023 15:53:42.116] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
+[19Nov2023 15:53:42.141] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Loading Network data for FML net version: FML3
+[19Nov2023 15:53:42.163] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-client.toml for forge tracking
+[19Nov2023 15:53:42.164] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-server.toml for forge tracking
+[19Nov2023 15:53:42.164] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-common.toml for forge tracking
+[19Nov2023 15:53:42.215] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for forge
+[19Nov2023 15:53:42.218] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$CommonHandler to MOD
+[19Nov2023 15:53:42.221] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$ColorRegisterHandler to MOD
+[19Nov2023 15:53:42.229] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.model.data.ModelDataManager to FORGE
+[19Nov2023 15:53:42.231] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ForgeHooksClient$ClientEvents to MOD
+[19Nov2023 15:53:42.239] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.client.ClientForgeMod to MOD
+[19Nov2023 15:53:42.297] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/energy/IEnergyStorage;
+[19Nov2023 15:53:42.299] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandler;
+[19Nov2023 15:53:42.299] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/fluids/capability/IFluidHandlerItem;
+[19Nov2023 15:53:42.299] [Render thread/DEBUG] [net.minecraftforge.common.capabilities.CapabilityManager/CAPABILITIES]: Attempting to automatically register: Lnet/minecraftforge/items/IItemHandler;
+[19Nov2023 15:53:42.569] [Render thread/DEBUG] [software.bernie.geckolib3.GeckoLib/]: Registered syncable for software.bernie.example.item.JackInTheBoxItem
+[19Nov2023 15:53:42.571] [Render thread/DEBUG] [software.bernie.geckolib3.GeckoLib/]: Registered syncable for software.bernie.example.item.PistolItem
+[19Nov2023 15:53:42.777] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:forge for mod file /
+[19Nov2023 15:53:42.779] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:aperturetech for mod file C:\Users\lexwj\aperture-tech\build\resources\main
+[19Nov2023 15:53:42.780] [Render thread/DEBUG] [net.minecraftforge.client.loading.ClientModLoader/CORE]: Generating PackInfo named mod:geckolib3 for mod file C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
+[19Nov2023 15:53:43.299] [Render thread/INFO] [net.minecraftforge.gametest.ForgeGameTestHooks/]: Enabled Gametest Namespaces: []
+[19Nov2023 15:53:43.800] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: Default, Mod Resources
+[19Nov2023 15:53:43.912] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Loading configs type CLIENT
+[19Nov2023 15:53:43.914] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\lexwj\aperture-tech\run\config\forge-client.toml
+[19Nov2023 15:53:43.923] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-client.toml
+[19Nov2023 15:53:43.950] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-client.toml for changes
+[19Nov2023 15:53:43.957] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Loaded forge config file forge-client.toml
+[19Nov2023 15:53:43.958] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Loading configs type COMMON
+[19Nov2023 15:53:43.958] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for C:\Users\lexwj\aperture-tech\run\config\forge-common.toml
+[19Nov2023 15:53:43.961] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-common.toml
+[19Nov2023 15:53:43.962] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file C:\Users\lexwj\aperture-tech\run\config\forge-common.toml for changes
+[19Nov2023 15:53:43.962] [Thread-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Config file forge-client.toml changed, sending notifies
+[19Nov2023 15:53:43.962] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Loaded forge config file forge-common.toml
+[19Nov2023 15:53:43.962] [Thread-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Forge config just got changed on the file system!
+[19Nov2023 15:53:43.968] [Thread-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Config file forge-common.toml changed, sending notifies
+[19Nov2023 15:53:43.969] [Thread-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Forge config just got changed on the file system!
+[19Nov2023 15:53:43.987] [Thread-0/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Config file forge-common.toml changed, sending notifies
+[19Nov2023 15:53:43.987] [Thread-0/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Forge config just got changed on the file system!
+[19Nov2023 15:53:44.631] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[19Nov2023 15:53:45.122] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Dispatching synchronous work for work queue COMMON_SETUP: 1 jobs
+[19Nov2023 15:53:45.127] [Render thread/DEBUG] [net.minecraftforge.fml.DeferredWorkQueue/LOADING]: Synchronous work queue completed in 3.675 ms
+[19Nov2023 15:53:45.168] [Forge Version Check/DEBUG] [net.minecraftforge.fml.VersionChecker/]: [forge] Received version check data:
 {
   "homepage": "https://files.minecraftforge.net/net/minecraftforge/forge/",
   "promos": {
@@ -407,39 +409,348 @@ java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent
     "1.18.1-latest": "39.1.2",
     "1.18.1-recommended": "39.1.0",
     "1.18.2-recommended": "40.2.0",
-    "1.18.2-latest": "40.2.10",
+    "1.18.2-latest": "40.2.14",
     "1.19-latest": "41.1.0",
     "1.19-recommended": "41.1.0",
     "1.19.1-latest": "42.0.9",
-    "1.19.2-recommended": "43.2.0",
-    "1.19.2-latest": "43.2.23",
+    "1.19.2-recommended": "43.3.0",
+    "1.19.2-latest": "43.3.5",
     "1.19.3-latest": "44.1.23",
     "1.19.3-recommended": "44.1.0",
-    "1.19.4-recommended": "45.1.0",
-    "1.19.4-latest": "45.1.19",
+    "1.19.4-recommended": "45.2.0",
+    "1.19.4-latest": "45.2.6",
     "1.20-latest": "46.0.14",
-    "1.20.1-recommended": "47.1.0",
-    "1.20.1-latest": "47.1.46"
+    "1.20.1-recommended": "47.2.0",
+    "1.20.2-latest": "48.0.40"
   }
 }
-[12Sep2023 23:34:07.074] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: UP_TO_DATE Current: 43.2.0 Target: null
-[12Sep2023 23:34:11.049] [Worker-Main-7/INFO] [com.Legoman1342.aperturetech.ApertureTech/]: Hello world from the MDK
-[12Sep2023 23:34:11.049] [Worker-Main-7/INFO] [com.Legoman1342.aperturetech.ApertureTech/]: Got IMC [Hello world]
-[12Sep2023 23:34:11.746] [Render thread/DEBUG] [net.minecraftforge.common.ForgeI18n/CORE]: Loading I18N data entries: 5907
-[12Sep2023 23:34:11.780] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
-[12Sep2023 23:34:11.780] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
-[12Sep2023 23:34:11.817] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (HyperX Cloud Stinger Core Wireless + 7.1)
-[12Sep2023 23:34:11.818] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
-[12Sep2023 23:34:11.936] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
-[12Sep2023 23:34:11.942] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
-[12Sep2023 23:34:11.942] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
-[12Sep2023 23:34:11.943] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
-[12Sep2023 23:34:11.945] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
-[12Sep2023 23:34:11.946] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
-[12Sep2023 23:34:11.946] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
-[12Sep2023 23:34:12.706] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
-[12Sep2023 23:34:13.148] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
-[12Sep2023 23:34:13.149] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
-[12Sep2023 23:34:13.150] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
-[12Sep2023 23:34:13.298] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
-[12Sep2023 23:34:30.937] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!
+[19Nov2023 15:53:45.169] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: OUTDATED Current: 43.2.0 Target: 43.3.0
+[19Nov2023 15:53:49.629] [Worker-Main-6/INFO] [com.Legoman1342.aperturetech.ApertureTech/]: Hello world from the MDK
+[19Nov2023 15:53:49.630] [Worker-Main-6/INFO] [com.Legoman1342.aperturetech.ApertureTech/]: Got IMC [Hello world]
+[19Nov2023 15:53:50.642] [Render thread/DEBUG] [net.minecraftforge.common.ForgeI18n/CORE]: Loading I18N data entries: 5907
+[19Nov2023 15:53:50.694] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[19Nov2023 15:53:50.694] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[19Nov2023 15:53:50.772] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (HyperX Cloud Stinger Core Wireless + 7.1)
+[19Nov2023 15:53:50.773] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[19Nov2023 15:53:50.938] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[19Nov2023 15:53:50.944] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x4 minecraft:textures/atlas/signs.png-atlas
+[19Nov2023 15:53:50.944] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[19Nov2023 15:53:50.944] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[19Nov2023 15:53:50.945] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[19Nov2023 15:53:50.945] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[19Nov2023 15:53:50.945] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[19Nov2023 15:53:51.857] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[19Nov2023 15:53:52.266] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[19Nov2023 15:53:52.267] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[19Nov2023 15:53:52.268] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[19Nov2023 15:53:52.394] [Realms Notification Availability checker #1/INFO] [com.mojang.realmsclient.client.RealmsClient/]: Could not authorize you against Realms server: Invalid session id
+[19Nov2023 15:54:11.315] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[19Nov2023 15:54:11.316] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[19Nov2023 15:54:16.377] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (HyperX Cloud Stinger Core Wireless + 7.1)
+[19Nov2023 15:54:16.378] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[19Nov2023 15:54:18.298] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[19Nov2023 15:54:18.298] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[19Nov2023 15:54:18.337] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on AI Noise-cancelling Output (ASUS Utility)
+[19Nov2023 15:54:18.337] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[19Nov2023 15:54:18.733] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[19Nov2023 15:54:18.733] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[19Nov2023 15:54:19.779] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Headphones (Oculus Virtual Audio Device)
+[19Nov2023 15:54:19.779] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[19Nov2023 15:54:25.778] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[19Nov2023 15:54:25.779] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[19Nov2023 15:54:27.408] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (Realtek(R) Audio)
+[19Nov2023 15:54:27.409] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[19Nov2023 15:54:28.236] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[19Nov2023 15:54:28.237] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[19Nov2023 15:54:28.291] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on DELL U2412M (HD Audio Driver for Display Audio)
+[19Nov2023 15:54:28.291] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[19Nov2023 15:54:29.331] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[19Nov2023 15:54:29.331] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[19Nov2023 15:54:29.365] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Speakers (HyperX Cloud Stinger Core Wireless + 7.1)
+[19Nov2023 15:54:29.366] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[19Nov2023 15:54:32.940] [Render thread/DEBUG] [net.minecraftforge.server.ServerLifecycleHooks/CORE]: Generating PackInfo named mod:forge for mod file /
+[19Nov2023 15:54:32.941] [Render thread/DEBUG] [net.minecraftforge.server.ServerLifecycleHooks/CORE]: Generating PackInfo named mod:aperturetech for mod file C:\Users\lexwj\aperture-tech\build\resources\main
+[19Nov2023 15:54:32.941] [Render thread/DEBUG] [net.minecraftforge.server.ServerLifecycleHooks/CORE]: Generating PackInfo named mod:geckolib3 for mod file C:\Users\lexwj\.gradle\caches\forge_gradle\deobf_dependencies\software\bernie\geckolib\geckolib-forge-1.19\3.1.40_mapped_parchment_2022.11.27-1.19.2\geckolib-forge-1.19-3.1.40_mapped_parchment_2022.11.27-1.19.2.jar
+[19Nov2023 15:54:34.679] [Render thread/INFO] [net.minecraft.world.item.crafting.RecipeManager/]: Loaded 7 recipes
+[19Nov2023 15:54:35.591] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1184 advancements
+[19Nov2023 15:54:35.848] [Render thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 15:54:35.854] [Render thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 15:54:35.905] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Starting integrated minecraft server version 1.19.2
+[19Nov2023 15:54:35.905] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[19Nov2023 15:54:35.985] [Server thread/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing serverconfig directory : .\saves\Aperture Tech Testing - 1.19.2\serverconfig
+[19Nov2023 15:54:35.985] [Server thread/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Loading configs type SERVER
+[19Nov2023 15:54:35.985] [Server thread/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Built TOML config for .\saves\Aperture Tech Testing - 1.19.2\serverconfig\forge-server.toml
+[19Nov2023 15:54:35.987] [Server thread/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Loaded TOML config file .\saves\Aperture Tech Testing - 1.19.2\serverconfig\forge-server.toml
+[19Nov2023 15:54:35.988] [Server thread/DEBUG] [net.minecraftforge.fml.config.ConfigFileTypeHandler/CONFIG]: Watching TOML config file .\saves\Aperture Tech Testing - 1.19.2\serverconfig\forge-server.toml for changes
+[19Nov2023 15:54:35.988] [Server thread/DEBUG] [net.minecraftforge.common.ForgeConfig/FORGEMOD]: Loaded forge config file forge-server.toml
+[19Nov2023 15:54:36.306] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[19Nov2023 15:54:38.965] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:38.965] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:38.965] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:38.965] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:38.965] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:38.965] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:39.339] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:39.858] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 0%
+[19Nov2023 15:54:40.333] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 4%
+[19Nov2023 15:54:40.860] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Preparing spawn area: 77%
+[19Nov2023 15:54:40.986] [Server thread/INFO] [net.minecraftforge.server.permission.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[19Nov2023 15:54:41.003] [Render thread/INFO] [net.minecraft.server.level.progress.LoggerChunkProgressListener/]: Time elapsed: 4676 ms
+[19Nov2023 15:54:41.123] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing view distance to 12, from 10
+[19Nov2023 15:54:41.128] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Changing simulation distance to 12, from 0
+[19Nov2023 15:54:41.161] [Render thread/DEBUG] [io.netty.channel.MultithreadEventLoopGroup/]: -Dio.netty.eventLoopThreads: 16
+[19Nov2023 15:54:41.192] [Render thread/DEBUG] [io.netty.util.internal.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+[19Nov2023 15:54:41.192] [Render thread/DEBUG] [io.netty.util.internal.InternalThreadLocalMap/]: -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+[19Nov2023 15:54:41.201] [Render thread/DEBUG] [io.netty.channel.nio.NioEventLoop/]: -Dio.netty.noKeySetOptimization: false
+[19Nov2023 15:54:41.201] [Render thread/DEBUG] [io.netty.channel.nio.NioEventLoop/]: -Dio.netty.selectorAutoRebuildThreshold: 512
+[19Nov2023 15:54:41.209] [Render thread/DEBUG] [io.netty.util.internal.PlatformDependent/]: org.jctools-core.MpscChunkedArrayQueue: available
+[19Nov2023 15:54:41.236] [Render thread/DEBUG] [io.netty.channel.DefaultChannelId/]: -Dio.netty.processId: 18756 (auto-detected)
+[19Nov2023 15:54:41.239] [Render thread/WARN] [io.netty.util.internal.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[19Nov2023 15:54:41.239] [Render thread/DEBUG] [io.netty.util.NetUtil/]: -Djava.net.preferIPv4Stack: false
+[19Nov2023 15:54:41.239] [Render thread/DEBUG] [io.netty.util.NetUtil/]: -Djava.net.preferIPv6Addresses: false
+[19Nov2023 15:54:41.248] [Render thread/DEBUG] [io.netty.util.NetUtilInitializations/]: Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+[19Nov2023 15:54:41.252] [Render thread/DEBUG] [io.netty.util.NetUtil/]: Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+[19Nov2023 15:54:41.281] [Render thread/DEBUG] [io.netty.channel.DefaultChannelId/]: -Dio.netty.machineId: f8:e4:3b:ff:fe:1f:2c:c6 (auto-detected)
+[19Nov2023 15:54:41.322] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.numHeapArenas: 16
+[19Nov2023 15:54:41.322] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.numDirectArenas: 16
+[19Nov2023 15:54:41.322] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.pageSize: 8192
+[19Nov2023 15:54:41.322] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.maxOrder: 9
+[19Nov2023 15:54:41.322] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.chunkSize: 4194304
+[19Nov2023 15:54:41.322] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.smallCacheSize: 256
+[19Nov2023 15:54:41.324] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.normalCacheSize: 64
+[19Nov2023 15:54:41.324] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+[19Nov2023 15:54:41.324] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.cacheTrimInterval: 8192
+[19Nov2023 15:54:41.324] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+[19Nov2023 15:54:41.324] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.useCacheForAllThreads: false
+[19Nov2023 15:54:41.324] [Render thread/DEBUG] [io.netty.buffer.PooledByteBufAllocator/]: -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+[19Nov2023 15:54:41.338] [Render thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.allocator.type: pooled
+[19Nov2023 15:54:41.338] [Render thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.threadLocalDirectBufferSize: 0
+[19Nov2023 15:54:41.338] [Render thread/DEBUG] [io.netty.buffer.ByteBufUtil/]: -Dio.netty.maxThreadLocalCharBufferSize: 16384
+[19Nov2023 15:54:41.376] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Starting local connection.
+[19Nov2023 15:54:41.510] [Netty Local Client IO #0/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.maxCapacityPerThread: 4096
+[19Nov2023 15:54:41.510] [Netty Local Client IO #0/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.ratio: 8
+[19Nov2023 15:54:41.510] [Netty Local Client IO #0/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.chunkSize: 32
+[19Nov2023 15:54:41.510] [Netty Local Client IO #0/DEBUG] [io.netty.util.Recycler/]: -Dio.netty.recycler.blocking: false
+[19Nov2023 15:54:41.536] [Netty Server IO #1/DEBUG] [io.netty.buffer.AbstractByteBuf/]: -Dio.netty.buffer.checkAccessible: true
+[19Nov2023 15:54:41.536] [Netty Server IO #1/DEBUG] [io.netty.buffer.AbstractByteBuf/]: -Dio.netty.buffer.checkBounds: true
+[19Nov2023 15:54:41.537] [Netty Server IO #1/DEBUG] [io.netty.util.ResourceLeakDetectorFactory/]: Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@54ef624a
+[19Nov2023 15:54:41.544] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Starting local connection.
+[19Nov2023 15:54:41.556] [Server thread/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Sending ticking packet info 'net.minecraftforge.network.HandshakeMessages$S2CModData' to 'fml:handshake' sequence 0
+[19Nov2023 15:54:41.570] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.LoginWrapper/FMLHANDSHAKE]: Recieved login wrapper packet event for channel fml:handshake with index 0
+[19Nov2023 15:54:41.603] [Server thread/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Sending ticking packet info 'net.minecraftforge.network.HandshakeMessages$S2CModList' to 'fml:handshake' sequence 1
+[19Nov2023 15:54:41.603] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.LoginWrapper/FMLHANDSHAKE]: Recieved login wrapper packet event for channel fml:handshake with index 1
+[19Nov2023 15:54:41.604] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Logging into server with mod list [minecraft, forge, aperturetech, geckolib3]
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'fml:loginwrapper' : Version test of 'FML3' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'forge:tier_sorting' : Version test of '1.0' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'fml:handshake' : Version test of 'FML3' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'geckolib3:main' : Version test of '0' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'aperturetech:messages' : Version test of '1.0' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'minecraft:unregister' : Version test of 'FML3' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'fml:play' : Version test of 'FML3' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'minecraft:register' : Version test of 'FML3' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'forge:split' : Version test of '1.1' from server : ACCEPTED
+[19Nov2023 15:54:41.606] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Accepting channel list from server
+[19Nov2023 15:54:41.607] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.LoginWrapper/FMLHANDSHAKE]: Dispatching wrapped packet reply for channel fml:handshake with index 1
+[19Nov2023 15:54:41.608] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Accepted server connection
+[19Nov2023 15:54:41.608] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.LoginWrapper/FMLHANDSHAKE]: Recieved login wrapper packet event for channel fml:handshake with index 1
+[19Nov2023 15:54:41.608] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Received client indexed reply 1 of type net.minecraftforge.network.HandshakeMessages$C2SModListReply
+[19Nov2023 15:54:41.608] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Received client connection with modlist [minecraft, forge, aperturetech, geckolib3]
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'fml:loginwrapper' : Version test of 'FML3' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'forge:tier_sorting' : Version test of '1.0' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'fml:handshake' : Version test of 'FML3' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'geckolib3:main' : Version test of '0' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'aperturetech:messages' : Version test of '1.0' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'minecraft:unregister' : Version test of 'FML3' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'fml:play' : Version test of 'FML3' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'minecraft:register' : Version test of 'FML3' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Channel 'forge:split' : Version test of '1.1' from client : ACCEPTED
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.NetworkRegistry/NETREGISTRY]: Accepting channel list from client
+[19Nov2023 15:54:41.610] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Accepted client connection mod list
+[19Nov2023 15:54:41.648] [Server thread/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Sending ticking packet info 'Config forge-server.toml' to 'fml:handshake' sequence 2
+[19Nov2023 15:54:41.649] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.LoginWrapper/FMLHANDSHAKE]: Recieved login wrapper packet event for channel fml:handshake with index 2
+[19Nov2023 15:54:41.649] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Received config sync from server
+[19Nov2023 15:54:41.649] [Netty Local Client IO #0/DEBUG] [net.minecraftforge.network.LoginWrapper/FMLHANDSHAKE]: Dispatching wrapped packet reply for channel fml:handshake with index 2
+[19Nov2023 15:54:41.649] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.LoginWrapper/FMLHANDSHAKE]: Recieved login wrapper packet event for channel fml:handshake with index 2
+[19Nov2023 15:54:41.649] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Received client indexed reply 2 of type net.minecraftforge.network.HandshakeMessages$C2SAcknowledge
+[19Nov2023 15:54:41.649] [Netty Server IO #1/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Received acknowledgement from client
+[19Nov2023 15:54:41.700] [Server thread/DEBUG] [net.minecraftforge.network.HandshakeHandler/FMLHANDSHAKE]: Handshake complete!
+[19Nov2023 15:54:41.753] [Netty Local Client IO #0/INFO] [net.minecraftforge.network.NetworkHooks/]: Connected to a modded server.
+[19Nov2023 15:54:41.813] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.server.PlayerAdvancements@47bb070b
+[19Nov2023 15:54:41.832] [Server thread/INFO] [net.minecraft.server.players.PlayerList/]: Dev[local:E:36ccd7a4] logged in with entity id 144 at (-644.0835853555631, 91.24841524530522, -860.4950257565373)
+[19Nov2023 15:54:41.900] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev joined the game
+[19Nov2023 15:54:43.138] [Render thread/DEBUG] [io.netty.util.internal.ThreadLocalRandom/]: -Dio.netty.initialSeedUniquifier: 0xca424ea57c9c962d
+[19Nov2023 15:54:43.392] [Render thread/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 243 advancements
+[19Nov2023 15:58:57.694] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 15:59:03.029] [Render thread/INFO] [net.minecraft.client.gui.components.ChatComponent/]: [System] [CHAT] [Debug]: Hitboxes: shown
+[19Nov2023 15:59:07.443] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 15:59:09.892] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 15:59:13.894] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:17.093] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:21.594] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:23.492] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:25.393] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:27.343] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:30.793] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:36.443] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: north
+[19Nov2023 15:59:41.602] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 15:59:41.607] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 15:59:45.995] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 15:59:49.594] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 15:59:51.793] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 15:59:57.638] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 15:59:57.649] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 15:59:57.676] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 15:59:57.678] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 15:59:57.679] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 15:59:57.684] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:00:21.843] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:50.692] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:52.492] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:53.643] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:54.491] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:55.693] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:56.393] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:56.943] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:00:58.592] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:01:00.044] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:01:07.491] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:01:09.293] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:01:10.691] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:01:11.692] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:01:13.742] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:01:15.992] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:01:30.691] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 16:01:31.492] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:01:31.942] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:01:32.743] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:01:33.243] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:01:33.642] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:01:34.343] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 16:01:34.993] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 16:01:35.993] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 16:01:36.993] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 16:01:45.839] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:01:45.847] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:01:45.869] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:01:45.870] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:01:45.871] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:01:45.875] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:01:51.894] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:00.845] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:04.942] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:05.639] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:02:05.647] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:02:05.672] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:02:05.673] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:02:05.675] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:02:05.678] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:02:30.589] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:02:30.596] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:02:30.600] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:02:30.601] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:02:30.602] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:02:30.606] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:02:39.892] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:41.442] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:42.592] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:45.643] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:47.492] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:57.992] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:02:59.142] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:22.141] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:23.742] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:24.341] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:24.992] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:25.492] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:25.892] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:26.442] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:26.843] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:27.244] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:27.642] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:28.044] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:28.443] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:28.842] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:29.592] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:29.992] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:30.792] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:32.343] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:32.892] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:33.792] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:34.541] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:35.644] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:36.491] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:37.343] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:03:47.839] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:03:47.846] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:03:47.868] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:03:47.869] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:03:47.870] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:03:47.874] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:04:00.443] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:07.488] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:04:07.494] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:04:07.516] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:04:07.517] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:04:07.517] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:04:07.520] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:04:28.341] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:29.143] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:29.843] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:30.994] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:32.042] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:33.342] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:34.092] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:35.043] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:37.792] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:40.142] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:41.591] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:45.193] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:48.743] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:04:50.742] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: east
+[19Nov2023 16:04:52.793] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:04:57.039] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:04:57.047] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:04:57.070] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:04:57.071] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:04:57.072] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:04:57.075] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:05:34.844] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: down
+[19Nov2023 16:05:43.992] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: down
+[19Nov2023 16:05:45.142] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:05:46.642] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: down
+[19Nov2023 16:05:47.693] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: down
+[19Nov2023 16:05:48.743] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: south
+[19Nov2023 16:05:49.241] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: west
+[19Nov2023 16:05:55.843] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:05:56.342] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:05:56.941] [Server thread/DEBUG] [com.Legoman1342.entities.custom.PortalProjectile/]: Portal projectile collided with face: up
+[19Nov2023 16:06:06.688] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:06:06.694] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:06:06.718] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:06:06.718] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:06:06.719] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:06:06.721] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:06:09.738] [Server thread/INFO] [net.minecraft.client.server.IntegratedServer/]: Saving and pausing game...
+[19Nov2023 16:06:09.744] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:06:09.748] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:06:09.748] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:06:09.749] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:06:09.753] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:12:36.398] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Dev lost connection: Disconnected
+[19Nov2023 16:12:36.398] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Dev left the game
+[19Nov2023 16:12:36.411] [Server thread/INFO] [net.minecraft.server.network.ServerGamePacketListenerImpl/]: Stopping singleplayer server as player logged out
+[19Nov2023 16:12:36.450] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Stopping server
+[19Nov2023 16:12:36.451] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving players
+[19Nov2023 16:12:36.451] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving worlds
+[19Nov2023 16:12:37.281] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:overworld
+[19Nov2023 16:12:37.325] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_end
+[19Nov2023 16:12:37.326] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Saving chunks for level 'ServerLevel[Aperture Tech Testing - 1.19.2]'/minecraft:the_nether
+[19Nov2023 16:12:37.327] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: Gathering id map for writing to world save Aperture Tech Testing - 1.19.2
+[19Nov2023 16:12:37.329] [Server thread/DEBUG] [net.minecraftforge.common.ForgeHooks/WP]: ID Map collection complete Aperture Tech Testing - 1.19.2
+[19Nov2023 16:12:37.337] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (Aperture Tech Testing - 1.19.2): All chunks are saved
+[19Nov2023 16:12:37.337] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[19Nov2023 16:12:37.337] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[19Nov2023 16:12:37.337] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: ThreadedAnvilChunkStorage: All dimensions are saved
+[19Nov2023 16:12:37.672] [Server thread/DEBUG] [net.minecraftforge.fml.loading.FileUtils/CORE]: Found existing serverconfig directory : .\saves\Aperture Tech Testing - 1.19.2\serverconfig
+[19Nov2023 16:12:37.672] [Server thread/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Unloading configs type SERVER
+[19Nov2023 16:12:38.549] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Stopping!

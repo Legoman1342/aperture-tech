@@ -13,6 +13,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
@@ -118,6 +119,21 @@ public class PortalProjectile extends Projectile {
 		if (!this.level.isClientSide) {
 			Direction collisionDirection = hasHitBlockFace();
 			if (collisionDirection != null) {
+				level.addFreshEntity(PortalEntity.newPortalEntity(
+						this.entityData.get(CHANNEL),
+						this.entityData.get(PRIMARY),
+						level,
+						PortalEntity.determinePortalPosition(position(), collisionDirection.getOpposite()),
+						0,
+						switch (collisionDirection) {
+							case NORTH -> 180.0F;
+							case EAST -> -90.0F;
+							case SOUTH -> 0.0F;
+							case WEST -> 90.0F;
+							case UP -> 0.0F; //TODO
+							case DOWN -> 0.0F; //TODO
+						}
+				));
 				this.remove(RemovalReason.DISCARDED);
 				LOGGER.debug("Portal projectile collided with face: " + collisionDirection);
 			}

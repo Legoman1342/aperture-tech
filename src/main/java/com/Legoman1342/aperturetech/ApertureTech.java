@@ -6,13 +6,13 @@ import com.Legoman1342.blocks.BlockRegistration;
 import com.Legoman1342.entities.EntityRegistration;
 import com.Legoman1342.entities.client.PortalProjectileRenderer;
 import com.Legoman1342.entities.client.StorageCubeRenderer;
+import com.Legoman1342.entities.client.WallPortalRenderer;
 import com.Legoman1342.items.ItemRegistration;
 import com.Legoman1342.items.custom.PortalGun;
 import com.Legoman1342.networking.ModMessages;
 import com.Legoman1342.sounds.SoundRegistration;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.InterModComms;
@@ -76,6 +76,7 @@ public class ApertureTech {
 		//Registers the renderers for entities and block entities
 		EntityRenderers.register(EntityRegistration.STORAGE_CUBE.get(), StorageCubeRenderer::new);
 		EntityRenderers.register(EntityRegistration.PORTAL_PROJECTILE.get(), PortalProjectileRenderer::new);
+		EntityRenderers.register(EntityRegistration.WALL_PORTAL.get(), WallPortalRenderer::new);
 
 		BlockEntityRenderers.register(BlockEntityRegistration.CHAMBERLOCK_DOOR_BE.get(), ChamberlockDoorRenderer::new);
 	}
